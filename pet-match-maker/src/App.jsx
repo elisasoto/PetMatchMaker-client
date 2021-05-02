@@ -1,9 +1,11 @@
-import "./App.css";
+import './App.scss';
+
+import Home from './components/AppHome/Home';
 
 function App() {
   return (
     <div className="App">
-      <header>PETMATCHMAKER WORK IN PROGRESS</header>
+      <Home />
     </div>
   );
 }
