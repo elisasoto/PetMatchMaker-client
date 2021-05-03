@@ -1,7 +1,4 @@
-import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-
-import './styles.scss';
 
 export default function LoginForm() {
   const {
@@ -16,15 +13,14 @@ export default function LoginForm() {
 
   return (
     <>
-      <h2>Welcome</h2>
-      <h4>Sign In</h4>
+      <h2>Welcome to PetMatchMaker</h2>
       <form onSubmit={handleSubmit(handleFormSubmit)}>
         <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
           name="email"
-          placeholder="jondoe@gmail.com"
+          placeholder="yourmail@gmail.com"
           {...register('email', {
             required: true
           })}
@@ -46,13 +42,6 @@ export default function LoginForm() {
         <br />
         <button type="submit">Login</button>
       </form>
-
-      <div className="profile__registerLink">
-        <h5>
-          Not yet a user of Tutti.Frutti?
-          <Link to="/register"> Register</Link>
-        </h5>
-      </div>
     </>
   );
 }
