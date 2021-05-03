@@ -2,11 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faDog } from '@fortawesome/free-solid-svg-icons';
 import { faPaw } from '@fortawesome/free-solid-svg-icons';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
 
 const icons = {
   profile: faUser,
   dog: faDog,
-  logo: faPaw
+  logo: faPaw,
+  like: faHeart,
+  dislike: faTimes,
+  about: faAddressCard
 };
 
 export default function IconLink({ type = '', path = '' }) {

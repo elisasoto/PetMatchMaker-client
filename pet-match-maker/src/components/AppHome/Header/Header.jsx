@@ -2,7 +2,7 @@ import IconLink from '../../IconLinks/IconLinks';
 
 import './header.scss';
 
-export default function Header({ type = '' }) {
+export default function Header() {
   return (
     <div className="header">
       <IconLink type="profile" className="header__profile" />
