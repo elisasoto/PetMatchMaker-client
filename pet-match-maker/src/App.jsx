@@ -6,6 +6,7 @@ import UserRegister from './components/UserRegisterForm/UserRegister';
 import UserMoreInfo from './components/UserRegisterForm/UserMoreInfo';
 import ShelterRegister from './components/ShelterRegisterForm/ShelterRegister';
 import PetRegister from './components/ShelterRegisterForm/PetRegister';
+import ShelterHome from './pages/ShelterHome';
 
 import './App.scss';
 
@@ -38,7 +39,7 @@ function App() {
         </Route>
 
         <Route exact path="/shelter/home">
-          {/*home de shelter (cartas humanos)*/}
+          <ShelterHome />
         </Route>
 
         <Route exact path="/user/profile">
