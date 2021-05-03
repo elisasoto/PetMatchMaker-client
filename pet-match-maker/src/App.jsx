@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Access from './components/AppInit/Access';
 import LoginForm from './components/LoginForm/LoginForm';
 import UserRegister from './components/UserRegisterForm/UserRegister';
+import UserMoreInfo from './components/UserRegisterForm/UserMoreInfo';
 
 import './App.scss';
 
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route exact path="/user/profile">
           {/*informacion de tu perfil o modificacion*/}
+        </Route>
+        <Route exact path="/user/edit-profile">
+          <UserMoreInfo />
         </Route>
         <Route exact path="/user-info/:id">
           {/*información adicional del formulario de registro*/}
