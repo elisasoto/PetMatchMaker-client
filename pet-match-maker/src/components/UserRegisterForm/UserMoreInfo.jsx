@@ -193,7 +193,7 @@ export default function UserMoreInfo() {
             <p>{errorMessage.required}</p>
           ) : null}
           <label>Please tell us a bit about yourself</label>
-          <p> {`${aboutCounthLength} / 500 left`} </p>
+          <p> {`${aboutCounthLength} / 240 left`} </p>
           <textarea
             type="text"
             id="about"
@@ -216,7 +216,7 @@ export default function UserMoreInfo() {
             <p>{errorMessage.pharagraphMinLength}</p>
           ) : null}
           <label>Motivations</label>
-          <p> {`${aboutCounthLength} / 500 left`} </p>
+          <p> {`${aboutCounthLength} / 240 left`} </p>
           <textarea
             type="text"
             id="motivations"
@@ -288,7 +288,7 @@ export default function UserMoreInfo() {
             <option value="outside house">outside house</option>
           </select>
           <label>Ammenities for the dog</label>
-          <p> {`${aboutCounthLength} / 500 left`} </p>
+          <p> {`${aboutCounthLength} / 240 left`} </p>
           <textarea
             type="text"
             id="ammenities"
