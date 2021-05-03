@@ -5,6 +5,7 @@ import LoginForm from './components/LoginForm/LoginForm';
 import UserRegister from './components/UserRegisterForm/UserRegister';
 import UserMoreInfo from './components/UserRegisterForm/UserMoreInfo';
 import ShelterRegister from './components/ShelterRegisterForm/ShelterRegister';
+import PetRegister from './components/ShelterRegisterForm/PetRegister';
 
 import './App.scss';
 
@@ -25,7 +26,7 @@ function App() {
         </Route>
 
         <Route exact path="/dog/register">
-          {/*componente de registro de perro */}
+          <PetRegister />
         </Route>
 
         <Route exact path="/login">
