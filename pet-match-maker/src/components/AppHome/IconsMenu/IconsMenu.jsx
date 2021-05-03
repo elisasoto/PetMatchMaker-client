@@ -1,3 +1,11 @@
+import IconLink from '../../IconLinks/IconLinks';
+
 export default function IconsMenu() {
-  return <h2>I will be the app icons</h2>;
+  return (
+    <div className="iconsMenu">
+      <IconLink type="dislike" />
+      <IconLink type="like" />
+      <IconLink type="about" />
+    </div>
+  );
 }
