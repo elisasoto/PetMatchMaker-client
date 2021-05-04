@@ -6,8 +6,8 @@ export default function Header() {
   return (
     <div className="header">
       <IconLink type="profile" className="header__profile" />
-      <IconLink type="logo" className="header__logo" />
       <IconLink type="dog" className="header__matches" />
+      <IconLink type="logout" />
     </div>
   );
 }

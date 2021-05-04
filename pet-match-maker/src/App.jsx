@@ -6,7 +6,7 @@ import SignUpAdopter from './pages/SignUpPageAdopter';
 import SignUpShelter from './pages/SignUpPageShelter';
 import UserMoreInfo from './components/UserRegisterForm/UserMoreInfo';
 import PetRegister from './components/ShelterRegisterForm/PetRegister';
-import ShelterHome from './pages/ShelterHome';
+import ShelterHome from './pages/ShelterHomeProfile';
 
 import './App.scss';
 

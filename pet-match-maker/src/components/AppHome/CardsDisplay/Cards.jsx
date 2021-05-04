@@ -31,10 +31,8 @@ export default function Cards() {
           key={adopter.name}
           preventSwipe={['up', 'down']}
         >
-          <div
-            style={{ backgroundImage: `url(${adopter.url})` }}
-            className="card"
-          >
+          <div className="card">
+            <img src={adopter.url} alt={adopter.name} className="image" />
             <h3>{adopter.name}</h3>
           </div>
         </TinderCard>

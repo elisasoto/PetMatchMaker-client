@@ -5,6 +5,7 @@ import { faPaw } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 
 const icons = {
   profile: faUser,
@@ -12,7 +13,8 @@ const icons = {
   logo: faPaw,
   like: faHeart,
   dislike: faTimes,
-  about: faAddressCard
+  about: faAddressCard,
+  logout: faSignOutAlt
 };
 
 export default function IconLink({ type = '', path = '' }) {

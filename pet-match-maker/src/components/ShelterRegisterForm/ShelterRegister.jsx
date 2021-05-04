@@ -1,9 +1,13 @@
+import { useContext } from 'react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { errorMessage } from '../../constants/formErrors';
+import { UserContext } from '../../context/User';
 
 export default function ShelterRegister() {
+  const { shelterRegister } = useContext(UserContext);
+
   const [aboutCounthLength, settextAreaLengthCount] = useState(0);
 
   const textAreaRecalculate = (e) => {
@@ -17,7 +21,7 @@ export default function ShelterRegister() {
   } = useForm({});
 
   const handleFormSubmit = (formValues) => {
-    console.log(formValues);
+    shelterRegister(formValues);
   };
 
   return (
