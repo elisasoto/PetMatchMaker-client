@@ -1,7 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 
-import AppInit from './pages/AppInit';
-import LoginForm from './components/LoginForm/LoginForm';
+import LoginPage from './pages/LoginPage';
 import UserRegister from './components/UserRegisterForm/UserRegister';
 import UserMoreInfo from './components/UserRegisterForm/UserMoreInfo';
 import ShelterRegister from './components/ShelterRegisterForm/ShelterRegister';
@@ -15,7 +14,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <AppInit />
+          <LoginPage />
         </Route>
 
         <Route exact path="/user/register">
@@ -28,10 +27,6 @@ function App() {
 
         <Route exact path="/dog/register">
           <PetRegister />
-        </Route>
-
-        <Route exact path="/login">
-          <LoginForm />
         </Route>
 
         <Route exact path="/user/home">

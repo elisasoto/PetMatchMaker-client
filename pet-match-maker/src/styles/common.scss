@@ -26,21 +26,24 @@ $font: 'Roboto', sans-serif;
   justify-content: space-evenly;
 }
 
-@mixin box-commons {
-  border-radius: 10px;
-  box-shadow: 0px 4px 12px -2px;
+@mixin buttons {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: rgba(256, 256, 256, 0.7);
+  border: 0;
+  border-radius: 15px;
+  display: block;
+  margin: 15px auto;
+  padding: 15px 45px;
+  width: 100%;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: all 0.3s ease;
 }
 
 @mixin wrap-flex {
   @extend .flex;
   flex-wrap: wrap;
-}
-
-@mixin color-commons {
-  background: rgb(34, 193, 195);
-  background: linear-gradient(
-    103deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
-  );
 }

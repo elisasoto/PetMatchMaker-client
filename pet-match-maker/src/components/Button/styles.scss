@@ -3,9 +3,7 @@
 .button {
   width: 100px;
   height: 50px;
-  @include center-flex;
-  @include evenly-flex;
-  @include box-commons;
+  @include buttons;
 
   &__text {
     font-size: 15px;
