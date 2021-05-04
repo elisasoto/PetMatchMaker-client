@@ -14,18 +14,19 @@ export default function UserRegister() {
   };
 
   return (
-    <div className="formPage">
-      <div className="form">
-        <h1>Welcome</h1>
+    <div className="form-constructor">
+      <div className="signup">
+        <button className="submit-btn">Sign up as Shelter</button>
+        <button className="submit-btn">Sign up as Adopter</button>
         <h4>
           Fill your Basic Info and start matching with your perfect friend
         </h4>
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-          <label htmlFor="name"> Name</label>
           <input
             type="text"
             id="name"
-            placeholder="First name"
+            placeholder="Name"
+            className="input"
             {...register('name', {
               required: true,
               minLength: {
@@ -40,18 +41,18 @@ export default function UserRegister() {
           {errors.name && errors.name.type === 'minLength' ? (
             <p>{errorMessage.nameFieldLenght}</p>
           ) : null}
-          <label>Surname</label>
           <input
             type="text"
             id="surname"
-            placeholder="Last name"
+            placeholder="Surname"
+            className="input"
             {...register('surname', { required: false, maxLength: 100 })}
           />
-          <label>Email</label>
           <input
             type="text"
             id="email"
-            placeholder="jondoe@gmail.com"
+            placeholder="Email"
+            className="input"
             {...register('email', {
               required: true,
               pattern: {
@@ -65,11 +66,12 @@ export default function UserRegister() {
           {errors.email && errors.email.type === 'pattern' ? (
             <p>{errorMessage.emailPattern}</p>
           ) : null}
-          <label>Password</label>
           <input
             type="password"
             id="password"
             name="password"
+            placeholder="Password"
+            className="input"
             {...register('password', {
               required: true,
               minLength: 6,
@@ -85,11 +87,11 @@ export default function UserRegister() {
           {errors.password && errors.password.type === 'maxLength' ? (
             <p>{errorMessage.passwordFieldLenght}</p>
           ) : null}
-          <label>Contact Number</label>
           <input
             type="text"
             id="phone"
-            placeholder="787652901"
+            placeholder="Your Contact Phone Number"
+            className="input"
             {...register('phone', {
               required: true,
               minLength: 9,
@@ -111,10 +113,11 @@ export default function UserRegister() {
           {errors.phone && errors.phone.type === 'pattern' ? (
             <p>{errorMessage.integerPattern}</p>
           ) : null}
-          <label>Upload your Image</label>
           <input
             type="text"
+            className="input"
             id="img"
+            placeholder="Upload your photo"
             {...register('img', {
               required: true
             })}
@@ -122,7 +125,9 @@ export default function UserRegister() {
           {errors.img && errors.img.type === 'required' ? (
             <p>{errorMessage.required}</p>
           ) : null}
-          <button type="submit">Sign up</button>
+          <button type="submit" className="submit-btn">
+            Sign up
+          </button>
         </form>
       </div>
     </div>
