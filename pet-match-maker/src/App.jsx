@@ -58,6 +58,8 @@ function App() {
           </Route>
         </Switch>
       </div>
+
+      <ToastContainer />
     </UserContext.Provider>
   );
 }
