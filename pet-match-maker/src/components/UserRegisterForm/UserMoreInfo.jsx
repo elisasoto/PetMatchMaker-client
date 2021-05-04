@@ -23,14 +23,25 @@ export default function UserMoreInfo() {
   const {
     handleSubmit,
     register,
-    formState: { errors }
+    formState: { errors },
+    watch,
+    trigger
   } = useForm({
     defaultValues: mockedProfile ? mockedProfile : {}
   });
 
+  const [about] = watch(['about']);
+  console.log(about);
   const handleFormSubmit = (formValues) => {
     console.log(formValues);
   };
+
+  if (
+    ((about || '').length > 240 && !errors.about) ||
+    ((about || '').length <= 240 && errors.about)
+  ) {
+    trigger(['about']);
+  }
 
   return (
     <div className="formPage">
@@ -193,7 +204,7 @@ export default function UserMoreInfo() {
             <p>{errorMessage.required}</p>
           ) : null}
           <label>Please tell us a bit about yourself</label>
-          <p> {`${aboutCounthLength} / 240 left`} </p>
+          <p> {`${(about || '').length} / 240 left`} </p>
           <textarea
             type="text"
             id="about"

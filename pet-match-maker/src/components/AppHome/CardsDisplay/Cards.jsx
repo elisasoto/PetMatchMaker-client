@@ -30,6 +30,9 @@ export default function Cards() {
           className="swipe"
           key={adopter.name}
           preventSwipe={['up', 'down']}
+          onSwipe={(direction) => {
+            console.log(direction);
+          }}
         >
           <div className="card">
             <img src={adopter.url} alt={adopter.name} className="image" />

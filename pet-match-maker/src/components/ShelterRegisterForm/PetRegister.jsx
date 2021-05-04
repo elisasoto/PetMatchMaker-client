@@ -141,8 +141,10 @@ export default function PetRegister() {
               <ReactDatePicker
                 className="input"
                 placeholderText="Select date"
-                onChange={(e) => props.onChange(e)}
-                selected={props.value}
+                onChange={(e) => {
+                  props.field.onChange(e);
+                }}
+                selected={props.field.value}
               />
             )}
           />
