@@ -1,8 +1,12 @@
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { errorMessage } from '../../constants/formErrors';
+import { UserContext } from '../../context/User';
 
 export default function UserRegister() {
+  const { adopterRegister } = useContext(UserContext);
+
   const {
     handleSubmit,
     register,
@@ -10,7 +14,7 @@ export default function UserRegister() {
   } = useForm({});
 
   const handleFormSubmit = (formValues) => {
-    console.log(formValues);
+    adopterRegister(formValues);
   };
 
   return (
