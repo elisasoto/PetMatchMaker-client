@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 
-import Access from './components/AppInit/Access';
+import AppInit from './pages/AppInit';
 import LoginForm from './components/LoginForm/LoginForm';
 import UserRegister from './components/UserRegisterForm/UserRegister';
 import UserMoreInfo from './components/UserRegisterForm/UserMoreInfo';
@@ -15,7 +15,7 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/">
-          <Access />
+          <AppInit />
         </Route>
 
         <Route exact path="/user/register">
