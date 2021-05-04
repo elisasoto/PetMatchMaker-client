@@ -21,19 +21,18 @@ export default function ShelterRegister() {
   };
 
   return (
-    <div className="formPage">
-      <div className="form">
-        <h1>Welcome</h1>
+    <div className="form-constructor">
+      <div className="signup">
         <h4>Fill the info below to start registering Pets</h4>
         <form
           onSubmit={handleSubmit(handleFormSubmit)}
           onChange={textAreaRecalculate}
         >
-          <label htmlFor="name">Name</label>
           <input
             type="text"
             id="name"
             placeholder="Shelters name"
+            className="input"
             {...register('name', {
               required: true,
               minLength: {
@@ -48,11 +47,11 @@ export default function ShelterRegister() {
           {errors.name && errors.name.type === 'minLength' ? (
             <p>{errorMessage.nameFieldLenght}</p>
           ) : null}
-          <label>Email</label>
           <input
             type="text"
             id="email"
-            placeholder="jondoe@gmail.com"
+            placeholder="Contact Email"
+            className="input"
             {...register('email', {
               required: true,
               pattern: {
@@ -66,11 +65,12 @@ export default function ShelterRegister() {
           {errors.email && errors.email.type === 'pattern' ? (
             <p>{errorMessage.emailPattern}</p>
           ) : null}
-          <label>Password</label>
           <input
             type="password"
             id="password"
             name="password"
+            className="input"
+            placeholder="Password"
             {...register('password', {
               required: true,
               minLength: 6,
@@ -86,11 +86,11 @@ export default function ShelterRegister() {
           {errors.password && errors.password.type === 'maxLength' ? (
             <p>{errorMessage.passwordFieldLenght}</p>
           ) : null}
-          <label>Contact Number</label>
           <input
             type="text"
             id="phone"
-            placeholder="787652901"
+            placeholder="Phone Number"
+            className="input"
             {...register('phone', {
               required: true,
               minLength: 9,
@@ -112,11 +112,10 @@ export default function ShelterRegister() {
           {errors.phone && errors.phone.type === 'pattern' ? (
             <p>{errorMessage.integerPattern}</p>
           ) : null}
-          <label>Country</label>
           <input
             type="text"
             id="country"
-            placeholder="Mexico"
+            placeholder="Country"
             {...register('country', {
               required: true
             })}
@@ -124,11 +123,10 @@ export default function ShelterRegister() {
           {errors.country && errors.country.type === 'required' ? (
             <p>{errorMessage.required}</p>
           ) : null}
-          <label>City</label>
           <input
             type="text"
             id="city"
-            placeholder="Ciudad de Mexico"
+            placeholder="City"
             {...register('city', {
               required: true
             })}
@@ -136,20 +134,21 @@ export default function ShelterRegister() {
           {errors.city && errors.city.type === 'required' ? (
             <p>{errorMessage.required}</p>
           ) : null}
-          <label>Please tell us a bit about yourself</label>
-          <p> {`${aboutCounthLength} / 240 left`} </p>
-          <textarea
-            type="text"
-            id="about"
-            rows={5}
-            className="full_height_Width"
-            placeholder="your personality, where do you work, your hobbies"
-            {...register('about', {
-              required: true,
-              maxLength: 240,
-              minLength: 50
-            })}
-          />
+          <div>
+            <textarea
+              type="text"
+              id="about"
+              rows={5}
+              className="full_height_Width input"
+              placeholder="Brief Description of the Shelter"
+              {...register('about', {
+                required: true,
+                maxLength: 240,
+                minLength: 50
+              })}
+            />
+            <p> {`${aboutCounthLength} / 240 left`} </p>
+          </div>
           {errors.about && errors.about.type === 'required' ? (
             <p>{errorMessage.required}</p>
           ) : null}
@@ -159,7 +158,9 @@ export default function ShelterRegister() {
           {errors.about && errors.about.type === 'minLength' ? (
             <p>{errorMessage.pharagraphMinLength}</p>
           ) : null}
-          <button type="submit">Sign up</button>
+          <button type="submit" className="submit-btn">
+            Sign up
+          </button>
         </form>
       </div>
     </div>

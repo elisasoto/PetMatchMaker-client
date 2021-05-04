@@ -1,9 +1,9 @@
 import { Route, Switch } from 'react-router-dom';
 
 import LoginPage from './pages/LoginPage';
-import UserRegister from './components/UserRegisterForm/UserRegister';
+import SignUpAdopter from './pages/SignUpPageAdopter';
+import SignUpShelter from './pages/SignUpPageShelter';
 import UserMoreInfo from './components/UserRegisterForm/UserMoreInfo';
-import ShelterRegister from './components/ShelterRegisterForm/ShelterRegister';
 import PetRegister from './components/ShelterRegisterForm/PetRegister';
 import ShelterHome from './pages/ShelterHome';
 
@@ -18,11 +18,11 @@ function App() {
         </Route>
 
         <Route exact path="/user/register">
-          <UserRegister />
+          <SignUpAdopter />
         </Route>
 
         <Route exact path="/shelter/register">
-          <ShelterRegister />
+          <SignUpShelter />
         </Route>
 
         <Route exact path="/dog/register">

@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import '../../styles/LoginPage.scss';
 
 export default function LoginForm() {
   const {
@@ -15,7 +14,7 @@ export default function LoginForm() {
   return (
     <div className="form-constructor">
       <div className="signup">
-        <h2 class="form-title" id="login">
+        <h2 className="form-title" id="login">
           <span>or</span>Welcome to Pet-Matchmaker
         </h2>
         <h4 className="app-description">
@@ -53,12 +52,12 @@ export default function LoginForm() {
           </button>
         </form>
       </div>
-      <div class="login slide-up">
-        <div class="center">
-          <h2 class="form-title" id="login">
-            <span>or</span>SignUp as Shelter
+      <div className="login slide-up">
+        <div className="center">
+          <h2 className="form-title" id="login">
+            <span>or</span>SignUp
           </h2>
-          <button class="submit-btn">Sign up</button>
+          <button className="submit-btn">Sign up</button>
         </div>
       </div>
     </div>
