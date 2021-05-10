@@ -1,6 +1,24 @@
 import { useForm } from 'react-hook-form';
+import React from 'react';
+import {
+  FormErrorMessage,
+  Stack,
+  Input,
+  Button,
+  InputGroup,
+  InputRightElement,
+  InputLeftElement,
+  FormControl
+} from '@chakra-ui/react';
+
+import { EmailIcon, LockIcon } from '@chakra-ui/icons';
+
+import { errorMessage } from '../../../constants/formErrors';
 
 export default function LoginForm() {
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
+
   // state de is user / shelter
   const {
     handleSubmit,
@@ -8,59 +26,84 @@ export default function LoginForm() {
     formState: { errors }
   } = useForm();
 
+  console.log(errors);
+
   const handleFormSubmit = (formValues) => {
     console.log(formValues);
   };
 
   return (
-    <div className="form-constructor">
-      <div className="signup">
-        <h2 className="form-title" id="login">
-          <span>or</span>Welcome to Pet-Matchmaker
-        </h2>
-        <h4 className="app-description">
-          The place where you can find a friend for life
-        </h4>
-        <form onSubmit={handleSubmit(handleFormSubmit)}>
-          <div className="form-holder">
-            <input
-              type="email"
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
+      <Stack spacing={4}>
+        <FormControl isRequired={errors.email}>
+          <InputGroup size="md">
+            <Input
+              type="text"
               id="email"
-              name="email"
-              className="input"
               placeholder="Email"
+              className="input"
               {...register('email', {
-                required: true
+                required: true,
+                pattern: {
+                  value: /^\S+@\S+$/i
+                }
               })}
             />
-            {errors.email && errors.email.type === 'required' ? (
-              <p>Email field is required</p>
-            ) : null}
-            <input
-              type="password"
-              id="password"
-              name="password"
-              className="input"
-              placeholder="Password"
-              {...register('password', { required: true })}
+            <InputLeftElement
+              pointerEvents="none"
+              children={<EmailIcon color="gray.300" />}
             />
+            <FormErrorMessage>
+              {errors.email && errors.email.type === 'required' ? (
+                <p>{errorMessage.required}</p>
+              ) : null}
+              {errors.email && errors.email.type === 'pattern' ? (
+                <p>{errorMessage.emailPattern}</p>
+              ) : null}
+            </FormErrorMessage>
+          </InputGroup>
+        </FormControl>
+
+        <InputGroup size="md">
+          <Input
+            pr="4.5rem"
+            type={show ? 'text' : 'password'}
+            placeholder="Enter password"
+            id="password"
+            name="password"
+            className="input"
+            {...register('password', {
+              required: true,
+              minLength: 6,
+              maxLength: 20
+            })}
+          />
+          <FormErrorMessage>
             {errors.password && errors.password.type === 'required' ? (
-              <p>Password field is required</p>
+              <p>{errorMessage.required}</p>
             ) : null}
-          </div>
-          <button className="submit-btn" type="submit">
-            Login
-          </button>
-        </form>
-      </div>
-      <div className="login slide-up">
-        <div className="center">
-          <h2 className="form-title" id="login">
-            <span>or</span>SignUp
-          </h2>
-          <button className="submit-btn">Sign up</button>
-        </div>
-      </div>
-    </div>
+            {errors.password && errors.password.type === 'minLength' ? (
+              <p>{errorMessage.passwordFieldLenght}</p>
+            ) : null}
+            {errors.password && errors.password.type === 'maxLength' ? (
+              <p>{errorMessage.passwordFieldLenght}</p>
+            ) : null}
+          </FormErrorMessage>
+          <InputLeftElement
+            pointerEvents="none"
+            children={<LockIcon color="gray.300" />}
+          />
+          <InputRightElement width="4.5rem">
+            <Button h="1.75rem" size="sm" onClick={handleClick}>
+              {show ? 'Hide' : 'Show'}
+            </Button>
+          </InputRightElement>
+        </InputGroup>
+      </Stack>
+
+      <Button mt={4} colorScheme="cyan" type="submit">
+        Login
+      </Button>
+    </form>
   );
 }
