@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form';
 import {
   FormErrorMessage,
   Stack,
+  Spacer,
+  Box,
   Input,
   Button,
   InputGroup,
@@ -11,18 +13,25 @@ import {
   InputLeftElement,
   InputLeftAddon,
   FormLabel,
+  FormHelperText,
   FormControl
 } from '@chakra-ui/react';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInfoCircle, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+  faCameraRetro,
+  faInfoCircle,
+  faUser
+} from '@fortawesome/free-solid-svg-icons';
 
+import './form-styles.scss';
 import { errorMessage } from '../../../constants/formErrors';
 import { UserContext } from '../../../context/User';
 import { getFormData } from '../../../utils/formData';
 
 export default function UserRegister() {
   const { adopterRegister } = useContext(UserContext);
+
   const [show, setShow] = useState(false);
 
   const handleClick = () => setShow(!show);
@@ -196,16 +205,38 @@ export default function UserRegister() {
 
         <FormControl isRequired={errors.name} isInvalid={!!errors.name}>
           <InputGroup>
-            <FormLabel>Upload your Avatar Image</FormLabel>
-            <input
-              type="file"
-              id="img"
-              className="add-file"
-              {...register('img', {
-                required: true
-              })}
-            />
+            <Box
+              d="flex"
+              flexDirection="column"
+              position="relative"
+              p={4}
+              border="1px solid lightgrey"
+              borderRadius="20px"
+              fontSize="25px"
+              color="#0BC5EA"
+              boxShadow="0 8px 6px -6px black;"
+            >
+              <button
+                className="button__patch"
+                onClick={(e) => e.preventDefault()}
+              >
+                <FontAwesomeIcon icon={faCameraRetro} />
+              </button>
+              <Spacer />
+              <FormLabel>Upload your profile Image: </FormLabel>
+              <input
+                type="file"
+                id="img"
+                className="button__input"
+                {...register('img', {
+                  required: true
+                })}
+              />
+            </Box>
           </InputGroup>
+          <FormHelperText>
+            *Your picture is required for the Shelters to get to know you better
+          </FormHelperText>
         </FormControl>
         <FormErrorMessage>
           {errors.name && errors.name.type === 'required' ? (
