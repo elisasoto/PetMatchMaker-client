@@ -10,7 +10,6 @@ import {
   InputLeftElement,
   FormControl
 } from '@chakra-ui/react';
-
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 
 import { errorMessage } from '../../../constants/formErrors';
