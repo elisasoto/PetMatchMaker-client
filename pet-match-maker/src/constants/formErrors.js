@@ -3,6 +3,7 @@ export const errorMessage = {
   emailPattern: 'please enter a valid email',
   integerPattern: 'please enter a valid number',
   nameFieldLenght: 'name must be at least 2 characters long',
+  nameFieldMaxLenght: 'name must be under 80 caracters long',
   passwordFieldLenght: 'password must contain 6-20 characters',
   maxPhoneLength: 'phone must not exceed 15 digits',
   phoneMinLenght: 'please enter a valid phone number',

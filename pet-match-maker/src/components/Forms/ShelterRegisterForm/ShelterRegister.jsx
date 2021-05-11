@@ -5,20 +5,32 @@ import {
   FormErrorMessage,
   Stack,
   Input,
+  Textarea,
   Button,
   InputGroup,
+  Box,
   InputRightElement,
   InputLeftElement,
+  InputLeftAddon,
   FormControl
 } from '@chakra-ui/react';
+import { EmailIcon, LockIcon } from '@chakra-ui/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCity,
+  faGlobeEurope,
+  faHouseUser
+} from '@fortawesome/free-solid-svg-icons';
 
 import { errorMessage } from '../../../constants/formErrors';
 import { UserContext } from '../../../context/User';
 
 export default function ShelterRegister() {
   const { shelterRegister } = useContext(UserContext);
-
   const [aboutCounthLength, settextAreaLengthCount] = useState(0);
+  const [show, setShow] = React.useState(false);
+
+  const handleClick = () => setShow(!show);
 
   const textAreaRecalculate = (e) => {
     settextAreaLengthCount(e.target.value.length);
@@ -31,130 +43,201 @@ export default function ShelterRegister() {
   } = useForm({});
 
   const handleFormSubmit = (formValues) => {
-    shelterRegister(formValues);
+    console.log(formValues);
   };
 
   return (
-    <div className="form-constructor">
-      <div className="signup">
-        <h4>Fill the info below to start registering Pets</h4>
-        <form
-          onSubmit={handleSubmit(handleFormSubmit)}
-          onChange={textAreaRecalculate}
-        >
-          <input
-            type="text"
-            id="name"
-            placeholder="Shelters name"
-            className="input"
-            {...register('name', {
-              required: true,
-              minLength: {
-                value: 2
-              },
-              maxLength: 80
-            })}
-          />
-          {errors.name && errors.name.type === 'required' ? (
-            <p>{errorMessage.required}</p>
-          ) : null}
-          {errors.name && errors.name.type === 'minLength' ? (
-            <p>{errorMessage.nameFieldLenght}</p>
-          ) : null}
-          <input
-            type="text"
-            id="email"
-            placeholder="Contact Email"
-            className="input"
-            {...register('email', {
-              required: true,
-              pattern: {
-                value: /^\S+@\S+$/i
-              }
-            })}
-          />
-          {errors.email && errors.email.type === 'required' ? (
-            <p>{errorMessage.required}</p>
-          ) : null}
-          {errors.email && errors.email.type === 'pattern' ? (
-            <p>{errorMessage.emailPattern}</p>
-          ) : null}
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className="input"
-            placeholder="Password"
-            {...register('password', {
-              required: true,
-              minLength: 6,
-              maxLength: 20
-            })}
-          />
-          {errors.password && errors.password.type === 'required' ? (
-            <p>{errorMessage.required}</p>
-          ) : null}
-          {errors.password && errors.password.type === 'minLength' ? (
-            <p>{errorMessage.passwordFieldLenght}</p>
-          ) : null}
-          {errors.password && errors.password.type === 'maxLength' ? (
-            <p>{errorMessage.passwordFieldLenght}</p>
-          ) : null}
-          <input
-            type="text"
-            id="phone"
-            placeholder="Phone Number"
-            className="input"
-            {...register('phone', {
-              required: true,
-              minLength: 9,
-              maxLength: 15,
-              pattern: {
-                value: /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[-. \\/]?)?((?:\(?\d{1,}\)?[-. \\/]?){0,})(?:[-. \\/]?(?:#|ext\.?|extension|x)[-. \\/]?(\d+))?$/i
-              }
-            })}
-          />
-          {errors.phone && errors.phone.type === 'required' ? (
-            <p>{errorMessage.required}</p>
-          ) : null}
-          {errors.phone && errors.phone.type === 'maxLength' ? (
-            <p>{errorMessage.maxPhoneLength}</p>
-          ) : null}
-          {errors.phone && errors.phone.type === 'minLength' ? (
-            <p>{errorMessage.phoneMinLenght}</p>
-          ) : null}
-          {errors.phone && errors.phone.type === 'pattern' ? (
-            <p>{errorMessage.integerPattern}</p>
-          ) : null}
-          <input
-            type="text"
-            id="country"
-            placeholder="Country"
-            {...register('country', {
-              required: true
-            })}
-          />
-          {errors.country && errors.country.type === 'required' ? (
-            <p>{errorMessage.required}</p>
-          ) : null}
-          <input
-            type="text"
-            id="city"
-            placeholder="City"
-            {...register('city', {
-              required: true
-            })}
-          />
-          {errors.city && errors.city.type === 'required' ? (
-            <p>{errorMessage.required}</p>
-          ) : null}
-          <div>
-            <textarea
+    <form
+      onSubmit={handleSubmit(handleFormSubmit)}
+      onChange={textAreaRecalculate}
+    >
+      <Stack spacing={2}>
+        <FormControl isRequired={errors.name} isInvalid={!!errors.name}>
+          <InputGroup size="md">
+            <Input
+              type="text"
+              id="name"
+              placeholder="Shelter's name"
+              className="input"
+              {...register('name', {
+                required: true,
+                minLength: {
+                  value: 2
+                },
+                maxLength: 80
+              })}
+            />
+            <InputLeftElement
+              pointerEvents="none"
+              children={<FontAwesomeIcon icon={faHouseUser} />}
+            />
+          </InputGroup>
+          <FormErrorMessage>
+            {errors.name && errors.name.type === 'required' ? (
+              <p>{errorMessage.required}</p>
+            ) : null}
+            {errors.name && errors.name.type === 'minLength' ? (
+              <p>{errorMessage.nameFieldLenght}</p>
+            ) : null}
+            {errors.name && errors.name.type === 'maxLength' ? (
+              <p>{errorMessage.nameFieldMaxLenght}</p>
+            ) : null}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isRequired={errors.email} isInvalid={!!errors.email}>
+          <InputGroup size="md">
+            <Input
+              type="text"
+              id="email"
+              placeholder="Email"
+              className="input"
+              {...register('email', {
+                required: true,
+                pattern: {
+                  value: /^\S+@\S+$/i
+                }
+              })}
+            />
+            <InputLeftElement
+              pointerEvents="none"
+              children={<EmailIcon color="gray.300" />}
+            />
+          </InputGroup>
+          <FormErrorMessage>
+            {errors.email && errors.email.type === 'required' ? (
+              <p>{errorMessage.required}</p>
+            ) : null}
+            {errors.email && errors.email.type === 'pattern' ? (
+              <p>{errorMessage.emailPattern}</p>
+            ) : null}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isRequired={errors.password} isInvalid={!!errors.password}>
+          <InputGroup size="md">
+            <Input
+              pr="4.5rem"
+              type={show ? 'text' : 'password'}
+              placeholder="Enter password"
+              id="password"
+              name="password"
+              className="input"
+              {...register('password', {
+                required: true,
+                minLength: 6,
+                maxLength: 20
+              })}
+            />
+            <InputLeftElement
+              pointerEvents="none"
+              children={<LockIcon color="gray.300" />}
+            />
+            <InputRightElement width="4.5rem">
+              <Button h="1.75rem" size="sm" onClick={handleClick}>
+                {show ? 'Hide' : 'Show'}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
+          <FormErrorMessage>
+            {errors.password && errors.password.type === 'required' ? (
+              <p>{errorMessage.required}</p>
+            ) : null}
+            {errors.password && errors.password.type === 'minLength' ? (
+              <p>{errorMessage.passwordFieldLenght}</p>
+            ) : null}
+            {errors.password && errors.password.type === 'maxLength' ? (
+              <p>{errorMessage.passwordFieldLenght}</p>
+            ) : null}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isRequired={errors.phone} isInvalid={!!errors.phone}>
+          <InputGroup>
+            <InputLeftAddon children="+34" />
+            <Input
+              type="text"
+              id="phone"
+              placeholder="Phone Number"
+              className="input"
+              {...register('phone', {
+                required: true,
+                minLength: 9,
+                maxLength: 15,
+                pattern: {
+                  value: /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[-. \/]?)?((?:\(?\d{1,}\)?[-. \/]?){0,})(?:[-. \/]?(?:#|ext\.?|extension|x)[-. \/]?(\d+))?$/i
+                }
+              })}
+            />
+          </InputGroup>
+          <FormErrorMessage>
+            {errors.phone && errors.phone.type === 'required' ? (
+              <p>{errorMessage.required}</p>
+            ) : null}
+            {errors.phone && errors.phone.type === 'maxLength' ? (
+              <p>{errorMessage.maxPhoneLength}</p>
+            ) : null}
+            {errors.phone && errors.phone.type === 'minLength' ? (
+              <p>{errorMessage.phoneMinLenght}</p>
+            ) : null}
+            {errors.phone && errors.phone.type === 'pattern' ? (
+              <p>{errorMessage.integerPattern}</p>
+            ) : null}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isRequired={errors.country} isInvalid={!!errors.country}>
+          <InputGroup size="md">
+            <Input
+              type="text"
+              id="country"
+              placeholder="Country"
+              {...register('country', {
+                required: true
+              })}
+            />
+            <InputLeftElement
+              pointerEvents="none"
+              children={<FontAwesomeIcon icon={faGlobeEurope} />}
+            />
+          </InputGroup>
+          <FormErrorMessage>
+            {errors.country && errors.country.type === 'required' ? (
+              <p>{errorMessage.required}</p>
+            ) : null}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isRequired={errors.city} isInvalid={!!errors.city}>
+          <InputGroup size="md">
+            <Input
+              type="text"
+              id="city"
+              placeholder="City"
+              {...register('city', {
+                required: true
+              })}
+            />
+            <InputLeftElement
+              pointerEvents="none"
+              children={<FontAwesomeIcon icon={faCity} />}
+            />
+          </InputGroup>
+          <FormErrorMessage>
+            {errors.city && errors.city.type === 'required' ? (
+              <p>{errorMessage.required}</p>
+            ) : null}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isRequired={errors.about} isInvalid={!!errors.about}>
+          <Box>
+            <Textarea
               type="text"
               id="about"
               rows={5}
               className="full_height_Width input"
-              placeholder="Brief Description of the Shelter"
+              placeholder="Tell us about your shelter"
               {...register('about', {
                 required: true,
                 maxLength: 240,
@@ -162,21 +245,25 @@ export default function ShelterRegister() {
               })}
             />
             <p> {`${aboutCounthLength} / 240 left`} </p>
-          </div>
-          {errors.about && errors.about.type === 'required' ? (
-            <p>{errorMessage.required}</p>
-          ) : null}
-          {errors.about && errors.about.type === 'maxLength' ? (
-            <p>{errorMessage.pharagraphMaxLength}</p>
-          ) : null}
-          {errors.about && errors.about.type === 'minLength' ? (
-            <p>{errorMessage.pharagraphMinLength}</p>
-          ) : null}
-          <button type="submit" className="submit-btn">
-            Sign up
-          </button>
-        </form>
-      </div>
-    </div>
+          </Box>
+
+          <FormErrorMessage>
+            {errors.about && errors.about.type === 'required' ? (
+              <p>{errorMessage.required}</p>
+            ) : null}
+            {errors.about && errors.about.type === 'maxLength' ? (
+              <p>{errorMessage.pharagraphMaxLength}</p>
+            ) : null}
+            {errors.about && errors.about.type === 'minLength' ? (
+              <p>{errorMessage.pharagraphMinLength}</p>
+            ) : null}
+          </FormErrorMessage>
+        </FormControl>
+      </Stack>
+
+      <Button mt={4} colorScheme="cyan" type="submit">
+        SignUp
+      </Button>
+    </form>
   );
 }
