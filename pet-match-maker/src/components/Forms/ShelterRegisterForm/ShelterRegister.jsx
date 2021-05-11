@@ -28,7 +28,7 @@ import { UserContext } from '../../../context/User';
 export default function ShelterRegister() {
   const { shelterRegister } = useContext(UserContext);
   const [aboutCounthLength, settextAreaLengthCount] = useState(0);
-  const [show, setShow] = React.useState(false);
+  const [show, setShow] = useState(false);
 
   const handleClick = () => setShow(!show);
 
@@ -53,7 +53,7 @@ export default function ShelterRegister() {
     >
       <Stack spacing={2}>
         <FormControl isRequired={errors.name} isInvalid={!!errors.name}>
-          <InputGroup size="md">
+          <InputGroup size="sm">
             <Input
               type="text"
               id="name"
@@ -86,7 +86,7 @@ export default function ShelterRegister() {
         </FormControl>
 
         <FormControl isRequired={errors.email} isInvalid={!!errors.email}>
-          <InputGroup size="md">
+          <InputGroup size="sm">
             <Input
               type="text"
               id="email"
@@ -115,7 +115,7 @@ export default function ShelterRegister() {
         </FormControl>
 
         <FormControl isRequired={errors.password} isInvalid={!!errors.password}>
-          <InputGroup size="md">
+          <InputGroup size="sm">
             <Input
               pr="4.5rem"
               type={show ? 'text' : 'password'}
@@ -165,7 +165,7 @@ export default function ShelterRegister() {
                 minLength: 9,
                 maxLength: 15,
                 pattern: {
-                  value: /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[-. \/]?)?((?:\(?\d{1,}\)?[-. \/]?){0,})(?:[-. \/]?(?:#|ext\.?|extension|x)[-. \/]?(\d+))?$/i
+                  value: /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[-. /]?)?((?:\(?\d{1,}\)?[-. /]?){0,})(?:[-. /]?(?:#|ext\.?|extension|x)[-. /]?(\d+))?$/i
                 }
               })}
             />
@@ -187,7 +187,7 @@ export default function ShelterRegister() {
         </FormControl>
 
         <FormControl isRequired={errors.country} isInvalid={!!errors.country}>
-          <InputGroup size="md">
+          <InputGroup size="sm">
             <Input
               type="text"
               id="country"
@@ -209,7 +209,7 @@ export default function ShelterRegister() {
         </FormControl>
 
         <FormControl isRequired={errors.city} isInvalid={!!errors.city}>
-          <InputGroup size="md">
+          <InputGroup size="sm">
             <Input
               type="text"
               id="city"
