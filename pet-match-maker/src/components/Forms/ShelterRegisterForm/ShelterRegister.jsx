@@ -1,9 +1,19 @@
 import { useContext } from 'react';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import {
+  FormErrorMessage,
+  Stack,
+  Input,
+  Button,
+  InputGroup,
+  InputRightElement,
+  InputLeftElement,
+  FormControl
+} from '@chakra-ui/react';
 
-import { errorMessage } from '../../constants/formErrors';
-import { UserContext } from '../../context/User';
+import { errorMessage } from '../../../constants/formErrors';
+import { UserContext } from '../../../context/User';
 
 export default function ShelterRegister() {
   const { shelterRegister } = useContext(UserContext);

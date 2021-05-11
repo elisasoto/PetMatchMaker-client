@@ -26,16 +26,14 @@ export default function LoginForm() {
     formState: { errors }
   } = useForm();
 
-  console.log(errors);
-
   const handleFormSubmit = (formValues) => {
     console.log(formValues);
   };
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
-      <Stack spacing={4}>
-        <FormControl isRequired={errors.email}>
+      <Stack spacing={2}>
+        <FormControl isRequired={errors.email} isInvalid={!!errors.email}>
           <InputGroup size="md">
             <Input
               type="text"
@@ -53,31 +51,42 @@ export default function LoginForm() {
               pointerEvents="none"
               children={<EmailIcon color="gray.300" />}
             />
-            <FormErrorMessage>
-              {errors.email && errors.email.type === 'required' ? (
-                <p>{errorMessage.required}</p>
-              ) : null}
-              {errors.email && errors.email.type === 'pattern' ? (
-                <p>{errorMessage.emailPattern}</p>
-              ) : null}
-            </FormErrorMessage>
           </InputGroup>
+          <FormErrorMessage>
+            {errors.email && errors.email.type === 'required' ? (
+              <p>{errorMessage.required}</p>
+            ) : null}
+            {errors.email && errors.email.type === 'pattern' ? (
+              <p>{errorMessage.emailPattern}</p>
+            ) : null}
+          </FormErrorMessage>
         </FormControl>
 
-        <InputGroup size="md">
-          <Input
-            pr="4.5rem"
-            type={show ? 'text' : 'password'}
-            placeholder="Enter password"
-            id="password"
-            name="password"
-            className="input"
-            {...register('password', {
-              required: true,
-              minLength: 6,
-              maxLength: 20
-            })}
-          />
+        <FormControl isRequired={errors.password} isInvalid={!!errors.password}>
+          <InputGroup size="md">
+            <Input
+              pr="4.5rem"
+              type={show ? 'text' : 'password'}
+              placeholder="Enter password"
+              id="password"
+              name="password"
+              className="input"
+              {...register('password', {
+                required: true,
+                minLength: 6,
+                maxLength: 20
+              })}
+            />
+            <InputLeftElement
+              pointerEvents="none"
+              children={<LockIcon color="gray.300" />}
+            />
+            <InputRightElement width="4.5rem">
+              <Button h="1.75rem" size="sm" onClick={handleClick}>
+                {show ? 'Hide' : 'Show'}
+              </Button>
+            </InputRightElement>
+          </InputGroup>
           <FormErrorMessage>
             {errors.password && errors.password.type === 'required' ? (
               <p>{errorMessage.required}</p>
@@ -89,16 +98,7 @@ export default function LoginForm() {
               <p>{errorMessage.passwordFieldLenght}</p>
             ) : null}
           </FormErrorMessage>
-          <InputLeftElement
-            pointerEvents="none"
-            children={<LockIcon color="gray.300" />}
-          />
-          <InputRightElement width="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={handleClick}>
-              {show ? 'Hide' : 'Show'}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
+        </FormControl>
       </Stack>
 
       <Button mt={4} colorScheme="cyan" type="submit">
