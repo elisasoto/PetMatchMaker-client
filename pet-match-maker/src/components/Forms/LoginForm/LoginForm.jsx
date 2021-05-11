@@ -33,7 +33,7 @@ export default function LoginForm() {
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Stack spacing={2}>
         <FormControl isRequired={errors.email} isInvalid={!!errors.email}>
-          <InputGroup size="md">
+          <InputGroup size="sm">
             <Input
               type="text"
               id="email"
@@ -62,7 +62,7 @@ export default function LoginForm() {
         </FormControl>
 
         <FormControl isRequired={errors.password} isInvalid={!!errors.password}>
-          <InputGroup size="md">
+          <InputGroup size="sm">
             <Input
               pr="4.5rem"
               type={show ? 'text' : 'password'}
