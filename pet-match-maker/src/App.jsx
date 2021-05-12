@@ -5,6 +5,7 @@ import { ChakraProvider, CSSReset, Box } from '@chakra-ui/react';
 import LoginForm from './components/Forms/LoginForm/LoginForm';
 import ShelterRegister from './components/Forms/ShelterRegisterForm/ShelterRegister';
 import UserRegister from './components/Forms/UserRegisterForm/UserRegister';
+import PetRegister from './components/Forms/ShelterRegisterForm/PetRegister';
 
 function App() {
   const userContextData = useUser();
@@ -26,6 +27,14 @@ function App() {
               <CSSReset />
               <Box p={12}>
                 <ShelterRegister />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/pet/register">
+            <ChakraProvider>
+              <CSSReset />
+              <Box p={12}>
+                <PetRegister />
               </Box>
             </ChakraProvider>
           </Route>
