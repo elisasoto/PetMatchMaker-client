@@ -27,7 +27,6 @@ import { UserContext } from '../../../context/User';
 
 export default function ShelterRegister() {
   const { shelterRegister } = useContext(UserContext);
-  const [aboutCounthLength, settextAreaLengthCount] = useState(0);
   const [show, setShow] = useState(false);
 
   const handleClick = () => setShow(!show);
@@ -181,7 +180,6 @@ export default function ShelterRegister() {
             ) : null}
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired={errors.country} isInvalid={!!errors.country}>
           <InputGroup size="sm">
             <Input
@@ -203,7 +201,6 @@ export default function ShelterRegister() {
             ) : null}
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired={errors.city} isInvalid={!!errors.city}>
           <InputGroup size="sm">
             <Input
@@ -241,7 +238,7 @@ export default function ShelterRegister() {
               })}
             />
             <p>
-              <strong>{`${about.length || 0} / 240 left`}</strong>{' '}
+              <strong>{`${(about || '').length} / 240 left`}</strong>{' '}
             </p>
           </Box>
 

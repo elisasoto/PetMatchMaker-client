@@ -23,7 +23,7 @@ import {
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 
-import './form-styles.scss';
+import './userForm.scss';
 import { errorMessage } from '../../../constants/formErrors';
 import { UserContext } from '../../../context/User';
 import { getFormData } from '../../../utils/formData';
@@ -81,7 +81,6 @@ export default function UserRegister() {
             ) : null}
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired={errors.name} isInvalid={!!errors.name}>
           <InputGroup size="sm">
             <Input
@@ -131,7 +130,6 @@ export default function UserRegister() {
             ) : null}
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired={errors.password} isInvalid={!!errors.password}>
           <InputGroup size="sm">
             <Input
@@ -168,7 +166,6 @@ export default function UserRegister() {
             ) : null}
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired={errors.phone} isInvalid={!!errors.phone}>
           <InputGroup>
             <InputLeftAddon children="+34" />
@@ -201,7 +198,6 @@ export default function UserRegister() {
             ) : null}
           </FormErrorMessage>
         </FormControl>
-
         <FormControl isRequired={errors.name} isInvalid={!!errors.name}>
           <InputGroup>
             <Box
