@@ -220,7 +220,7 @@ export default function UserRegister() {
                   required: true
                 })}
               />
-              <label for="img" className="btn-2">
+              <label htmlFor="img" className="btn-2">
                 <FontAwesomeIcon icon={faCameraRetro} />
               </label>
             </Box>
