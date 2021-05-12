@@ -25,7 +25,7 @@ import {
   faWeight
 } from '@fortawesome/free-solid-svg-icons';
 
-import '../UserRegisterForm/form-styles.scss';
+import '../UserRegisterForm/userForm.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { errorMessage } from '../../../constants/formErrors';
@@ -125,7 +125,7 @@ export default function PetRegister() {
               <FontAwesomeIcon icon={faCalendar} />
               <Controller
                 control={control}
-                name="ReactDatepicker"
+                name="dateArrivalInShelter"
                 render={(props) => (
                   <ReactDatePicker
                     placeholderText="Date of arrival in Shelter"
@@ -219,7 +219,7 @@ export default function PetRegister() {
               })}
             />
             <p>
-              <strong>{`${about.length || 0} / 240 left`}</strong>{' '}
+              <strong>{`${(about || '').length} / 240 left`}</strong>{' '}
             </p>
           </Box>
 
