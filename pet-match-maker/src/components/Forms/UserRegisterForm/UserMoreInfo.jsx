@@ -31,7 +31,6 @@ export default function UserMoreInfo() {
   });
 
   const [about] = watch(['about']);
-  console.log(about);
   const handleFormSubmit = (formValues) => {
     console.log(formValues);
   };

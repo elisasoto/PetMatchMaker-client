@@ -33,15 +33,10 @@ import { UserContext } from '../../../context/User';
 import { getFormData } from '../../../utils/formData';
 
 export default function PetRegister() {
-  const [aboutCounthLength, settextAreaLengthCount] = useState(0);
-
-  const textAreaRecalculate = (e) => {
-    settextAreaLengthCount(e.target.value.length);
-  };
-
   const {
     handleSubmit,
     control,
+    watch,
     register,
     formState: { errors }
   } = useForm({});
@@ -52,11 +47,10 @@ export default function PetRegister() {
     console.log(formData);
   };
 
+  const [about] = watch(['about']);
+
   return (
-    <form
-      onSubmit={handleSubmit(handleFormSubmit)}
-      onChange={textAreaRecalculate}
-    >
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Stack>
         <FormControl isRequired={errors.name} isInvalid={!!errors.name}>
           <InputGroup size="sm">
@@ -224,7 +218,9 @@ export default function PetRegister() {
                 minLength: 50
               })}
             />
-            <p> {`${aboutCounthLength} / 240 left`} </p>
+            <p>
+              <strong>{`${about.length || 0} / 240 left`}</strong>{' '}
+            </p>
           </Box>
 
           <FormErrorMessage>
