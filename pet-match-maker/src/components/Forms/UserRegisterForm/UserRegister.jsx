@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import {
   FormErrorMessage,
   Stack,
-  Spacer,
   Box,
   Input,
   Button,
@@ -206,32 +205,24 @@ export default function UserRegister() {
         <FormControl isRequired={errors.name} isInvalid={!!errors.name}>
           <InputGroup>
             <Box
-              d="flex"
-              flexDirection="column"
-              position="relative"
               p={4}
               border="1px solid lightgrey"
-              borderRadius="20px"
-              fontSize="25px"
-              color="#0BC5EA"
-              boxShadow="0 8px 6px -6px black;"
+              borderRadius="10px"
+              color="gray.300"
             >
-              <button
-                className="button__patch"
-                onClick={(e) => e.preventDefault()}
-              >
-                <FontAwesomeIcon icon={faCameraRetro} />
-              </button>
-              <Spacer />
-              <FormLabel>Upload your profile Image: </FormLabel>
+              <FormLabel>Upload your Profile Image</FormLabel>
               <input
                 type="file"
                 id="img"
-                className="button__input"
+                name="img"
+                accept="image/png,image/gif,image/jpeg"
                 {...register('img', {
                   required: true
                 })}
               />
+              <label for="img" className="btn-2">
+                <FontAwesomeIcon icon={faCameraRetro} />
+              </label>
             </Box>
           </InputGroup>
           <FormHelperText>

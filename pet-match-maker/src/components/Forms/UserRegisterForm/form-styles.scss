@@ -1,4 +1,40 @@
-.button__input {
-  position: absolute;
-  opacity: 0;
+[type='file'] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}
+
+[type='file'] + label {
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 35px;
+  margin-bottom: 1rem;
+  outline: none;
+  padding: 1rem 80px;
+  position: relative;
+  transition: all 0.3s;
+  vertical-align: middle;
+
+  &.btn-2 {
+    border-radius: 50px;
+    overflow: hidden;
+
+    &::before {
+      color: #fff;
+      font-size: 35px;
+      height: 100%;
+      right: 30%;
+      line-height: 3.3;
+      position: absolute;
+      top: 0px;
+    }
+
+    &:hover {
+      background-color: darken(#0bc5ea, 30%);
+      color: white;
+      border: none;
+    }
+  }
 }
