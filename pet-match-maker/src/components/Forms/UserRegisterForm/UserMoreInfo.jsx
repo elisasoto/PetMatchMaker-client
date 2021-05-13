@@ -2,40 +2,40 @@ import React, { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 import {
-  FormErrorMessage,
-  Stack,
-  WrapItem,
   Avatar,
   Box,
-  Input,
-  InputRightElement,
-  InputLeftAddon,
   Button,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
   InputGroup,
-  Textarea,
-  Select,
+  InputLeftAddon,
   InputLeftElement,
+  InputRightElement,
   Radio,
   RadioGroup,
-  FormControl,
-  FormLabel
+  Select,
+  Stack,
+  Textarea,
+  WrapItem
 } from '@chakra-ui/react';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faUser,
+  faCity,
+  faClock,
+  faDog,
+  faGlobeEurope,
   faInfoCircle,
   faUpload,
-  faCity,
-  faGlobeEurope,
-  faClock,
-  faDog
+  faUser
 } from '@fortawesome/free-solid-svg-icons';
 
 import './moreInfo.scss';
 import { errorMessage } from '../../../constants/formErrors';
-import { UserContext } from '../../../context/User';
 import { getFormData } from '../../../utils/formData';
+import { UserContext } from '../../../context/User';
 
 // este se cambiara por el User del profile
 const mockedProfile = {
@@ -416,8 +416,8 @@ export default function UserMoreInfo() {
             control={control}
             defaultValue={'BY MYSELF'}
             rules={{ ...register('living', { required: true }) }}
-            render={({ field }) => (
-              <Select placeholder="Who do you live with?">
+            render={({ field: { onChange } }) => (
+              <Select placeholder="Who do you live with?" onChange={onChange}>
                 <option value="BY MYSELF">By Myself</option>
                 <option value="WITH PARENTS">With my Parents</option>
                 <option value="WITH PARTNER AND CHILDREN">
@@ -452,16 +452,16 @@ export default function UserMoreInfo() {
             <Controller
               name="firstPet"
               id="firstPet"
-              defaultValue={'false'}
+              defaultValue={'No'}
               control={control}
               rules={{ ...register('firstPet', { required: true }) }}
               render={({ field }) => (
                 <RadioGroup defaultValue="1">
                   <Stack spacing={5} direction="row">
-                    <Radio colorScheme="blue" value={'true'}>
+                    <Radio colorScheme="blue" value={'Yes'}>
                       Yes
                     </Radio>
-                    <Radio colorScheme="blue" value={'false'}>
+                    <Radio colorScheme="blue" value={'No'}>
                       No
                     </Radio>
                   </Stack>
@@ -479,16 +479,16 @@ export default function UserMoreInfo() {
             <Controller
               name="otherPets"
               id="otherPets"
-              defaultValue={'false'}
+              defaultValue={'No'}
               control={control}
               rules={{ ...register('otherPets', { required: true }) }}
               render={({ field }) => (
                 <RadioGroup defaultValue="1">
                   <Stack spacing={5} direction="row">
-                    <Radio colorScheme="blue" value={'true'}>
+                    <Radio colorScheme="blue" value={'Yes'}>
                       Yes
                     </Radio>
-                    <Radio colorScheme="blue" value={'false'}>
+                    <Radio colorScheme="blue" value={'No'}>
                       No
                     </Radio>
                   </Stack>
@@ -524,11 +524,11 @@ export default function UserMoreInfo() {
             <Controller
               name="size"
               id="size"
-              defaultValue={'ANY'}
               control={control}
+              defaultValue="ANY"
               rules={{ ...register('size', { required: true }) }}
-              render={({ field }) => (
-                <RadioGroup defaultValue="1">
+              render={({ field: { onChange } }) => (
+                <RadioGroup defaultValue="ANY" onChange={onChange}>
                   <Stack spacing={5} direction="row">
                     <Radio colorScheme="blue" value="ANY">
                       Any

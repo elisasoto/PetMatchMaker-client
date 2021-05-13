@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import React from 'react';
 import {
@@ -8,14 +9,18 @@ import {
   InputGroup,
   InputRightElement,
   InputLeftElement,
-  FormControl
+  FormControl,
+  Switch
 } from '@chakra-ui/react';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 
+import { UserContext } from '../../../context/User';
 import { errorMessage } from '../../../constants/formErrors';
 
 export default function LoginForm() {
+  const { adopterLogin, shelterLogin } = useContext(UserContext);
   const [show, setShow] = React.useState(false);
+  const [isUser, setIsUser] = React.useState(1);
   const handleClick = () => setShow(!show);
 
   // state de is user / shelter
@@ -26,12 +31,25 @@ export default function LoginForm() {
   } = useForm();
 
   const handleFormSubmit = (formValues) => {
-    console.log(formValues);
+    if (isUser) {
+      adopterLogin(formValues);
+    } else {
+      shelterLogin(formValues);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Stack spacing={2}>
+        <p>Iniciar sesión como {isUser ? 'usuario' : 'refugio'}</p>
+        <Switch
+          id="mode"
+          defaultIsChecked={isUser}
+          onChange={(e) => {
+            setIsUser(e.target.checked ? 1 : 0);
+          }}
+        />
+
         <FormControl isRequired={errors.email} isInvalid={!!errors.email}>
           <InputGroup size="sm">
             <Input

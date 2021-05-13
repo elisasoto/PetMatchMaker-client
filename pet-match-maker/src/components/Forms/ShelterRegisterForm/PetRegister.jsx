@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useContext } from 'react';
+import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 import {
@@ -31,8 +32,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { errorMessage } from '../../../constants/formErrors';
 import { UserContext } from '../../../context/User';
 import { getFormData } from '../../../utils/formData';
+import { petRegister } from '../../../services/pets';
 
 export default function PetRegister() {
+  const { user } = useContext(UserContext);
   const {
     handleSubmit,
     control,
@@ -44,7 +47,7 @@ export default function PetRegister() {
   const handleFormSubmit = (formValues) => {
     const { img, ...restvalues } = formValues;
     const formData = getFormData('img', img, restvalues);
-    console.log(formData);
+    petRegister(formData);
   };
 
   const [about] = watch(['about']);

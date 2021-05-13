@@ -30,7 +30,6 @@ import { getFormData } from '../../../utils/formData';
 
 export default function UserRegister() {
   const { adopterRegister } = useContext(UserContext);
-
   const [show, setShow] = useState(false);
 
   const handleClick = () => setShow(!show);
@@ -44,7 +43,8 @@ export default function UserRegister() {
   const handleFormSubmit = (formValues) => {
     const { img, ...restvalues } = formValues;
     const formData = getFormData('img', img, restvalues);
-    console.log(formData);
+    console.log(formValues);
+    adopterRegister(formData);
   };
 
   return (
