@@ -39,7 +39,7 @@ export default function ShelterRegister() {
   } = useForm({});
 
   const handleFormSubmit = (formValues) => {
-    console.log(formValues);
+    shelterRegister(formValues);
   };
 
   const [about] = watch(['about']);

@@ -13,7 +13,7 @@ export const UserContext = React.createContext(null);
 export function useUser() {
   const [user, setUser] = useState(null);
 
-  async function adopterLogin(email, password) {
+  async function adopterLogin({ email, password }) {
     postLoginAdopter(email, password).then((userData) => {
       setUser({ ...(user || {}), ...userData });
     });
@@ -24,7 +24,7 @@ export function useUser() {
     setUser(userData);
   }
 
-  async function shelterLogin(email, password) {
+  async function shelterLogin({ email, password }) {
     postLoginShelter(email, password).then((userData) => {
       setUser({ ...(user || {}), ...userData });
     });
