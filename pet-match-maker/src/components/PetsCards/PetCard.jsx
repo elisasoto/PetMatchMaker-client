@@ -1,52 +1,20 @@
-import { useState, useEffect } from 'react';
-//import axios from 'axios';
-
-import { onePetShort } from '../../constants/mockers';
 import {
-  Heading,
   Avatar,
   Box,
   Flex,
   Spacer,
-  Link,
-  Image,
-  StarIcon,
-  Center,
   Text,
-  Stack,
   IconButton,
-  List,
-  ListItem,
   Badge,
   useColorModeValue
 } from '@chakra-ui/react';
-import {
-  EmailIcon,
-  PhoneIcon,
-  AddIcon,
-  CloseIcon,
-  SmallCloseIcon
-} from '@chakra-ui/icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBalanceScale,
-  faBirthdayCake,
-  faDog,
-  faHeart,
-  faHome,
-  faThumbsUp
-} from '@fortawesome/free-solid-svg-icons';
+import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 
-const available = onePetShort.status === 'Available' ? 'green' : 'red';
-
-export default function PetCard({ img, name, status, age, likes }) {
-  //   const [petList, setPetList] = useState([]);
-  //   useEffect(() => {
-  //     setPetList(mockedPetList);
-  //   }, [petList]);
+export default function PetCard({ img, name, status, age, likes, breed }) {
+  const available = status === 'Available' ? 'green' : 'red';
   return (
     <Box
-      w="100%"
+      w="fit-content"
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
@@ -55,12 +23,11 @@ export default function PetCard({ img, name, status, age, likes }) {
       pb={1}
       d="flex"
       alignItems={'center'}
-      flexWrap={true}
     >
       <Avatar
         size={'md'}
-        src={`${onePetShort.img}`}
-        alt={`${onePetShort.name}`}
+        src={`${img}`}
+        alt={`${name}`}
         mb={2}
         pos={'relative'}
         _after={{
@@ -76,7 +43,7 @@ export default function PetCard({ img, name, status, age, likes }) {
             bg={useColorModeValue(`${available}.300`, `${available}.200`)}
             fontWeight={'400'}
           >
-            {`${onePetShort.status}`}
+            {`${status}`}
           </Badge>
           <Text
             mt="1"
@@ -88,7 +55,7 @@ export default function PetCard({ img, name, status, age, likes }) {
             isTruncated
             textTransform="uppercase"
           >
-            {onePetShort.name}
+            {name}
           </Text>
           <Box
             color="gray.500"
@@ -97,11 +64,11 @@ export default function PetCard({ img, name, status, age, likes }) {
             fontSize="xs"
             ml="2"
           >
-            {onePetShort.breed} &bull; {onePetShort.age} &bull;{' '}
+            {breed} &bull; {age} &bull;{' '}
             {`${
-              onePetShort.likes.length === 1
-                ? `${onePetShort.likes.length} Like`
-                : `${onePetShort.likes.length} Likes`
+              likes.length === 1
+                ? `${likes.length} Like`
+                : `${likes.length} Likes`
             }`}
           </Box>
         </Box>
@@ -115,7 +82,7 @@ export default function PetCard({ img, name, status, age, likes }) {
             isRound="true"
             onClick={() =>
               alert('click!')
-            } /**{ @TODO: aqui se hace otra llamada a axios para los likes y al finalizar cierra la ventana para seguir eligiendo }*/
+            } /**{ @TODO: se hace llamada a profile del pet }*/
           />
         </Box>
         <Spacer />
@@ -127,7 +94,7 @@ export default function PetCard({ img, name, status, age, likes }) {
             isRound="true"
             onClick={() =>
               alert('click!')
-            } /**{ @TODO: aqui se hace otra llamada a axios para los deslikes y al finalizar cierra la ventana }*/
+            } /**{ @TODO: si es shelter se elimina del array, si es user se va a deslikes }*/
           />
         </Box>
       </Flex>
