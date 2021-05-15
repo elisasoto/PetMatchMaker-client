@@ -66,13 +66,25 @@ export const mockedPetList = [
   }
 ];
 
-export const onePetShort = {
-  status: 'Available',
-  likes: ['609fcba918091835d0a0fe5b', '609fcba918091835d0a0fe5b'],
-  _id: '609fd4077e5f29111868c870',
-  name: 'mati',
-  age: '9 Years',
-  img:
-    'https://res.cloudinary.com/petmatchmaker/image/upload/v1621087239/petMatchMaker-pet/itygonfk1ncxwghqu3cf.jpg',
-  breed: 'Schnauzer'
-};
+export const mockedUsersList = [
+  {
+    _id: '609fcba918091835d0a0fe5b',
+    name: 'elisa',
+    surname: 'soto',
+    img:
+      'https://res.cloudinary.com/petmatchmaker/image/upload/v1621086079/petMatchMaker-user/hye32pmswvnghqbbxumz.jpg',
+    age: '30',
+    city: 'madrid',
+    country: 'spain'
+  },
+  {
+    _id: '609fcba918091835d0a0fe5b',
+    name: 'cristian',
+    surname: 'castillo',
+    img:
+      'https://res.cloudinary.com/petmatchmaker/image/upload/v1621086079/petMatchMaker-user/hye32pmswvnghqbbxumz.jpg',
+    age: '27',
+    city: 'algeciras',
+    country: 'spain'
+  }
+];

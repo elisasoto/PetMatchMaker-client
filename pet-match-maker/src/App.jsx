@@ -10,6 +10,7 @@ import UserMoreInfo from './components/Forms/UserRegisterForm/UserMoreInfo';
 import PetProfile from './components/Profile/PetProfile';
 import UserProfile from './components/Profile/UserProfile';
 import PetsList from './components/PetsCards/PetsList';
+import UserList from './components/UsersCards/UserList';
 
 function App() {
   const userContextData = useUser();
@@ -81,6 +82,14 @@ function App() {
               <CSSReset />
               <Box p={12}>
                 <PetsList />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/users">
+            <ChakraProvider>
+              <CSSReset />
+              <Box p={12}>
+                <UserList />
               </Box>
             </ChakraProvider>
           </Route>
