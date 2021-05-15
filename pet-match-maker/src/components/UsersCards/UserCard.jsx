@@ -1,14 +1,5 @@
-import {
-  Avatar,
-  Box,
-  Flex,
-  Spacer,
-  Text,
-  IconButton,
-  Badge,
-  useColorModeValue
-} from '@chakra-ui/react';
-import { AddIcon, CloseIcon } from '@chakra-ui/icons';
+import { Avatar, Box, Flex, Text, IconButton } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons';
 import { capitalize } from '../../constants/capitalize';
 
 export default function UserCard({ name, surname, img, age, city, country }) {

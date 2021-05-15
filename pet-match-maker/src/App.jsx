@@ -11,6 +11,7 @@ import PetProfile from './components/Profile/PetProfile';
 import UserProfile from './components/Profile/UserProfile';
 import PetsList from './components/PetsCards/PetsList';
 import UserList from './components/UsersCards/UserList';
+import SwipeCardsList from './components/SwipeCards/SwipeCardsList';
 
 function App() {
   const userContextData = useUser();
@@ -19,7 +20,15 @@ function App() {
     <UserContext.Provider value={userContextData}>
       <div className="App">
         <Switch>
-          <Route exact path="/login">
+          <Route exact path="/">
+            <ChakraProvider>
+              <CSSReset />
+              <Box p={12}>
+                <SwipeCardsList />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/">
             <ChakraProvider>
               <CSSReset />
               <Box p={12}>

@@ -88,3 +88,55 @@ export const mockedUsersList = [
     country: 'spain'
   }
 ];
+
+export const arrayAllPets = [
+  {
+    _id: '609d6fc413b8c753a49210eb',
+    name: 'kristy',
+    age: '3 Months',
+    weight: 48,
+    img: 'http://placeimg.com/640/480/animals',
+    breed: 'Podenco'
+  },
+  {
+    _id: '609d6fc413b8c753a49210ed',
+    name: 'efren',
+    age: '7 Years',
+    weight: 63,
+    img: 'http://placeimg.com/640/480/animals',
+    breed: 'Podenco'
+  },
+  {
+    _id: '609d6fc413b8c753a49210ef',
+    name: 'israel',
+    age: '8 Months',
+    weight: 2,
+    img: 'http://placeimg.com/640/480/animals',
+    breed: 'Breton'
+  },
+  {
+    _id: '609d6fc413b8c753a49210f1',
+    name: 'mona',
+    age: '3 Months',
+    weight: 4,
+    img: 'http://placeimg.com/640/480/animals',
+    breed: 'Husky'
+  },
+  {
+    _id: '609d6fc413b8c753a49210f4',
+    name: 'adolph',
+    age: '1 Year',
+    weight: 10,
+    img: 'http://placeimg.com/640/480/animals',
+    breed: 'German Sheperd'
+  }
+];
+
+export const oneShortPet = {
+  _id: '609d6fc413b8c753a49210eb',
+  name: 'kristy',
+  age: '3 Months',
+  weight: 11,
+  img: 'http://placeimg.com/640/480/animals',
+  breed: 'Podenco'
+};

@@ -64,7 +64,7 @@ export default function PetCard({ img, name, status, age, likes, breed }) {
             fontSize="xs"
             ml="2"
           >
-            {breed} &bull; {age} &bull;{' '}
+            {breed} &bull; {age} &bull;
             {`${
               likes.length === 1
                 ? `${likes.length} Like`
