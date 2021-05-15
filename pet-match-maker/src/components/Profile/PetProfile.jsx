@@ -7,8 +7,8 @@
 import { mockedPet } from '../../constants/mockers';
 import { transformDate } from '../../constants/transformDate';
 import { capitalize } from '../../constants/capitalize';
-import './Profile.scss';
 
+import './Profile.scss';
 import {
   Heading,
   Avatar,

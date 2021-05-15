@@ -59,10 +59,10 @@ export const mockedPetList = [
     likes: [],
     _id: '609ff3a2b9a8741324907f11',
     name: 'bruno',
-    age: '9 Years',
+    age: '7 Months',
     img:
       'https://res.cloudinary.com/petmatchmaker/image/upload/v1621095329/petMatchMaker-pet/dzq3fkg4ltlhgzuku17h.jpg',
-    breed: 'Schnauzer'
+    breed: 'Mastin'
   }
 ];
 
