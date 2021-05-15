@@ -42,3 +42,37 @@ export const mockedUser = {
   otherPets: 'No',
   firstPet: 'Yes'
 };
+
+export const mockedPetList = [
+  {
+    status: 'Available',
+    likes: ['609fcba918091835d0a0fe5b', '609fcba918091835d0a0fe5b'],
+    _id: '609fd4077e5f29111868c870',
+    name: 'mati',
+    age: '9 Years',
+    img:
+      'https://res.cloudinary.com/petmatchmaker/image/upload/v1621087239/petMatchMaker-pet/itygonfk1ncxwghqu3cf.jpg',
+    breed: 'Schnauzer'
+  },
+  {
+    status: 'Available',
+    likes: [],
+    _id: '609ff3a2b9a8741324907f11',
+    name: 'bruno',
+    age: '9 Years',
+    img:
+      'https://res.cloudinary.com/petmatchmaker/image/upload/v1621095329/petMatchMaker-pet/dzq3fkg4ltlhgzuku17h.jpg',
+    breed: 'Schnauzer'
+  }
+];
+
+export const onePetShort = {
+  status: 'Available',
+  likes: ['609fcba918091835d0a0fe5b', '609fcba918091835d0a0fe5b'],
+  _id: '609fd4077e5f29111868c870',
+  name: 'mati',
+  age: '9 Years',
+  img:
+    'https://res.cloudinary.com/petmatchmaker/image/upload/v1621087239/petMatchMaker-pet/itygonfk1ncxwghqu3cf.jpg',
+  breed: 'Schnauzer'
+};
