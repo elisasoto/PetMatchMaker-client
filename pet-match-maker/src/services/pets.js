@@ -23,3 +23,14 @@ export const petRegister = async (formData) => {
     return null;
   }
 };
+
+export const getPet = async (id) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/pets${id}`);
+
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};

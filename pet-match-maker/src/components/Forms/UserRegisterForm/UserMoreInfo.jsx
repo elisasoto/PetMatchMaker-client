@@ -1,4 +1,7 @@
+/*@TODO: this page is missing connecting with the user context and replace the mocked profile*/
+
 import React, { useState } from 'react';
+import { useContext } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 
 import {
@@ -23,10 +26,8 @@ import {
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCity,
   faClock,
   faDog,
-  faGlobeEurope,
   faInfoCircle,
   faUpload,
   faUser
@@ -50,11 +51,13 @@ const mockedProfile = {
   motivations:
     'Have always loved pets. As a children I owned 3 and I want my kids to learn about...',
   hoursToSpend: '4',
+  age: '30',
   ammenities:
     'We live in fornt of a 1 km park with a pet area where he/she can run and be surrounded with other pets, we also travel to the hills every weekend'
 };
 
 export default function UserMoreInfo() {
+  const { user } = useContext(UserContext);
   const [show, setShow] = useState(false);
   const {
     handleSubmit,
@@ -65,8 +68,6 @@ export default function UserMoreInfo() {
   } = useForm({
     defaultValues: mockedProfile ? mockedProfile : {}
   });
-
-  console.log(errors);
 
   const handleClick = () => setShow(!show);
 
@@ -93,23 +94,32 @@ export default function UserMoreInfo() {
       >
         <FormLabel>Profile Details</FormLabel>
         <Stack>
-          <WrapItem p={2}>
-            <Avatar
-              size="md"
-              name="Prosper Otemuyiwa"
-              src="https://bit.ly/prosper-baba"
-            />
-            <input
-              type="file"
-              id="img"
-              name="img"
-              accept="image/png,image/gif,image/jpeg"
-              {...register('img')}
-            />
-            <label htmlFor="img" className="btn-3">
-              <FontAwesomeIcon icon={faUpload} />
-            </label>
-          </WrapItem>
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <WrapItem p={2}>
+              <Avatar
+                size="md"
+                name="Prosper Otemuyiwa"
+                src="http://placeimg.com/640/480/animals"
+              />
+              <input
+                type="file"
+                id="img"
+                name="img"
+                accept="image/png,image/gif,image/jpeg"
+                {...register('img')}
+              />
+              <label htmlFor="img" className="btn-3">
+                <FontAwesomeIcon icon={faUpload} />
+              </label>
+            </WrapItem>
+            <Button p={4} mt={4} width="70px" colorScheme="cyan" type="submit">
+              Save
+            </Button>
+          </Box>
           <FormControl isInvalid={!!errors.name}>
             <InputGroup size="sm">
               <Input
@@ -159,31 +169,6 @@ export default function UserMoreInfo() {
               ) : null}
             </FormErrorMessage>
           </FormControl>
-          <FormControl isInvalid={!!errors.age}>
-            <InputGroup size="sm">
-              <InputLeftAddon children="Age" />
-              <Input
-                type="text"
-                id="age"
-                placeholder="34"
-                defaultValue="0"
-                {...register('age', {
-                  maxLength: 9,
-                  pattern: {
-                    value: /[0-9]+/
-                  }
-                })}
-              />
-            </InputGroup>
-            <FormErrorMessage>
-              {errors.age && errors.age.type === 'pattern' ? (
-                <p>{errorMessage.integerPattern}</p>
-              ) : null}
-              {errors.age && errors.age.type === 'maxLength' ? (
-                <p>{errorMessage.nameFieldMaxLenght}</p>
-              ) : null}
-            </FormErrorMessage>
-          </FormControl>
           <FormControl isInvalid={!!errors.email}>
             <InputGroup size="sm">
               <Input
@@ -212,7 +197,7 @@ export default function UserMoreInfo() {
               <Input
                 pr="4.5rem"
                 type={show ? 'text' : 'password'}
-                placeholder="Enter password"
+                placeholder="Enter a new Password"
                 id="password"
                 name="password"
                 {...register('password', {
@@ -266,40 +251,6 @@ export default function UserMoreInfo() {
                 <p>{errorMessage.integerPattern}</p>
               ) : null}
             </FormErrorMessage>
-          </FormControl>
-          <FormControl isRequired={errors.country} isInvalid={!!errors.country}>
-            <InputGroup size="sm">
-              <Input
-                type="text"
-                id="country"
-                placeholder="Country"
-                {...register('country', {
-                  required: true
-                })}
-              />
-              <InputLeftElement
-                pointerEvents="none"
-                children={<FontAwesomeIcon icon={faGlobeEurope} />}
-              />
-            </InputGroup>
-            <FormErrorMessage></FormErrorMessage>
-          </FormControl>
-          <FormControl isRequired={errors.city} isInvalid={!!errors.city}>
-            <InputGroup size="sm">
-              <Input
-                type="text"
-                id="city"
-                placeholder="City"
-                {...register('city', {
-                  required: true
-                })}
-              />
-              <InputLeftElement
-                pointerEvents="none"
-                children={<FontAwesomeIcon icon={faCity} />}
-              />
-            </InputGroup>
-            <FormErrorMessage></FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={!!errors.about}>
             <Box>
@@ -434,8 +385,11 @@ export default function UserMoreInfo() {
             defaultValue={'APARTAMENT'}
             control={control}
             rules={{ ...register('houseType', { required: true }) }}
-            render={({ field }) => (
-              <Select placeholder="Where will the dog live?">
+            render={({ field: { onChange } }) => (
+              <Select
+                placeholder="Where will the dog live?"
+                onChange={onChange}
+              >
                 <option value="APARTAMENT">In an apartament</option>
                 <option value="CHALET">In a house without yard</option>
                 <option value="HOUSE WITH YARD">In a house with yard</option>
@@ -455,8 +409,8 @@ export default function UserMoreInfo() {
               defaultValue={'No'}
               control={control}
               rules={{ ...register('firstPet', { required: true }) }}
-              render={({ field }) => (
-                <RadioGroup defaultValue="1">
+              render={({ field: { onChange } }) => (
+                <RadioGroup defaultValue="No" onChange={onChange}>
                   <Stack spacing={5} direction="row">
                     <Radio colorScheme="blue" value={'Yes'}>
                       Yes
@@ -482,8 +436,8 @@ export default function UserMoreInfo() {
               defaultValue={'No'}
               control={control}
               rules={{ ...register('otherPets', { required: true }) }}
-              render={({ field }) => (
-                <RadioGroup defaultValue="1">
+              render={({ field: { onChange } }) => (
+                <RadioGroup defaultValue="No" onChange={onChange}>
                   <Stack spacing={5} direction="row">
                     <Radio colorScheme="blue" value={'Yes'}>
                       Yes
@@ -496,14 +450,18 @@ export default function UserMoreInfo() {
               )}
             />
           </Box>
+
           <Controller
             name="petLivingArrangement"
             id="petLivingArrangement"
             defaultValue={'INSIDE HOUSE'}
             control={control}
             rules={{ ...register('petLivingArrangement', { required: true }) }}
-            render={({ field }) => (
-              <Select placeholder="Where will the dog sleep?">
+            render={({ field: { onChange } }) => (
+              <Select
+                placeholder="Where will the dog sleep?"
+                onChange={onChange}
+              >
                 <option value="INSIDE HOUSE">Inside the house</option>
                 <option value="OUTSIDE HOUSE">Outside in a PetHouse</option>
               </Select>
@@ -568,8 +526,8 @@ export default function UserMoreInfo() {
             defaultValue={'ANY'}
             control={control}
             rules={{ ...register('ageOfDog', { required: true }) }}
-            render={({ field }) => (
-              <Select placeholder="Preferred Dog Age">
+            render={({ field: { onChange } }) => (
+              <Select placeholder="Preferred Dog Age" onChange={onChange}>
                 <option value="ANY">Any</option>
                 <option value="PUPPY">I prefer a Puppy</option>
                 <option value="ADULT">I prefer an Adult Dog</option>
