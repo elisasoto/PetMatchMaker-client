@@ -20,6 +20,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCameraRetro,
   faInfoCircle,
+  faCity,
+  faGlobeEurope,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -99,6 +101,30 @@ export default function UserRegister() {
               <p>{errorMessage.required}</p>
             ) : null}
             {errors.name && errors.name.type === 'maxLength' ? (
+              <p>{errorMessage.nameFieldMaxLenght}</p>
+            ) : null}
+          </FormErrorMessage>
+        </FormControl>
+        <FormControl isInvalid={!!errors.age}>
+          <InputGroup size="sm">
+            <InputLeftAddon children="Age" />
+            <Input
+              type="text"
+              id="age"
+              placeholder="34"
+              {...register('age', {
+                maxLength: 9,
+                pattern: {
+                  value: /[0-9]+/
+                }
+              })}
+            />
+          </InputGroup>
+          <FormErrorMessage>
+            {errors.age && errors.age.type === 'pattern' ? (
+              <p>{errorMessage.integerPattern}</p>
+            ) : null}
+            {errors.age && errors.age.type === 'maxLength' ? (
               <p>{errorMessage.nameFieldMaxLenght}</p>
             ) : null}
           </FormErrorMessage>
@@ -197,6 +223,40 @@ export default function UserRegister() {
               <p>{errorMessage.integerPattern}</p>
             ) : null}
           </FormErrorMessage>
+        </FormControl>
+        <FormControl isRequired={errors.country} isInvalid={!!errors.country}>
+          <InputGroup size="sm">
+            <Input
+              type="text"
+              id="country"
+              placeholder="Country"
+              {...register('country', {
+                required: true
+              })}
+            />
+            <InputLeftElement
+              pointerEvents="none"
+              children={<FontAwesomeIcon icon={faGlobeEurope} />}
+            />
+          </InputGroup>
+          <FormErrorMessage></FormErrorMessage>
+        </FormControl>
+        <FormControl isRequired={errors.city} isInvalid={!!errors.city}>
+          <InputGroup size="sm">
+            <Input
+              type="text"
+              id="city"
+              placeholder="City"
+              {...register('city', {
+                required: true
+              })}
+            />
+            <InputLeftElement
+              pointerEvents="none"
+              children={<FontAwesomeIcon icon={faCity} />}
+            />
+          </InputGroup>
+          <FormErrorMessage></FormErrorMessage>
         </FormControl>
         <FormControl isRequired={errors.name} isInvalid={!!errors.name}>
           <InputGroup>

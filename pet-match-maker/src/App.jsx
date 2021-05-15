@@ -7,6 +7,7 @@ import ShelterRegister from './components/Forms/ShelterRegisterForm/ShelterRegis
 import UserRegister from './components/Forms/UserRegisterForm/UserRegister';
 import PetRegister from './components/Forms/ShelterRegisterForm/PetRegister';
 import UserMoreInfo from './components/Forms/UserRegisterForm/UserMoreInfo';
+import Profile from './components/Profile/Profile';
 
 function App() {
   const userContextData = useUser();
@@ -52,6 +53,23 @@ function App() {
               <CSSReset />
               <Box p={12}>
                 <UserMoreInfo />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/pet/">
+            {/** :petId*/}
+            <ChakraProvider>
+              <CSSReset />
+              <Box p={12}>
+                <Profile />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/profile/:userId">
+            <ChakraProvider>
+              <CSSReset />
+              <Box p={12}>
+                <Profile />
               </Box>
             </ChakraProvider>
           </Route>
