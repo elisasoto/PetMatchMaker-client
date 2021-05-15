@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
-import axios from 'axios';
+// import { useState, useEffect } from 'react';
+// import { useParams } from 'react-router';
+// import axios from 'axios';
 
-import { BASE_URL } from '../../constants';
-import { getPet } from '../../services/pets';
+// import { BASE_URL } from '../../constants';
+// import { getPet } from '../../services/pets';
 import { mockedPet } from '../../constants/mockers';
 import { transformDate } from '../../constants/transformDate';
 import { capitalize } from '../../constants/capitalize';
@@ -41,11 +41,11 @@ import {
   faThumbsUp
 } from '@fortawesome/free-solid-svg-icons';
 
-export default function Profile() {
-  const [pet, setPet] = useState(null);
-  const [loading, setLoading] = useState(true);
+export default function PetProfile() {
+  // const [pet, setPet] = useState(null);
+  // const [loading, setLoading] = useState(true);
 
-  const { petId } = useParams();
+  // const { petId } = useParams();
 
   // useEffect(() => {
   //   getPet(petId)
@@ -142,16 +142,15 @@ export default function Profile() {
             </ListItem>
             <ListItem>
               <FontAwesomeIcon icon={faHome} color="#ACDEB2" className="icon" />
-              I live in shelter
-              {capitalize(mockedPet.shelterId.name)} in{' '}
-              {capitalize(mockedPet.shelterId.city)},{' '}
-              {capitalize(mockedPet.shelterId.country)} since
-              {transformDate(mockedPet.dateArrivalInShelter)}
+
+              {`I live in shelter ${capitalize(mockedPet.shelterId.name)} in
+              ${capitalize(mockedPet.shelterId.city)},
+              ${capitalize(mockedPet.shelterId.country)} since
+              ${transformDate(mockedPet.dateArrivalInShelter)}`}
             </ListItem>
           </List>
         </Box>
         <Box
-          maxW="sm"
           px={3}
           py={2}
           borderWidth="1px"
