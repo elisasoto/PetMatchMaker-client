@@ -2,9 +2,9 @@ import { Container, Stack, Box, Heading, Text } from '@chakra-ui/react';
 
 import Logo from '../components/Navbar/Logo';
 import LogoImg from '../assets/petmatchmaker.png';
-import LoginForm from '../components/Forms/LoginForm/LoginForm';
+import Registration from '../components/Forms/Registration/Registration';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <Container maxW={'7xl'}>
       <Box flex={1} align={'center'}>
@@ -39,10 +39,10 @@ export default function LoginPage() {
             </Text>
             <br />
             <Text as={'span'} color={'cyan.400'}>
-              Thanks for visiting us
+              Sign-Up today!
             </Text>
           </Heading>
-          <LoginForm />
+          <Registration />
         </Stack>
       </Stack>
     </Container>
