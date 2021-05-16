@@ -12,6 +12,7 @@ import UserLikes from './pages/UserLikesPage';
 import UserDetailedPet from './pages/UserPetLikedDetails';
 import ShelterHome from './pages/ShelterHome';
 import ShelterProfile from './pages/ShelterProfile';
+import ShelterEditProfile from './pages/ShelterEditProfile';
 
 function App() {
   const userContextData = useUser();
@@ -105,7 +106,7 @@ function App() {
             <ChakraProvider>
               <CSSReset />
               <Box>
-                <h1>shelter edit profile</h1>
+                <ShelterEditProfile />
               </Box>
             </ChakraProvider>
           </Route>
