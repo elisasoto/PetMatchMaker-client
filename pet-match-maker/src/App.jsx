@@ -7,6 +7,8 @@ import Login from './pages/LoginPage';
 import SignUp from './pages/RegisterPage';
 import UserHome from './pages/UserHome';
 import UserProfile from './pages/UserProfilePage';
+import UserEditProfile from './pages/UserEditProfile';
+import UserLikes from './pages/UserLikesPage';
 
 function App() {
   const userContextData = useUser();
@@ -59,7 +61,15 @@ function App() {
             <ChakraProvider>
               <CSSReset />
               <Box>
-                <UserProfile />
+                <UserEditProfile />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/user/likes">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <UserLikes />
               </Box>
             </ChakraProvider>
           </Route>

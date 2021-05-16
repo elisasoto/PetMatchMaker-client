@@ -10,7 +10,15 @@ import {
 } from '@chakra-ui/react';
 import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 
-export default function PetCard({ img, name, status, age, likes, breed }) {
+export default function PetCard({
+  onClick,
+  img,
+  name,
+  status,
+  age,
+  likes,
+  breed
+}) {
   const available = status === 'Available' ? 'green' : 'red';
   return (
     <Box
@@ -92,8 +100,8 @@ export default function PetCard({ img, name, status, age, likes, breed }) {
             size="sm"
             icon={<CloseIcon color="red.500" />}
             isRound="true"
-            onClick={() =>
-              alert('click!')
+            onClick={
+              onClick
             } /**{ @TODO: si es shelter se elimina del array, si es user se va a deslikes }*/
           />
         </Box>

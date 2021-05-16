@@ -62,9 +62,11 @@ export default function UserNavBar() {
               )}
             </Menu>
           </Flex>
-          <Box p="6">
-            <Logo picture={LogoImg} alt={LogoImg} />
-          </Box>
+          <Link to="/user/home">
+            <Box p="6">
+              <Logo picture={LogoImg} alt={LogoImg} />
+            </Box>
+          </Link>
           <Box p="2">
             <IconButton
               aria-label="Call Segun"
