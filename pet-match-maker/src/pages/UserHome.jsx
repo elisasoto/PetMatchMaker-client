@@ -11,11 +11,10 @@ export default function UserHome() {
     setPetList(arrayAllPets);
   }, [petList]);
 
-  console.log('soy la petlist de la home => ', petList);
   return (
     <>
       <UserNavBar />
-      <Box pos="relative" d="flex" alignItems="center" pt={12}>
+      <Box pos="relative" d="flex" alignItems="center" ml={4} pt={16}>
         <SwipeCardsList petList={petList} />
       </Box>
     </>
