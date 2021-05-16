@@ -127,7 +127,7 @@ export default function Cards({ name, age, weight, img, breed }) {
                 icon={<AddIcon color="green.400" />}
                 isRound="true"
                 onClick={() =>
-                  alert('function to like!!')
+                  alert('function to see specific pet profile!!')
                 } /**{ @TODO: aqui se hace otra llamada a axios para los likes y al finalizar cierra la ventana para seguir eligiendo }*/
               />
             </Box>

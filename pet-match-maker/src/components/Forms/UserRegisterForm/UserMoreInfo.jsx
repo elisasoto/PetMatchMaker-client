@@ -7,6 +7,8 @@ import { useForm, Controller } from 'react-hook-form';
 import {
   Avatar,
   Box,
+  Link,
+  IconButton,
   Button,
   FormControl,
   FormErrorMessage,
@@ -23,7 +25,7 @@ import {
   Textarea,
   WrapItem
 } from '@chakra-ui/react';
-import { EmailIcon, LockIcon } from '@chakra-ui/icons';
+import { EmailIcon, LockIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
@@ -86,12 +88,18 @@ export default function UserMoreInfo() {
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
-      <Box
-        d="flex-wrap"
-        p={2}
-        border="0.5px solid lightgray"
-        borderRadius="5px"
-      >
+      <Box d="flex-wrap" p={2} borderRadius="5px">
+        <Link href="/user/home">
+          <Box p="2" textAlign={'right'}>
+            <IconButton
+              aria-label="Call Segun"
+              size="sm"
+              colorScheme="whiteAlpha"
+              icon={<SmallCloseIcon color="black" />}
+            />
+            Close
+          </Box>
+        </Link>
         <FormLabel>Profile Details</FormLabel>
         <Stack>
           <Box
