@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   Container,
   Stack,
@@ -63,28 +64,32 @@ export default function Init() {
             Only 4 in every 10 get adopted
           </Text>
           <Text color={'gray.500'}>
-            Petmatchmaker is a country level initiavie to easy the contact
+            Petmatchmaker is a country level initiavie to ease the contact
             between lovely pets and responsible adopters to increase the
-            adoption rate.
+            adoption rate in Spain.
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
-            direction={{ base: 'column', sm: 'row' }}
+            direction={{ base: 'row', sm: 'row' }}
           >
-            <Button
-              rounded={'full'}
-              size={'lg'}
-              fontWeight={'normal'}
-              px={6}
-              colorScheme={'cyan'}
-              bg={'cyan.400'}
-              _hover={{ bg: 'cyan.500' }}
-            >
-              Login
-            </Button>
-            <Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
-              SignUp
-            </Button>
+            <Link to="/login">
+              <Button
+                rounded={'full'}
+                size={'lg'}
+                fontWeight={'normal'}
+                px={6}
+                colorScheme={'cyan'}
+                bg={'cyan.400'}
+                _hover={{ bg: 'cyan.500' }}
+              >
+                Login
+              </Button>
+            </Link>
+            <Link to="/signup">
+              <Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
+                SignUp
+              </Button>
+            </Link>
           </Stack>
         </Stack>
         <Flex
