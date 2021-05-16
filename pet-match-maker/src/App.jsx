@@ -10,6 +10,7 @@ import UserProfile from './pages/UserProfilePage';
 import UserEditProfile from './pages/UserEditProfile';
 import UserLikes from './pages/UserLikesPage';
 import UserDetailedPet from './pages/UserPetLikedDetails';
+import ShelterHome from './pages/ShelterHome';
 
 function App() {
   const userContextData = useUser();
@@ -80,6 +81,62 @@ function App() {
               <CSSReset />
               <Box>
                 <UserDetailedPet />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/shelter/home">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <ShelterHome />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/shelter/profile">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <h1>shelter profile</h1>
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/shelter/edit">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <h1>shelter edit profile</h1>
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/pet/register">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <h1>shelter pet register</h1>
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/pet/edit">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <h1>shelter pet edit</h1>
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/pet/details">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <h1>shelter pet details</h1>
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/pet/likes">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <h1>shelter pet likes</h1>
               </Box>
             </ChakraProvider>
           </Route>
