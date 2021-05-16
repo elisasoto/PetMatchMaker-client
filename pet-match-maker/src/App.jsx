@@ -4,6 +4,7 @@ import { ChakraProvider, CSSReset, Box } from '@chakra-ui/react';
 
 import Init from './pages/Init';
 import UserHome from './pages/UserHome';
+import Login from './pages/LoginPage';
 
 function App() {
   const userContextData = useUser();
@@ -17,6 +18,14 @@ function App() {
               <CSSReset />
               <Box>
                 <Init />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/login">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <Login />
               </Box>
             </ChakraProvider>
           </Route>

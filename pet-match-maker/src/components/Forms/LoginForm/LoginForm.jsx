@@ -2,15 +2,16 @@ import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import React from 'react';
 import {
-  FormErrorMessage,
-  Stack,
-  Input,
   Button,
-  InputGroup,
-  InputRightElement,
-  InputLeftElement,
   FormControl,
-  Switch
+  FormErrorMessage,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
+  Stack,
+  Switch,
+  Text
 } from '@chakra-ui/react';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 
@@ -23,7 +24,6 @@ export default function LoginForm() {
   const [isUser, setIsUser] = React.useState(1);
   const handleClick = () => setShow(!show);
 
-  // state de is user / shelter
   const {
     handleSubmit,
     register,
@@ -41,7 +41,12 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Stack spacing={2}>
-        <p>Iniciar sesión como {isUser ? 'usuario' : 'refugio'}</p>
+        <Text>
+          Iniciar sesión como{' '}
+          <Text color={'cyan.400'} fontWeight={600}>
+            {isUser ? 'Adopter' : 'Shelter'}
+          </Text>
+        </Text>
         <Switch
           id="mode"
           defaultIsChecked={isUser}
