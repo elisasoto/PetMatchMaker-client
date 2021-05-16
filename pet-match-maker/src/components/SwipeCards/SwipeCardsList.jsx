@@ -1,22 +1,15 @@
-import { useState, useEffect } from 'react';
 import { Box, Stack } from '@chakra-ui/react';
 
-import SwuipeCard from '../SwipeCards/SwipeCard';
-import { arrayAllPets } from '../../constants/mockers';
+import SwipeCard from '../SwipeCards/SwipeCard';
 
 import './cards.scss';
 
-export default function UsersList() {
-  const [list, setList] = useState([]);
-  useEffect(() => {
-    setList(arrayAllPets);
-  }, [list]);
-
+export default function UsersList({ petList }) {
   return (
     <Box d="flex">
       <Stack>
-        {list.map((card, index) => (
-          <SwuipeCard key={index} {...card} />
+        {petList.map((card, index) => (
+          <SwipeCard key={index} {...card} />
         ))}
       </Stack>
     </Box>
