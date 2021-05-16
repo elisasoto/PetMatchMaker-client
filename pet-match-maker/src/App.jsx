@@ -13,6 +13,7 @@ import UserDetailedPet from './pages/UserPetLikedDetails';
 import ShelterHome from './pages/ShelterHome';
 import ShelterProfile from './pages/ShelterProfile';
 import ShelterEditProfile from './pages/ShelterEditProfile';
+import PetRegister from './pages/PetRegister';
 
 function App() {
   const userContextData = useUser();
@@ -114,7 +115,7 @@ function App() {
             <ChakraProvider>
               <CSSReset />
               <Box>
-                <h1>shelter pet register</h1>
+                <PetRegister />
               </Box>
             </ChakraProvider>
           </Route>
