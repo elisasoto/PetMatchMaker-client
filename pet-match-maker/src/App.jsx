@@ -9,6 +9,7 @@ import UserHome from './pages/UserHome';
 import UserProfile from './pages/UserProfilePage';
 import UserEditProfile from './pages/UserEditProfile';
 import UserLikes from './pages/UserLikesPage';
+import UserDetailedPet from './pages/UserPetLikedDetails';
 
 function App() {
   const userContextData = useUser();
@@ -70,6 +71,15 @@ function App() {
               <CSSReset />
               <Box>
                 <UserLikes />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/user/likes/pet">
+            {/**this should be :petId */}
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <UserDetailedPet />
               </Box>
             </ChakraProvider>
           </Route>

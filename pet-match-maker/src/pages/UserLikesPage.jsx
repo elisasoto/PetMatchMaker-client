@@ -17,7 +17,6 @@ export default function UserLikes() {
     setPetList(mockedPetList);
   }, [petList]);
 
-  console.log(petList);
   return (
     <>
       <UserNavBar />
