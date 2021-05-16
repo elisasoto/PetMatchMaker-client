@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   Button,
   Flex,
@@ -45,14 +46,15 @@ export default function UserNavBar() {
                     />
                   </MenuButton>
                   <MenuList>
-                    <MenuItem onClick={() => alert('Kagebunshin')}>
-                      Profile
-                    </MenuItem>
-                    <MenuItem onClick={() => alert('Kagebunshin')}>
-                      About
-                    </MenuItem>
+                    <Link to="/user/profile">
+                      <MenuItem>Profile</MenuItem>
+                    </Link>
                     <MenuDivider />
-                    <MenuItem onClick={() => alert('Kagebunshin')}>
+                    <MenuItem
+                      onClick={() =>
+                        alert('call function logout and redirect to /')
+                      }
+                    >
                       Logout
                     </MenuItem>
                   </MenuList>
@@ -70,7 +72,9 @@ export default function UserNavBar() {
               icon={<FontAwesomeIcon icon={faHeart} color="#0bc5ea" />}
               isRound="true"
               onClick={() =>
-                alert('click!')
+                alert(
+                  'neet to call the function that brings likes and redirect to /user/likes!'
+                )
               } /**{ @TODO: aqui se hace otra llamada a axios para los likes y al finalizar cierra la ventana para seguir eligiendo }*/
             />
             <Text fontSize="12px">MyLikes</Text>

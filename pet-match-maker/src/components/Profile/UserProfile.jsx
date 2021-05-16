@@ -41,17 +41,17 @@ export default function UserProfle() {
         rounded={'lg'}
         textAlign={'center'}
       >
-        <Box p="2" textAlign={'right'}>
-          <IconButton
-            aria-label="Call Segun"
-            size="sm"
-            colorScheme="whiteAlpha"
-            icon={<SmallCloseIcon color="black" />}
-            onClick={() =>
-              alert('click!')
-            } /**{ @TODO: cierra la ventana para seguir eligiendo }*/
-          />
-        </Box>
+        <Link href="/user/home">
+          <Box p="2" textAlign={'right'}>
+            <IconButton
+              aria-label="Call Segun"
+              size="sm"
+              colorScheme="whiteAlpha"
+              icon={<SmallCloseIcon color="black" />}
+            />
+            Close
+          </Box>
+        </Link>
         <Avatar
           size={'xl'}
           src={`${mockedUser.img}`}

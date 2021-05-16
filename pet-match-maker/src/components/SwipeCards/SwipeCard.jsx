@@ -12,7 +12,7 @@ import {
   Text,
   useColorModeValue
 } from '@chakra-ui/react';
-import { CloseIcon } from '@chakra-ui/icons';
+import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { sizer } from '../../constants/sizer';
@@ -115,8 +115,20 @@ export default function Cards({ name, age, weight, img, breed }) {
                 icon={<CloseIcon color="red" />}
                 isRound="true"
                 onClick={() =>
-                  alert('click!')
+                  alert('function to dislike!')
                 } /**{ @TODO: aqui se hace otra llamada a axios para los deslikes y al finalizar cierra la ventana }*/
+              />
+            </Box>
+            <Spacer />
+            <Box p="2">
+              <IconButton
+                aria-label="Call Segun"
+                size="lg"
+                icon={<AddIcon color="green.400" />}
+                isRound="true"
+                onClick={() =>
+                  alert('function to like!!')
+                } /**{ @TODO: aqui se hace otra llamada a axios para los likes y al finalizar cierra la ventana para seguir eligiendo }*/
               />
             </Box>
             <Spacer />
@@ -127,7 +139,7 @@ export default function Cards({ name, age, weight, img, breed }) {
                 icon={<FontAwesomeIcon icon={faHeart} color="#0bc5ea" />}
                 isRound="true"
                 onClick={() =>
-                  alert('click!')
+                  alert('function to like!!')
                 } /**{ @TODO: aqui se hace otra llamada a axios para los likes y al finalizar cierra la ventana para seguir eligiendo }*/
               />
             </Box>

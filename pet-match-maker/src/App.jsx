@@ -3,9 +3,10 @@ import { UserContext, useUser } from './context/User';
 import { ChakraProvider, CSSReset, Box } from '@chakra-ui/react';
 
 import Init from './pages/Init';
-import UserHome from './pages/UserHome';
 import Login from './pages/LoginPage';
 import SignUp from './pages/RegisterPage';
+import UserHome from './pages/UserHome';
+import UserProfile from './pages/UserProfilePage';
 
 function App() {
   const userContextData = useUser();
@@ -43,6 +44,22 @@ function App() {
               <CSSReset />
               <Box>
                 <UserHome />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/user/profile">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <UserProfile />
+              </Box>
+            </ChakraProvider>
+          </Route>
+          <Route exact path="/user/edit">
+            <ChakraProvider>
+              <CSSReset />
+              <Box>
+                <UserProfile />
               </Box>
             </ChakraProvider>
           </Route>

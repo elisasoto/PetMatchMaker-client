@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Container, Stack, Box, Heading, Text } from '@chakra-ui/react';
 
 import Logo from '../components/Navbar/Logo';
@@ -8,7 +9,9 @@ export default function RegisterPage() {
   return (
     <Container maxW={'7xl'}>
       <Box flex={1} align={'center'}>
-        <Logo picture={LogoImg} alt={LogoImg} />
+        <Link to="/">
+          <Logo picture={LogoImg} alt={LogoImg} />
+        </Link>
       </Box>
       <Stack
         align={'center'}
@@ -44,6 +47,12 @@ export default function RegisterPage() {
           </Heading>
           <Registration />
         </Stack>
+        <Text color={'grey.400'}>
+          Already a Member?
+          <Link to="/login">
+            <Text color={'cyan.400'}>Login here!</Text>
+          </Link>
+        </Text>
       </Stack>
     </Container>
   );
