@@ -1,3 +1,11 @@
-export default function ShelterProfile() {
-  return <h1>I will be the Shelter Profile</h1>;
+import ShelterNavBar from '../components/Navbar/ShelterNavBar';
+import ShelterProfile from '../components/Profile/ShelterProfile';
+
+export default function ShelterProfilePage() {
+  return (
+    <>
+      <ShelterNavBar />
+      <ShelterProfile />
+    </>
+  );
 }

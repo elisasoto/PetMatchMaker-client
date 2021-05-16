@@ -140,3 +140,13 @@ export const oneShortPet = {
   img: 'http://placeimg.com/640/480/animals',
   breed: 'Podenco'
 };
+
+export const mocketShelter = {
+  _id: '609f90e6fe2a3e64b80d2fa0',
+  name: 'patas',
+  email: 'patas@gmail.com',
+  phone: '786789096',
+  city: 'alcala',
+  country: 'spain',
+  about: 'We take care of our pets as members of our family'
+};
