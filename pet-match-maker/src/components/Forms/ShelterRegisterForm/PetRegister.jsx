@@ -3,18 +3,22 @@ import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 import {
-  FormErrorMessage,
-  Stack,
   Box,
-  Input,
   Button,
-  InputGroup,
-  Textarea,
-  InputLeftElement,
-  FormHelperText,
   FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+  Heading,
+  IconButton,
+  Input,
+  InputGroup,
+  InputLeftElement,
   InputRightAddon,
-  FormLabel
+  Link,
+  Stack,
+  Text,
+  Textarea
 } from '@chakra-ui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -25,14 +29,14 @@ import {
   faPaw,
   faWeight
 } from '@fortawesome/free-solid-svg-icons';
-
-import '../UserRegisterForm/userForm.scss';
-import 'react-datepicker/dist/react-datepicker.css';
-
+import { SmallCloseIcon } from '@chakra-ui/icons';
 import { errorMessage } from '../../../constants/formErrors';
 import { UserContext } from '../../../context/User';
 import { getFormData } from '../../../utils/formData';
 import { petRegister } from '../../../services/pets';
+
+import '../UserRegisterForm/userForm.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export default function PetRegister() {
   const { user } = useContext(UserContext);
@@ -55,6 +59,43 @@ export default function PetRegister() {
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Stack>
+        <Heading
+          lineHeight={1.1}
+          fontWeight={600}
+          fontSize={{ base: '2xl', sm: '6xl', lg: '10xl' }}
+        >
+          <Text
+            as={'span'}
+            position={'relative'}
+            _after={{
+              content: "''",
+              width: 'full',
+              height: '30%',
+              position: 'absolute',
+              bottom: 1,
+              left: 0,
+              bg: 'cyan.400',
+              zIndex: -1
+            }}
+          >
+            Please fill
+          </Text>
+
+          <Text as={'span'} color={'cyan.400'}>
+            the fields below
+          </Text>
+        </Heading>
+        <Link href="/shelter/home">
+          <Box p="2" textAlign={'right'}>
+            <IconButton
+              aria-label="Call Segun"
+              size="sm"
+              colorScheme="whiteAlpha"
+              icon={<SmallCloseIcon color="black" />}
+            />
+            Close
+          </Box>
+        </Link>
         <FormControl isRequired={errors.name} isInvalid={!!errors.name}>
           <InputGroup size="sm">
             <Input

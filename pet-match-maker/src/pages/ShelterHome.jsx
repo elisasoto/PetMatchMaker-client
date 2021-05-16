@@ -50,7 +50,7 @@ export default function ShelterHome() {
             added Pets
           </Text>
         </Heading>
-        <Link href="/shelter/register">
+        <Link href="/pet/register">
           <Button size="sm" colorScheme="cyan" type="submit">
             Add a Pet
           </Button>
