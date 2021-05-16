@@ -42,7 +42,7 @@ export default function LoginForm() {
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Stack spacing={2}>
         <Text>
-          Iniciar sesión como{' '}
+          Start session as
           <Text color={'cyan.400'} fontWeight={600}>
             {isUser ? 'Adopter' : 'Shelter'}
           </Text>
