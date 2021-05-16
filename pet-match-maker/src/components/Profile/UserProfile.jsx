@@ -12,13 +12,12 @@ import {
   Link,
   Center,
   Text,
-  IconButton,
   List,
   ListItem,
   useColorModeValue,
   FormLabel
 } from '@chakra-ui/react';
-import { EmailIcon, PhoneIcon, SmallCloseIcon } from '@chakra-ui/icons';
+import { EmailIcon, PhoneIcon } from '@chakra-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faClock,
@@ -41,17 +40,6 @@ export default function UserProfle() {
         rounded={'lg'}
         textAlign={'center'}
       >
-        <Link href="/user/home">
-          <Box p="2" textAlign={'right'}>
-            <IconButton
-              aria-label="Call Segun"
-              size="sm"
-              colorScheme="whiteAlpha"
-              icon={<SmallCloseIcon color="black" />}
-            />
-            Close
-          </Box>
-        </Link>
         <Avatar
           size={'xl'}
           src={`${mockedUser.img}`}
