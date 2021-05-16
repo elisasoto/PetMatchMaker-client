@@ -150,3 +150,20 @@ export const mocketShelter = {
   country: 'spain',
   about: 'We take care of our pets as members of our family'
 };
+
+export const mockedProfile = {
+  name: 'Lalo',
+  surname: 'Gomez',
+  email: 'lalo@hotmail.com',
+  phone: '123935858',
+  country: 'Spain',
+  city: 'Madrid',
+  about:
+    'Economist, married, 4 children, we are looking for a pet to complement our family',
+  motivations:
+    'Have always loved pets. As a children I owned 3 and I want my kids to learn about...',
+  hoursToSpend: '4',
+  age: '30',
+  ammenities:
+    'We live in fornt of a 1 km park with a pet area where he/she can run and be surrounded with other pets, we also travel to the hills every weekend'
+};
