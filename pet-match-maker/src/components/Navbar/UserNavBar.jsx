@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Button,
   Flex,
@@ -17,11 +18,20 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
+import { UserContext } from '../../context/User';
 import Logo from './Logo';
 import LogoImg from '../../assets/petmatchmaker.png';
 
 export default function UserNavBar() {
+  const { logout } = useContext(UserContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const history = useHistory();
+
+  const handleClickLogout = async () => {
+    await logout();
+    await history.push('/');
+  };
 
   return (
     <>
@@ -50,13 +60,7 @@ export default function UserNavBar() {
                       <MenuItem>Profile</MenuItem>
                     </Link>
                     <MenuDivider />
-                    <MenuItem
-                      onClick={() =>
-                        alert('call function logout and redirect to /')
-                      }
-                    >
-                      Logout
-                    </MenuItem>
+                    <MenuItem onClick={handleClickLogout}>Logout</MenuItem>
                   </MenuList>
                 </>
               )}

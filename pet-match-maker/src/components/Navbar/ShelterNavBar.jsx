@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import {
   Menu,
   Box,
@@ -11,10 +12,21 @@ import {
   MenuDivider,
   useColorModeValue
 } from '@chakra-ui/react';
+
+import { UserContext } from '../../context/User';
 import Logo from '../Navbar/Logo';
 import LogoImg from '../../assets/petmatchmaker.png';
 
 export default function ShelterNavBar() {
+  const { logout } = useContext(UserContext);
+
+  const history = useHistory();
+
+  const handleClickLogout = async () => {
+    await logout();
+    await history.push('/');
+  };
+
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} pos="relative">
       <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
@@ -33,7 +45,7 @@ export default function ShelterNavBar() {
                   </MenuGroup>
                   <MenuDivider />
                   <MenuGroup title="Close Session">
-                    <MenuItem>Logout</MenuItem>
+                    <MenuItem onClick={handleClickLogout}>Logout</MenuItem>
                   </MenuGroup>
                 </MenuList>
               </>

@@ -1,5 +1,3 @@
-import { transformDate } from './transformDate';
-
 export const mockedPet = {
   status: 'Available',
   likes: ['id', 'id', 'id', 'id', 'id', 'id', 'id', 'id'],

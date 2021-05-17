@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 import React from 'react';
 import {
   Button,
@@ -24,17 +25,21 @@ export default function LoginForm() {
   const [isUser, setIsUser] = React.useState(1);
   const handleClick = () => setShow(!show);
 
+  const history = useHistory();
+
   const {
     handleSubmit,
     register,
     formState: { errors }
   } = useForm();
 
-  const handleFormSubmit = (formValues) => {
+  const handleFormSubmit = async (formValues) => {
     if (isUser) {
-      adopterLogin(formValues);
+      await adopterLogin(formValues);
+      await history.push('/user/home');
     } else {
-      shelterLogin(formValues);
+      await shelterLogin(formValues);
+      await history.push('/shelter/home');
     }
   };
 
