@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import { UserContext, useUser } from './context/User';
-import { ChakraProvider, CSSReset, Box } from '@chakra-ui/react';
+import { ChakraProvider, CSSReset, Box, Container } from '@chakra-ui/react';
 
 import Init from './pages/Init';
 import Login from './pages/LoginPage';
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <UserContext.Provider value={userContextData}>
-      <div className="App">
+      <Container>
         <Switch>
           <Route exact path="/">
             <ChakraProvider>
@@ -156,7 +156,7 @@ function App() {
             </ChakraProvider>
           </Route>
         </Switch>
-      </div>
+      </Container>
     </UserContext.Provider>
   );
 }

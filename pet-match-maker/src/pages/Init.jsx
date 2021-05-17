@@ -16,10 +16,11 @@ import {
 
 import Logo from '../components/Navbar/Logo';
 import LogoImg from '../assets/petmatchmaker.png';
+import Footer from '../components/Footer/Footer';
 
 export default function Init() {
   return (
-    <Container maxW={'7xl'}>
+    <Container maxW={'7x1'}>
       <Box flex={1} align={'center'}>
         <Logo picture={LogoImg} alt={LogoImg} />
       </Box>
@@ -27,6 +28,7 @@ export default function Init() {
         align={'center'}
         spacing={{ base: 2, md: 5 }}
         py={{ base: 2, md: 15 }}
+        mb={12}
         direction={{ base: 'column', md: 'row' }}
       >
         <Stack flex={1} spacing={{ base: 5, md: 5 }}>
@@ -141,6 +143,7 @@ export default function Init() {
           </Box>
         </Flex>
       </Stack>
+      <Footer />
     </Container>
   );
 }

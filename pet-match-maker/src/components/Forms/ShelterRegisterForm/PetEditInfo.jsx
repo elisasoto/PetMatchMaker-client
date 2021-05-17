@@ -34,13 +34,13 @@ import { SmallCloseIcon } from '@chakra-ui/icons';
 import { errorMessage } from '../../../constants/formErrors';
 import { UserContext } from '../../../context/User';
 import { getFormData } from '../../../utils/formData';
-import { petRegister } from '../../../services/pets';
+import { putPetEdit } from '../../../services/pets';
 import { mockedPet } from '../../../constants/mockers';
 
 import '../UserRegisterForm/userForm.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default function PetRegister() {
+export default function PetEditInfo() {
   const { user } = useContext(UserContext);
   const {
     handleSubmit,
@@ -53,7 +53,7 @@ export default function PetRegister() {
   const handleFormSubmit = (formValues) => {
     const { img, ...restvalues } = formValues;
     const formData = getFormData('img', img, restvalues);
-    petRegister(formData);
+    putPetEdit(formData);
     // no deja modificar datos si no pones una imagen.
   };
 
