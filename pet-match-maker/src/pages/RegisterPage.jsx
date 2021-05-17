@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
-import { Container, Stack, Box, Heading, Text } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Container, Stack, Box, Heading, Text, Switch } from '@chakra-ui/react';
 
 import Logo from '../components/Navbar/Logo';
 import LogoImg from '../assets/petmatchmaker.png';
-import Registration from '../components/Forms/Registration/Registration';
+import UserRegister from '../components/Forms/UserRegisterForm/UserRegister';
+import ShelterRegister from '../components/Forms/ShelterRegisterForm/ShelterRegister';
 
 export default function RegisterPage() {
+  const [isUser, setIsUser] = useState(1);
   return (
     <Container maxW={'7xl'}>
       <Box flex={1} align={'center'}>
@@ -45,7 +48,6 @@ export default function RegisterPage() {
               Sign-Up today!
             </Text>
           </Heading>
-          <Registration />
         </Stack>
         <Text color={'grey.400'}>
           Already a Member?
@@ -54,6 +56,24 @@ export default function RegisterPage() {
           </Link>
         </Text>
       </Stack>
+      <Container>
+        <Stack spacing={2}>
+          <Text>
+            Start session as
+            <Text color={'cyan.400'} fontWeight={600}>
+              {isUser ? 'Adopter' : 'Shelter'}
+            </Text>
+          </Text>
+          <Switch
+            id="mode"
+            defaultIsChecked={isUser}
+            onChange={(e) => {
+              setIsUser(e.target.checked ? 1 : 0);
+            }}
+          />
+        </Stack>
+        {isUser ? <UserRegister /> : <ShelterRegister />}
+      </Container>
     </Container>
   );
 }

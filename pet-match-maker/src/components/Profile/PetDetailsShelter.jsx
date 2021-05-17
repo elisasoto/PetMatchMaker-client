@@ -37,7 +37,7 @@ export default function PetProfileShelter({ pet }) {
         rounded={'lg'}
         textAlign={'center'}
       >
-        <Link href="/user/home">
+        <Link href="/shelter/home">
           <Box p="2" textAlign={'right'}>
             <IconButton
               aria-label="Call Segun"
