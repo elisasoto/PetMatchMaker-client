@@ -6,6 +6,7 @@ import Logo from '../components/Navbar/Logo';
 import LogoImg from '../assets/petmatchmaker.png';
 import UserRegister from '../components/Forms/UserRegisterForm/UserRegister';
 import ShelterRegister from '../components/Forms/ShelterRegisterForm/ShelterRegister';
+import Footer from '../components/Footer/Footer';
 
 export default function RegisterPage() {
   const [isUser, setIsUser] = useState(1);
@@ -56,7 +57,7 @@ export default function RegisterPage() {
           </Link>
         </Text>
       </Stack>
-      <Container>
+      <Container mb={12}>
         <Stack spacing={2}>
           <Text>
             Start session as
@@ -74,6 +75,7 @@ export default function RegisterPage() {
         </Stack>
         {isUser ? <UserRegister /> : <ShelterRegister />}
       </Container>
+      <Footer />
     </Container>
   );
 }

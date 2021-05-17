@@ -33,7 +33,7 @@ import { SmallCloseIcon } from '@chakra-ui/icons';
 import { errorMessage } from '../../../constants/formErrors';
 import { UserContext } from '../../../context/User';
 import { getFormData } from '../../../utils/formData';
-import { petRegister } from '../../../services/pets';
+import { putPetRegister } from '../../../services/pets';
 
 import '../UserRegisterForm/userForm.scss';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -51,7 +51,7 @@ export default function PetRegister() {
   const handleFormSubmit = (formValues) => {
     const { img, ...restvalues } = formValues;
     const formData = getFormData('img', img, restvalues);
-    petRegister(formData);
+    putPetRegister(formData);
   };
 
   const [about] = watch(['about']);
