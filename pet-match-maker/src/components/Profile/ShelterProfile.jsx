@@ -12,7 +12,6 @@ import {
   useColorModeValue
 } from '@chakra-ui/react';
 import {
-  CheckIcon,
   EmailIcon,
   InfoIcon,
   PhoneIcon,
