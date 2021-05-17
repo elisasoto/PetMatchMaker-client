@@ -1,3 +1,5 @@
+import { transformDate } from './transformDate';
+
 export const mockedPet = {
   status: 'Available',
   likes: ['id', 'id', 'id', 'id', 'id', 'id', 'id', 'id'],
@@ -7,7 +9,7 @@ export const mockedPet = {
   //img:
   // 'https://res.cloudinary.com/petmatchmaker/image/upload/v1621070217/petMatchMaker-pet/x0omyghjjvdzelafim1x.jpg',
   breed: 'Schnauzer',
-  //dateArrivalInShelter: '2021-03-14T04:51:43.028Z',
+  dateArrivalInShelter: new Date(Date.parse('2021-03-14T04:51:43.028Z')),
   about: 'i am a good good pet!',
   shelterId: {
     name: 'patas',
@@ -158,6 +160,7 @@ export const mockedProfile = {
   phone: '123935858',
   country: 'Spain',
   city: 'Madrid',
+  //img: 'http://placeimg.com/640/480/animals', {/*{`${mockedProfile.img}`}*/}
   about:
     'Economist, married, 4 children, we are looking for a pet to complement our family',
   motivations:
