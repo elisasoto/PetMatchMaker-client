@@ -1,21 +1,14 @@
 import axios from 'axios';
 import { BASE_URL } from '../constants';
 
-export const petRegister = async (formData) => {
+export const putPetRegister = async (formData) => {
   try {
-    const register = axios
-      .post(`${BASE_URL}/pets/register`, formData, {
-        headers: {
-          'content-type': 'multipart/form-data'
-        },
-        withCredentials: true
-      })
-      .then((res) => {
-        console.log(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    const register = await axios.post(`${BASE_URL}/pets/register`, formData, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      },
+      withCredentials: true
+    });
 
     return register.data.data;
   } catch (error) {
@@ -24,9 +17,69 @@ export const petRegister = async (formData) => {
   }
 };
 
-export const getPet = async (id) => {
+export const putPetEdit = async (formData, id) => {
+  try {
+    const register = await axios.post(`${BASE_URL}/pets/edit/${id}`, formData, {
+      headers: {
+        'content-type': 'multipart/form-data'
+      },
+      withCredentials: true
+    });
+
+    return register.data.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getPetList = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/pets`);
+
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getSinglePet = async (id) => {
   try {
     const response = await axios.get(`${BASE_URL}/pets${id}`);
+
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getPetLikes = async (id) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/pets/likes/${id}`);
+
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const putDeleteSinglePet = async (id) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/pets/delete/${id}`);
+
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getUserFromPetLikes = async (id) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/pets/user/${id}`);
 
     return response.data.data;
   } catch (error) {
