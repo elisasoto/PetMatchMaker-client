@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {
   FormErrorMessage,
@@ -29,6 +30,8 @@ export default function ShelterRegister() {
   const { shelterRegister } = useContext(UserContext);
   const [show, setShow] = useState(false);
 
+  const history = useHistory();
+
   const handleClick = () => setShow(!show);
 
   const {
@@ -38,8 +41,9 @@ export default function ShelterRegister() {
     formState: { errors }
   } = useForm({});
 
-  const handleFormSubmit = (formValues) => {
-    shelterRegister(formValues);
+  const handleFormSubmit = async (formValues) => {
+    await shelterRegister(formValues);
+    await history.push('/shelter/home');
   };
 
   const [about] = watch(['about']);

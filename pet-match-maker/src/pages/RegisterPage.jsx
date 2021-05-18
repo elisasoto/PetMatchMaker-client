@@ -49,6 +49,24 @@ export default function RegisterPage() {
               Sign-Up today!
             </Text>
           </Heading>
+          <Container mb={12}>
+            <Stack spacing={2}>
+              <Text>
+                Start session as
+                <Text color={'cyan.400'} fontWeight={600}>
+                  {isUser ? 'Adopter' : 'Shelter'}
+                </Text>
+              </Text>
+              <Switch
+                id="mode"
+                defaultIsChecked={isUser}
+                onChange={(e) => {
+                  setIsUser(e.target.checked ? 1 : 0);
+                }}
+              />
+            </Stack>
+            {isUser ? <UserRegister /> : <ShelterRegister />}
+          </Container>
         </Stack>
         <Text color={'grey.400'}>
           Already a Member?
@@ -57,24 +75,6 @@ export default function RegisterPage() {
           </Link>
         </Text>
       </Stack>
-      <Container mb={12}>
-        <Stack spacing={2}>
-          <Text>
-            Start session as
-            <Text color={'cyan.400'} fontWeight={600}>
-              {isUser ? 'Adopter' : 'Shelter'}
-            </Text>
-          </Text>
-          <Switch
-            id="mode"
-            defaultIsChecked={isUser}
-            onChange={(e) => {
-              setIsUser(e.target.checked ? 1 : 0);
-            }}
-          />
-        </Stack>
-        {isUser ? <UserRegister /> : <ShelterRegister />}
-      </Container>
       <Footer />
     </Container>
   );

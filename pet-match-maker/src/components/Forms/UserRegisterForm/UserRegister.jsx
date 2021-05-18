@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {
   FormErrorMessage,
@@ -34,6 +35,8 @@ export default function UserRegister() {
   const { adopterRegister } = useContext(UserContext);
   const [show, setShow] = useState(false);
 
+  const history = useHistory();
+
   const handleClick = () => setShow(!show);
 
   const {
@@ -42,11 +45,11 @@ export default function UserRegister() {
     formState: { errors }
   } = useForm({});
 
-  const handleFormSubmit = (formValues) => {
+  const handleFormSubmit = async (formValues) => {
     const { img, ...restvalues } = formValues;
     const formData = getFormData('img', img, restvalues);
-    console.log(formValues);
-    adopterRegister(formData);
+    await adopterRegister(formData);
+    await history.push('/user/home');
   };
 
   return (
