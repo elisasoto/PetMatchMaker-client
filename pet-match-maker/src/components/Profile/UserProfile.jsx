@@ -1,9 +1,3 @@
-//import { useState, useEffect } from 'react';
-//import { useParams } from 'react-router';
-//import axios from 'axios';
-
-//import { BASE_URL } from '../../constants';
-import { mockedUser } from '../../constants/mockers';
 import { capitalize } from '../../constants/capitalize';
 import {
   Heading,
@@ -30,9 +24,7 @@ import {
 
 import './Profile.scss';
 
-export default function UserProfle() {
-  // si hay req user rellenar el users/profile. Si ess llamado con req.params la funcion cambia por get pets/likes/
-
+export default function UserProfle({ profile }) {
   return (
     <Center py={6}>
       <Box
@@ -42,8 +34,8 @@ export default function UserProfle() {
       >
         <Avatar
           size={'xl'}
-          src={`${mockedUser.img}`}
-          alt={`${mockedUser.name}`}
+          src={`${profile.img}`}
+          alt={`${profile.name}`}
           mb={2}
           pos={'relative'}
           _after={{
@@ -51,13 +43,13 @@ export default function UserProfle() {
           }}
         />
         <Heading fontSize={'2xl'} fontFamily={'body'}>
-          {capitalize(mockedUser.name)} {capitalize(mockedUser.surname)}
+          {capitalize(profile.name)} {capitalize(profile.surname)}
         </Heading>
         <Text fontWeight={600} color={'gray.500'}>
-          {capitalize(mockedUser.country)}, {capitalize(mockedUser.city)}
+          {capitalize(profile.city)}, {capitalize(profile.country)}
         </Text>
         <Text fontWeight={600} color={'gray.500'} mb={4}>
-          {`${mockedUser.age} Years old`}
+          {`${profile.age} Years old`}
         </Text>
         <Text
           textAlign={'center'}
@@ -65,7 +57,7 @@ export default function UserProfle() {
           px={3}
           mb={4}
         >
-          {mockedUser.about}
+          {profile.about}
         </Text>
         <FormLabel>My motivations to adopt a Pet are: </FormLabel>
         <Text
@@ -74,7 +66,7 @@ export default function UserProfle() {
           px={3}
           mb={4}
         >
-          {mockedUser.motivations}
+          {profile.motivations}
         </Text>
         <FormLabel>I am looking for: </FormLabel>
         <Text
@@ -84,10 +76,10 @@ export default function UserProfle() {
           mb={4}
         >
           <FontAwesomeIcon icon={faDog} color="#ACDEB2" className="icon" />
-          {mockedUser.ageOfDog === 'ANY'
-            ? `${mockedUser.ageOfDog} age`
-            : `${mockedUser.ageOfDog} pet`}
-          {` of a ${mockedUser.size} size`}
+          {profile.ageOfDog === 'ANY'
+            ? `${profile.ageOfDog} age`
+            : `${profile.ageOfDog} pet`}
+          {` of a ${profile.size} size`}
         </Text>
         <Box
           bg={useColorModeValue('gray.50', 'gray.900')}
@@ -107,19 +99,19 @@ export default function UserProfle() {
                 className="icon"
               />
               {`${
-                mockedUser.hoursToSpend !== ''
-                  ? `I am willing to spend ${mockedUser.hoursToSpend} daily hours with him/her`
+                profile.hoursToSpend !== undefined
+                  ? `I am willing to spend ${profile.hoursToSpend} daily hours with him/her`
                   : 'User must confirm the daily hours availabe to spend with Pet'
               }`}
             </ListItem>
             <ListItem>
               <FontAwesomeIcon icon={faHome} color="#ACDEB2" className="icon" />
-              {`I live in a ${mockedUser.houseType} with ${mockedUser.living} and I plan the pet to live ${mockedUser.petLivingArrangement} with me`}
+              {`I live in a ${profile.houseType} with ${profile.living} and I plan the pet to live ${profile.petLivingArrangement} with me`}
             </ListItem>
             <ListItem>
               <FontAwesomeIcon icon={faPaw} color="#ACDEB2" className="icon" />
               {`${
-                mockedUser.otherPets === 'Yes'
+                profile.otherPets === 'Yes'
                   ? 'Other pets live in the house'
                   : 'This will be the only pet living in the house'
               }`}
@@ -127,7 +119,7 @@ export default function UserProfle() {
             <ListItem>
               <FontAwesomeIcon icon={faFlag} color="#ACDEB2" className="icon" />
               {`${
-                mockedUser.firstPet === 'Yes'
+                profile.firstPet === 'Yes'
                   ? 'This will be my first Pet'
                   : 'I have had pets before'
               }`}
@@ -139,8 +131,8 @@ export default function UserProfle() {
                 className="icon"
               />
               {`${
-                mockedUser.ammenities !== ''
-                  ? mockedUser.ammenities
+                profile.ammenities !== undefined
+                  ? profile.ammenities
                   : 'User must confirm ammenities for the Pet'
               }`}
             </ListItem>
@@ -157,13 +149,13 @@ export default function UserProfle() {
           <Text fontSize="15px" color="cyan.400">
             If you think I am a good fit for this pet please contact me!
           </Text>
-          <Link href={`mailto: ${mockedUser.email}`} isExternal>
+          <Link href={`mailto: ${profile.email}`} isExternal>
             <EmailIcon mx="2px" color="gray.400" />
             <Text fontSize="10px" color="gray.400">
               Send me an Email
             </Text>
           </Link>
-          <Link href={`tel: ${mockedUser.phone}`} isExternal>
+          <Link href={`tel: ${profile.phone}`} isExternal>
             <PhoneIcon mx="2px" color="gray.400" />
             <Text fontSize="10px" color="gray.400">
               Call me
