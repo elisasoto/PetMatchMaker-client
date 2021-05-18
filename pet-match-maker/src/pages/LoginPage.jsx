@@ -48,14 +48,12 @@ export default function LoginPage() {
           </Heading>
           <LoginForm />
         </Stack>
-        <Text color={'grey.400'}>
-          Not yet a Member?
-          <Link to="/signup">
-            <Text color={'cyan.400'} mb={10}>
-              SignUp in here!
-            </Text>
-          </Link>
-        </Text>
+        <Text color={'grey.400'}>Not yet a Member?</Text>
+        <Link to="/signup">
+          <Text color={'cyan.400'} mb={10}>
+            SignUp in here!
+          </Text>
+        </Link>
       </Stack>
       <Footer />
     </Container>

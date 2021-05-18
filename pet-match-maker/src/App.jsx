@@ -5,6 +5,7 @@ import { ChakraProvider, CSSReset, Box, Container } from '@chakra-ui/react';
 import Init from './pages/Init';
 import Login from './pages/LoginPage';
 import SignUp from './pages/RegisterPage';
+import UserNavBar from './components/Navbar/UserNavBar';
 import UserHome from './pages/UserHome';
 import UserProfile from './pages/UserProfilePage';
 import UserEditProfile from './pages/UserEditProfile';
@@ -24,145 +25,101 @@ function App() {
   const userContextData = useUser();
 
   return (
-    <UserContext.Provider value={userContextData}>
-      <Container>
-        <Switch>
-          <Route exact path="/">
-            <ChakraProvider>
-              <CSSReset />
+    <ChakraProvider>
+      <CSSReset />
+      <UserContext.Provider value={userContextData}>
+        <Container>
+          <Switch>
+            <Route exact path="/">
               <Box>
                 <Init />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/login">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/login">
               <Box>
                 <Login />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/signup">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/signup">
               <Box>
                 <SignUp />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/user/home">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/user/home">
               <Box>
                 <WithAuthentication>
                   <UserHome />
                 </WithAuthentication>
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/user/profile">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/user/profile">
               <Box>
                 <WithAuthentication>
                   <UserProfile />
                 </WithAuthentication>
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/user/edit">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/user/edit">
               <Box>
                 <UserEditProfile />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/user/likes">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/user/likes">
               <Box>
                 <UserLikes />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/user/likes/pet">
-            {/**this should be :petId */}
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/user/likes/pet">
+              {/**this should be :petId */}
+
               <Box>
                 <UserDetailedPet />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/shelter/home">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/shelter/home">
               <Box>
                 <ShelterHome />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/shelter/profile">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/shelter/profile">
               <Box>
                 <ShelterProfile />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/shelter/edit">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/shelter/edit">
               <Box>
                 <ShelterEditProfile />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/pet/register">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/pet/register">
               <Box>
                 <PetRegister />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/pet/details">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/pet/details">
               <Box>
                 <ShelterPetDetails />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/pet/edit">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/pet/edit">
               <Box>
                 <ShelterPetEdit />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/adopter/details">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/adopter/details">
               <Box>
                 <PotentialAdopterDetails />
               </Box>
-            </ChakraProvider>
-          </Route>
-          <Route exact path="/pet/likes">
-            <ChakraProvider>
-              <CSSReset />
+            </Route>
+            <Route exact path="/pet/likes">
               <Box>
                 <PetLikesPage />
               </Box>
-            </ChakraProvider>
-          </Route>
-        </Switch>
-      </Container>
-    </UserContext.Provider>
+            </Route>
+          </Switch>
+        </Container>
+      </UserContext.Provider>
+    </ChakraProvider>
   );
 }
 
