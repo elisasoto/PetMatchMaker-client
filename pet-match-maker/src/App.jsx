@@ -18,6 +18,7 @@ import ShelterPetDetails from './pages/PetDetailsOnShelter';
 import ShelterPetEdit from './pages/PetEditInfo';
 import PotentialAdopterDetails from './pages/PetAdopterDetails';
 import PetLikesPage from './pages/PetLikesPage';
+import WithAuthentication from './hocs/WithAuthentication';
 
 function App() {
   const userContextData = useUser();
@@ -54,7 +55,9 @@ function App() {
             <ChakraProvider>
               <CSSReset />
               <Box>
-                <UserHome />
+                <WithAuthentication>
+                  <UserHome />
+                </WithAuthentication>
               </Box>
             </ChakraProvider>
           </Route>

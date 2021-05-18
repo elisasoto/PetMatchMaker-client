@@ -23,11 +23,11 @@ import Logo from './Logo';
 import LogoImg from '../../assets/petmatchmaker.png';
 
 export default function UserNavBar() {
-  const { logout } = useContext(UserContext);
+  const { logout, user } = useContext(UserContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const history = useHistory();
-
+  console.log('i am the user', user);
   const handleClickLogout = async () => {
     await logout();
     await history.push('/');
@@ -48,12 +48,7 @@ export default function UserNavBar() {
                     variant={'link'}
                     cursor={'pointer'}
                   >
-                    <Avatar
-                      size={'sm'}
-                      src={
-                        'https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9'
-                      }
-                    />
+                    <Avatar size={'sm'} src={''} />
                   </MenuButton>
                   <MenuList>
                     <Link to="/user/profile">

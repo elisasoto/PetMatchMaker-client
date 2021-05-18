@@ -3,7 +3,9 @@ import { BASE_URL } from '../constants/';
 
 export const getUserProfile = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/users/profile`);
+    const response = await axios.get(`${BASE_URL}/users/profile`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {
@@ -14,8 +16,11 @@ export const getUserProfile = async () => {
 
 export const getPetList = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/users/pets`);
+    const response = await axios.get(`${BASE_URL}/users/pets?page=`, {
+      withCredentials: true
+    });
 
+    console.log('i am the api response', response.data.data);
     return response.data.data;
   } catch (error) {
     console.log(error);
@@ -25,7 +30,9 @@ export const getPetList = async () => {
 
 export const getUsersLikes = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/users/myLikes`);
+    const response = await axios.get(`${BASE_URL}/users/myLikes`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {
@@ -36,7 +43,9 @@ export const getUsersLikes = async () => {
 
 export const getPetDetails = async (id) => {
   try {
-    const response = await axios.get(`${BASE_URL}/users/pet/${id}`);
+    const response = await axios.get(`${BASE_URL}/users/pet/${id}`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {
@@ -47,7 +56,9 @@ export const getPetDetails = async (id) => {
 
 export const putUserLikes = async (id) => {
   try {
-    const response = await axios.put(`${BASE_URL}/users/likes/${id}`);
+    const response = await axios.put(`${BASE_URL}/users/likes/${id}`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {
@@ -58,7 +69,9 @@ export const putUserLikes = async (id) => {
 
 export const putUserDislikes = async (id) => {
   try {
-    const response = await axios.put(`${BASE_URL}/users/deslikes/${id}`);
+    const response = await axios.put(`${BASE_URL}/users/deslikes/${id}`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {

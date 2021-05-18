@@ -2,6 +2,19 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:4000/api';
 
+export const getShortProfile = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/auth/short-profile`, {
+      withCredentials: true
+    });
+
+    return response.data.data;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
 export async function postLoginAdopter(email, password) {
   const res = await axios.post(
     `${API_URL}/auth/login/user`,
