@@ -21,7 +21,7 @@ export default function UserHome() {
 
   return (
     <>
-      <UserNavBar img={'hola'} />
+      <UserNavBar img={''} />
       <Box pos="relative" d="flex" alignItems="center" ml={4} pt={16}>
         <SwipeCardsList petList={petList} />
       </Box>

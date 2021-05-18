@@ -17,13 +17,26 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { sizer } from '../../constants/sizer';
 
-export default function Cards({ name, age, weight, img, breed }) {
+export default function Cards({
+  isActive,
+  onLeftScreen,
+  name,
+  age,
+  weight,
+  img,
+  breed
+}) {
+  console.log(isActive);
   return (
     <TinderCard
-      className="swipe"
+      className={`swipe ${isActive ? 'active' : ''}`}
       preventSwipe={['up', 'down']}
       onSwipe={(direction) => {
         console.log(direction);
+      }}
+      onCardLeftScreen={(a, b, c) => {
+        console.log(a, b, c);
+        onLeftScreen();
       }}
       flickOnSwipe={true}
     >
@@ -110,6 +123,7 @@ export default function Cards({ name, age, weight, img, breed }) {
           <Flex>
             <Box p="2">
               <IconButton
+                onTouchStart={() => console.log('hello!')}
                 aria-label="Call Segun"
                 size="lg"
                 icon={<CloseIcon color="red" />}
@@ -122,6 +136,7 @@ export default function Cards({ name, age, weight, img, breed }) {
             <Spacer />
             <Box p="2">
               <IconButton
+                onTouchStart={() => console.log('hello!')}
                 aria-label="Call Segun"
                 size="lg"
                 icon={<AddIcon color="green.400" />}
@@ -134,6 +149,7 @@ export default function Cards({ name, age, weight, img, breed }) {
             <Spacer />
             <Box p="2">
               <IconButton
+                onTouchStart={() => alert('function to like!!')}
                 aria-label="Call Segun"
                 size="lg"
                 icon={<FontAwesomeIcon icon={faHeart} color="#0bc5ea" />}

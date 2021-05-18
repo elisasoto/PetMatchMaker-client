@@ -34,7 +34,7 @@ export default function UserProfilePage() {
             Close
           </Box>
         </Link>
-        <UserProfile profile={profile} />
+        {profile ? <UserProfile profile={profile} /> : null}
         <Link href="/user/edit">
           <Button size="sm" colorScheme="cyan" type="submit">
             Add / Edit Info

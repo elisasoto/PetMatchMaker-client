@@ -24,7 +24,7 @@ import LogoImg from '../../assets/petmatchmaker.png';
 
 export default function UserNavBar() {
   const { logout, user } = useContext(UserContext);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onOpen, onClose } = useDisclosure();
 
   const history = useHistory();
   console.log('i am the user', user);

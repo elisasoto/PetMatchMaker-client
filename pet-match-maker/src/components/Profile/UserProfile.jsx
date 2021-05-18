@@ -25,6 +25,7 @@ import {
 import './Profile.scss';
 
 export default function UserProfle({ profile }) {
+  console.log(profile);
   return (
     <Center py={6}>
       <Box
