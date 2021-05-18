@@ -1,10 +1,24 @@
+import { useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Box, Button, IconButton, Link } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 
+import { UserContext } from '..//context/User';
+import { getUserProfile } from '../services/user';
 import UserProfile from '../components/Profile/UserProfile';
 import UserNavBar from '../components/Navbar/UserNavBar';
 
 export default function UserProfilePage() {
+  const { user } = useContext(UserContext);
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      getUserProfile().then((res) => {
+        setProfile(res);
+      });
+    }
+  }, []);
   return (
     <>
       <UserNavBar />
@@ -20,10 +34,10 @@ export default function UserProfilePage() {
             Close
           </Box>
         </Link>
-        <UserProfile />
+        <UserProfile profile={profile} />
         <Link href="/user/edit">
           <Button size="sm" colorScheme="cyan" type="submit">
-            Edit My Info
+            Add / Edit Info
           </Button>
         </Link>
       </Box>

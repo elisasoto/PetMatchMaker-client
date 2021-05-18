@@ -48,7 +48,7 @@ export default function UserNavBar() {
                     variant={'link'}
                     cursor={'pointer'}
                   >
-                    <Avatar size={'sm'} src={''} />
+                    <Avatar size={'sm'} src={user.img} />
                   </MenuButton>
                   <MenuList>
                     <Link to="/user/profile">
