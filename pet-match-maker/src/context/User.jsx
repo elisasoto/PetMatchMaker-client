@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import {
+  getShortProfile,
   postLoginAdopter,
   postLoginShelter,
   postAdopterRegister,
@@ -12,6 +13,19 @@ export const UserContext = React.createContext(null);
 
 export function useUser() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getShortProfile()
+      .then((id) => {
+        if (id) {
+          setUser({ id });
+        }
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
 
   async function adopterLogin({ email, password }) {
     postLoginAdopter(email, password).then((userData) => {
@@ -45,6 +59,7 @@ export function useUser() {
     adopterRegister,
     shelterLogin,
     shelterRegister,
-    logout
+    logout,
+    loading
   };
 }
