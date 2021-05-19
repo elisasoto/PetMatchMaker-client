@@ -20,7 +20,6 @@ export const getPetList = async () => {
       withCredentials: true
     });
 
-    console.log('i am the api response', response.data.data);
     return response.data.data;
   } catch (error) {
     console.log(error);

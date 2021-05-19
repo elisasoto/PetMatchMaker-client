@@ -29,17 +29,17 @@ function App() {
       <CSSReset />
       <UserContext.Provider value={userContextData}>
         <UserNavBar />
+        <Route exact path="/">
+          <Init />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/signup">
+          <SignUp />
+        </Route>
         <Container>
           <Switch>
-            <Route exact path="/">
-              <Init />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/signup">
-              <SignUp />
-            </Route>
             <Route exact path="/user/home">
               <WithAuthentication>
                 <UserHome />
@@ -77,28 +77,44 @@ function App() {
         <Container>
           <Switch>
             <Route exact path="/shelter/home">
-              <ShelterHome />
+              <WithAuthentication>
+                <ShelterHome />
+              </WithAuthentication>
             </Route>
             <Route exact path="/shelter/profile">
-              <ShelterProfile />
+              <WithAuthentication>
+                <ShelterProfile />
+              </WithAuthentication>
             </Route>
             <Route exact path="/shelter/edit">
-              <ShelterEditProfile />
+              <WithAuthentication>
+                <ShelterEditProfile />
+              </WithAuthentication>
             </Route>
             <Route exact path="/pet/register">
-              <PetRegister />
+              <WithAuthentication>
+                <PetRegister />
+              </WithAuthentication>
             </Route>
             <Route exact path="/pet/details">
-              <ShelterPetDetails />
+              <WithAuthentication>
+                <ShelterPetDetails />
+              </WithAuthentication>
             </Route>
             <Route exact path="/pet/edit">
-              <ShelterPetEdit />
+              <WithAuthentication>
+                <ShelterPetEdit />
+              </WithAuthentication>
             </Route>
             <Route exact path="/adopter/details">
-              <PotentialAdopterDetails />
+              <WithAuthentication>
+                <PotentialAdopterDetails />
+              </WithAuthentication>
             </Route>
             <Route exact path="/pet/likes">
-              <PetLikesPage />
+              <WithAuthentication>
+                <PetLikesPage />
+              </WithAuthentication>
             </Route>
           </Switch>
         </Container>

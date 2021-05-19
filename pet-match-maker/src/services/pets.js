@@ -35,7 +35,9 @@ export const putPetEdit = async (formData, id) => {
 
 export const getPetList = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/pets`);
+    const response = await axios.get(`${BASE_URL}/pets`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {
@@ -46,7 +48,9 @@ export const getPetList = async () => {
 
 export const getSinglePet = async (id) => {
   try {
-    const response = await axios.get(`${BASE_URL}/pets${id}`);
+    const response = await axios.get(`${BASE_URL}/pets${id}`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {
@@ -57,7 +61,9 @@ export const getSinglePet = async (id) => {
 
 export const getPetLikes = async (id) => {
   try {
-    const response = await axios.get(`${BASE_URL}/pets/likes/${id}`);
+    const response = await axios.get(`${BASE_URL}/pets/likes/${id}`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {
@@ -68,7 +74,9 @@ export const getPetLikes = async (id) => {
 
 export const putDeleteSinglePet = async (id) => {
   try {
-    const response = await axios.put(`${BASE_URL}/pets/delete/${id}`);
+    const response = await axios.put(`${BASE_URL}/pets/delete/${id}`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {
@@ -79,7 +87,9 @@ export const putDeleteSinglePet = async (id) => {
 
 export const getUserFromPetLikes = async (id) => {
   try {
-    const response = await axios.put(`${BASE_URL}/pets/user/${id}`);
+    const response = await axios.put(`${BASE_URL}/pets/user/${id}`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {
