@@ -3,10 +3,9 @@ import { useState, useEffect } from 'react';
 import { Box, Button, IconButton, Link } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 
-import { UserContext } from '..//context/User';
+import { UserContext } from '../context/User';
 import { getUserProfile } from '../services/user';
 import UserProfile from '../components/Profile/UserProfile';
-import UserNavBar from '../components/Navbar/UserNavBar';
 
 export default function UserProfilePage() {
   const { user } = useContext(UserContext);
@@ -19,12 +18,12 @@ export default function UserProfilePage() {
       });
     }
   }, []);
+
   return (
     <>
-      <UserNavBar />
       <Box p={2} m={2}>
         <Link href="/user/home">
-          <Box p="2" textAlign={'right'}>
+          <Box p="2" textAlign="right">
             <IconButton
               aria-label="Call Segun"
               size="sm"

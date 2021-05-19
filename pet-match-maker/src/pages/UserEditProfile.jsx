@@ -1,14 +1,26 @@
+import { useContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Box } from '@chakra-ui/react';
 
+import { UserContext } from '../context/User';
+import { getUserProfile } from '../services/user';
 import UserEditInfo from '../components/Forms/UserRegisterForm/UserMoreInfo';
-import UserNavBar from '../components/Navbar/UserNavBar';
 
 export default function UserProfilePage() {
+  const { user } = useContext(UserContext);
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      getUserProfile().then((res) => {
+        setProfile(res);
+      });
+    }
+  }, []);
   return (
     <>
-      <UserNavBar />
       <Box p={2} m={2}>
-        <UserEditInfo />
+        {profile ? <UserEditInfo profile={profile} /> : null}
       </Box>
     </>
   );

@@ -1,7 +1,5 @@
-/*@TODO: this page is missing connecting with the user context and replace the mocked profile*/
-
 import React, { useState } from 'react';
-import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 
 import {
@@ -36,13 +34,14 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { errorMessage } from '../../../constants/formErrors';
 import { getFormData } from '../../../utils/formData';
-import { UserContext } from '../../../context/User';
-import { mockedProfile } from '../../../constants/mockers';
+import { putUserProfile } from '../../../services/user';
 import './moreInfo.scss';
 
-export default function UserMoreInfo() {
-  const { user } = useContext(UserContext);
+export default function UserMoreInfo({ profile }) {
   const [show, setShow] = useState(false);
+
+  const history = useHistory();
+
   const {
     handleSubmit,
     register,
@@ -50,16 +49,17 @@ export default function UserMoreInfo() {
     formState: { errors },
     watch
   } = useForm({
-    defaultValues: mockedProfile ? mockedProfile : {}
+    defaultValues: profile
   });
 
   const handleClick = () => setShow(!show);
 
-  const handleFormSubmit = (formValues) => {
+  const handleFormSubmit = async (formValues) => {
     console.log(formValues);
     const { img, ...restvalues } = formValues;
     const formData = getFormData('img', img, restvalues);
-    console.log(formData);
+    await putUserProfile(formData);
+    await history.push('/user/profile');
   };
 
   const [about, motivations, ammenities] = watch([
@@ -92,11 +92,11 @@ export default function UserMoreInfo() {
             <WrapItem p={2}>
               <Avatar
                 size="md"
-                name="Prosper Otemuyiwa"
-                src="http://placeimg.com/640/480/animals"
+                name={`${profile.name}`}
+                src={`${profile.img}`}
               />
               <input
-                type="file"
+                type="hidden" // https://spectrum.chat/react-hook-form/help/invalidstateerror-failed-to-set-the-value-property-on-htmlinputelement-this-input-element-accepts-a-filename-which-may-only-be-programmatically-set-to-the-empty-string~0960a16b-db07-4b53-a6b7-580d3de67403
                 id="img"
                 name="img"
                 accept="image/png,image/gif,image/jpeg"
@@ -191,7 +191,7 @@ export default function UserMoreInfo() {
                 id="password"
                 name="password"
                 {...register('password', {
-                  minLength: 6,
+                  minLength: 0,
                   maxLength: 20
                 })}
               />
@@ -252,7 +252,7 @@ export default function UserMoreInfo() {
                 placeholder="Tell us about you: work, hobbies, personality, family. Any relevant information for the Shelter to contrast with the pet you liked."
                 {...register('about', {
                   maxLength: 240,
-                  minLength: 50
+                  minLength: 20
                 })}
               />
               <p>
@@ -278,7 +278,7 @@ export default function UserMoreInfo() {
                 placeholder="Tell us why do you want to adopt a pet?"
                 {...register('motivations', {
                   maxLength: 240,
-                  minLength: 50
+                  minLength: 20
                 })}
               />
               <p>
@@ -335,7 +335,7 @@ export default function UserMoreInfo() {
                 placeholder="Big park 1km away, agility gym nearby..."
                 {...register('ammenities', {
                   maxLength: 240,
-                  minLength: 30
+                  minLength: 20
                 })}
               />
               <p>

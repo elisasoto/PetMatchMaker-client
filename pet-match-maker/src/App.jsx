@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import { UserContext, useUser } from './context/User';
-import { ChakraProvider, CSSReset, Box, Container } from '@chakra-ui/react';
+import { ChakraProvider, CSSReset, Container } from '@chakra-ui/react';
 
 import Init from './pages/Init';
 import Login from './pages/LoginPage';
@@ -28,93 +28,73 @@ function App() {
     <ChakraProvider>
       <CSSReset />
       <UserContext.Provider value={userContextData}>
+        <UserNavBar />
         <Container>
           <Switch>
             <Route exact path="/">
-              <Box>
-                <Init />
-              </Box>
+              <Init />
             </Route>
             <Route exact path="/login">
-              <Box>
-                <Login />
-              </Box>
+              <Login />
             </Route>
             <Route exact path="/signup">
-              <Box>
-                <SignUp />
-              </Box>
+              <SignUp />
             </Route>
             <Route exact path="/user/home">
-              <Box>
-                <WithAuthentication>
-                  <UserHome />
-                </WithAuthentication>
-              </Box>
+              <WithAuthentication>
+                <UserHome />
+              </WithAuthentication>
             </Route>
             <Route exact path="/user/profile">
-              <Box>
-                <WithAuthentication>
-                  <UserProfile />
-                </WithAuthentication>
-              </Box>
+              <WithAuthentication>
+                <UserProfile />
+              </WithAuthentication>
             </Route>
             <Route exact path="/user/edit">
-              <Box>
+              <WithAuthentication>
                 <UserEditProfile />
-              </Box>
+              </WithAuthentication>
             </Route>
             <Route exact path="/user/likes">
-              <Box>
+              <WithAuthentication>
                 <UserLikes />
-              </Box>
+              </WithAuthentication>
             </Route>
             <Route exact path="/user/likes/pet">
               {/**this should be :petId */}
-
-              <Box>
+              <WithAuthentication>
                 <UserDetailedPet />
-              </Box>
+              </WithAuthentication>
             </Route>
+          </Switch>
+        </Container>
+      </UserContext.Provider>
+      <UserContext.Provider value={userContextData}>
+        <Container>
+          <Switch>
             <Route exact path="/shelter/home">
-              <Box>
-                <ShelterHome />
-              </Box>
+              <ShelterHome />
             </Route>
             <Route exact path="/shelter/profile">
-              <Box>
-                <ShelterProfile />
-              </Box>
+              <ShelterProfile />
             </Route>
             <Route exact path="/shelter/edit">
-              <Box>
-                <ShelterEditProfile />
-              </Box>
+              <ShelterEditProfile />
             </Route>
             <Route exact path="/pet/register">
-              <Box>
-                <PetRegister />
-              </Box>
+              <PetRegister />
             </Route>
             <Route exact path="/pet/details">
-              <Box>
-                <ShelterPetDetails />
-              </Box>
+              <ShelterPetDetails />
             </Route>
             <Route exact path="/pet/edit">
-              <Box>
-                <ShelterPetEdit />
-              </Box>
+              <ShelterPetEdit />
             </Route>
             <Route exact path="/adopter/details">
-              <Box>
-                <PotentialAdopterDetails />
-              </Box>
+              <PotentialAdopterDetails />
             </Route>
             <Route exact path="/pet/likes">
-              <Box>
-                <PetLikesPage />
-              </Box>
+              <PetLikesPage />
             </Route>
           </Switch>
         </Container>
