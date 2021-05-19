@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import {
   Avatar,
   Box,
@@ -10,15 +11,10 @@ import {
 } from '@chakra-ui/react';
 import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 
-export default function PetCard({
-  onClick,
-  img,
-  name,
-  status,
-  age,
-  likes,
-  breed
-}) {
+export default function PetCard({ img, name, status, age, likes, breed, _id }) {
+  const handleRemove = () => {
+    alert('I will be a function');
+  };
   const available = status === 'Available' ? 'green' : 'red';
   return (
     <Box
@@ -30,14 +26,15 @@ export default function PetCard({
       pt={1}
       pb={1}
       d="flex"
-      alignItems={'center'}
+      alignItems="center"
+      boxShadow="5px 10px 15px lightgray"
     >
       <Avatar
-        size={'md'}
+        size="md"
         src={`${img}`}
         alt={`${name}`}
         mb={2}
-        pos={'relative'}
+        pos="relative"
         _after={{
           content: '""'
         }}
@@ -47,9 +44,9 @@ export default function PetCard({
           <Badge
             px={2}
             py={1}
-            borderRadius={'full'}
+            borderRadius="full"
             bg={useColorModeValue(`${available}.300`, `${available}.200`)}
-            fontWeight={'400'}
+            fontWeight="400"
           >
             {`${status}`}
           </Badge>
@@ -83,15 +80,14 @@ export default function PetCard({
       </Box>
       <Flex direction="column">
         <Box p="2">
-          <IconButton
-            aria-label="Call Segun"
-            size="sm"
-            icon={<AddIcon color="gray.500" />}
-            isRound="true"
-            onClick={() =>
-              alert('click!')
-            } /**{ @TODO: se hace llamada a profile del pet }*/
-          />
+          <Link to={`/user/likes/${_id}`}>
+            <IconButton
+              aria-label="Call Segun"
+              size="sm"
+              icon={<AddIcon color="gray.500" />}
+              isRound="true"
+            />
+          </Link>
         </Box>
         <Spacer />
         <Box p="2">
@@ -100,9 +96,7 @@ export default function PetCard({
             size="sm"
             icon={<CloseIcon color="red.500" />}
             isRound="true"
-            onClick={
-              onClick
-            } /**{ @TODO: si es shelter se elimina del array, si es user se va a deslikes }*/
+            onClick={handleRemove}
           />
         </Box>
       </Flex>

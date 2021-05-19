@@ -60,8 +60,12 @@ function App() {
                 <UserLikes />
               </WithAuthentication>
             </Route>
-            <Route exact path="/user/likes/pet">
-              {/**this should be :petId */}
+            <Route exact path="/user/likes/:petId">
+              <WithAuthentication>
+                <UserDetailedPet />
+              </WithAuthentication>
+            </Route>
+            <Route exact path="/details/:petId">
               <WithAuthentication>
                 <UserDetailedPet />
               </WithAuthentication>

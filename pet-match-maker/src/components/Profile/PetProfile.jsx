@@ -6,8 +6,6 @@ import {
   Heading,
   Avatar,
   Box,
-  Flex,
-  Spacer,
   Link,
   Center,
   Text,
@@ -18,18 +16,12 @@ import {
   Badge,
   useColorModeValue
 } from '@chakra-ui/react';
-import {
-  EmailIcon,
-  PhoneIcon,
-  CloseIcon,
-  SmallCloseIcon
-} from '@chakra-ui/icons';
+import { EmailIcon, PhoneIcon, SmallCloseIcon } from '@chakra-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBalanceScale,
   faBirthdayCake,
   faDog,
-  faHeart,
   faHome,
   faThumbsUp
 } from '@fortawesome/free-solid-svg-icons';
@@ -41,11 +33,11 @@ export default function PetProfile({ pet }) {
     <Center>
       <Box
         bg={useColorModeValue('white', 'gray.900')}
-        rounded={'lg'}
-        textAlign={'center'}
+        rounded="lg"
+        textAlign="center"
       >
-        <Link href="/user/home">
-          <Box p="2" textAlign={'right'}>
+        <Link href="/user/likes">
+          <Box p="2" textAlign="right">
             <IconButton
               aria-label="Call Segun"
               size="sm"
@@ -56,16 +48,16 @@ export default function PetProfile({ pet }) {
           </Box>
         </Link>
         <Avatar
-          size={'xl'}
+          size="xl"
           src={`${pet.img}`}
           alt={`${pet.name}`}
           mb={2}
-          pos={'relative'}
+          pos="relative"
           _after={{
             content: '""'
           }}
         />
-        <Stack align={'center'} justify={'center'} direction={'row'}>
+        <Stack align="center" justify="center">
           <Badge
             px={2}
             py={1}
@@ -75,28 +67,30 @@ export default function PetProfile({ pet }) {
             {`${pet.status}`}
           </Badge>
         </Stack>
-        <Heading fontSize={'2xl'} fontFamily={'body'}>
+        <Heading fontSize="2rem" fontFamily="body">
           {capitalize(pet.name)}
         </Heading>
-        <Text fontWeight={600} color={'gray.500'} mb={2}>
+        <Text fontWeight={600} color="gray.500" mb={2}>
           {`${pet.breed}`}
         </Text>
         <Text
-          textAlign={'center'}
-          fontSize={'10px'}
-          fontFamily={'body'}
+          textAlign="center"
+          fontSize="1rem"
+          fontFamily="body"
           color={useColorModeValue('gray.700', 'gray.400')}
           px={1}
         >
           <FontAwesomeIcon icon={faThumbsUp} color="#ACDEB2" className="icon" />
-          {`${pet.likes.length} people are sinterested in me!`}
+          {pet.likes.length === undefined
+            ? `0 people interested in me, be the first!`
+            : `${pet.likes.length} adopter(s) interested in me!`}
         </Text>
         <Box
           bg={useColorModeValue('gray.50', 'gray.900')}
           px={3}
           py={2}
           mb={4}
-          textAlign={'left'}
+          textAlign="left"
         >
           <List spacing={2}>
             <ListItem>
@@ -136,7 +130,7 @@ export default function PetProfile({ pet }) {
           borderWidth="1px"
           borderRadius="lg"
           overflow="hidden"
-          textAlign={'center'}
+          textAlign="center"
         >
           <Text fontSize="15px" color="cyan.400">
             If you want to visit me right away please contact my Shelter!
@@ -154,31 +148,6 @@ export default function PetProfile({ pet }) {
             </Text>
           </Link>
         </Box>
-        <Flex>
-          <Box p="2">
-            <IconButton
-              aria-label="Call Segun"
-              size="lg"
-              icon={<CloseIcon color="red" />}
-              isRound="true"
-              onClick={() =>
-                alert('llamada a dislikes')
-              } /**{ @TODO: aqui se hace otra llamada a axios para los deslikes y al finalizar cierra la ventana }*/
-            />
-          </Box>
-          <Spacer />
-          <Box p="2">
-            <IconButton
-              aria-label="Call Segun"
-              size="lg"
-              icon={<FontAwesomeIcon icon={faHeart} color="#0bc5ea" />}
-              isRound="true"
-              onClick={() =>
-                alert('llamada a likes!')
-              } /**{ @TODO: aqui se hace otra llamada a axios para los likes y al finalizar cierra la ventana para seguir eligiendo }*/
-            />
-          </Box>
-        </Flex>
       </Box>
     </Center>
   );
