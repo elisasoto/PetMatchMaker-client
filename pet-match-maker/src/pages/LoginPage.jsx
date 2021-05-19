@@ -8,14 +8,14 @@ import Footer from '../components/Footer/Footer';
 
 export default function LoginPage() {
   return (
-    <Container maxW={'7xl'}>
-      <Box flex={1} align={'center'}>
+    <Container maxW="100%">
+      <Box flex={1} align="center">
         <Link to="/">
           <Logo picture={LogoImg} alt={LogoImg} />
         </Link>
       </Box>
       <Stack
-        align={'center'}
+        align="center"
         spacing={{ base: 2, md: 5 }}
         py={{ base: 2, md: 15 }}
       >
@@ -23,11 +23,11 @@ export default function LoginPage() {
           <Heading
             lineHeight={1.1}
             fontWeight={600}
-            fontSize={{ base: '2xl', sm: '6xl', lg: '10xl' }}
+            fontSize={{ base: '2rem', sm: '1rem', lg: '3rem' }}
           >
             <Text
-              as={'span'}
-              position={'relative'}
+              as="span"
+              position="relative"
               _after={{
                 content: "''",
                 width: 'full',
@@ -42,7 +42,7 @@ export default function LoginPage() {
               Welcome!
             </Text>
             <br />
-            <Text as={'span'} color={'cyan.400'}>
+            <Text as="span" color="cyan.400">
               Thanks for visiting us
             </Text>
           </Heading>
@@ -50,7 +50,7 @@ export default function LoginPage() {
         </Stack>
         <Text color={'grey.400'}>Not yet a Member?</Text>
         <Link to="/signup">
-          <Text color={'cyan.400'} mb={10}>
+          <Text color="cyan.400" mb={10}>
             SignUp in here!
           </Text>
         </Link>

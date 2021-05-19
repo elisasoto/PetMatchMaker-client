@@ -7,7 +7,6 @@ import { useState, useEffect } from 'react';
 import { mockedPet } from '../constants/mockers';
 import { Box } from '@chakra-ui/react';
 
-import UserNavBar from '../components/Navbar/UserNavBar';
 import PetProfile from '../components/Profile/PetProfile';
 
 export default function UserLikes() {
@@ -23,7 +22,6 @@ export default function UserLikes() {
 
   return (
     <>
-      <UserNavBar />
       <Box p={2} m={2}>
         <PetProfile pet={pet} />
       </Box>

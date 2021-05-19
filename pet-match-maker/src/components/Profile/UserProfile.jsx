@@ -24,36 +24,35 @@ import {
 
 import './Profile.scss';
 
-export default function UserProfle({ profile }) {
-  console.log(profile);
+export default function UserProfile({ profile }) {
   return (
     <Center py={6}>
       <Box
         bg={useColorModeValue('white', 'gray.900')}
-        rounded={'lg'}
-        textAlign={'center'}
+        rounded="lg"
+        textAlign="center"
       >
         <Avatar
-          size={'xl'}
+          size="xl"
           src={`${profile.img}`}
           alt={`${profile.name}`}
           mb={2}
-          pos={'relative'}
+          pos="relative"
           _after={{
             content: '""'
           }}
         />
-        <Heading fontSize={'2xl'} fontFamily={'body'}>
+        <Heading fontSize="25px" fontFamily="body">
           {capitalize(profile.name)} {capitalize(profile.surname)}
         </Heading>
-        <Text fontWeight={600} color={'gray.500'}>
+        <Text fontWeight={600} color="gray.500">
           {capitalize(profile.city)}, {capitalize(profile.country)}
         </Text>
-        <Text fontWeight={600} color={'gray.500'} mb={4}>
+        <Text fontWeight={600} color="gray.500" mb={4}>
           {`${profile.age} Years old`}
         </Text>
         <Text
-          textAlign={'center'}
+          textAlign="center"
           color={useColorModeValue('gray.700', 'gray.400')}
           px={3}
           mb={4}
@@ -62,16 +61,18 @@ export default function UserProfle({ profile }) {
         </Text>
         <FormLabel>My motivations to adopt a Pet are: </FormLabel>
         <Text
-          textAlign={'center'}
+          textAlign="center"
           color={useColorModeValue('gray.700', 'gray.400')}
           px={3}
           mb={4}
         >
-          {profile.motivations}
+          {profile.motivations
+            ? profile.motivations
+            : 'User must provide motivations'}
         </Text>
         <FormLabel>I am looking for: </FormLabel>
         <Text
-          textAlign={'left'}
+          textAlign="left"
           color={useColorModeValue('gray.700', 'gray.400')}
           px={3}
           mb={4}
@@ -87,9 +88,9 @@ export default function UserProfle({ profile }) {
           px={3}
           py={2}
           mb={4}
-          textAlign={'left'}
+          textAlign="left"
         >
-          <Text fontWeight={600} color={'gray.500'} mb={4}>
+          <Text fontWeight={600} color="gray.500" mb={4}>
             My plan for the pet:
           </Text>
           <List spacing={2}>
@@ -145,7 +146,7 @@ export default function UserProfle({ profile }) {
           borderWidth="1px"
           borderRadius="lg"
           overflow="hidden"
-          textAlign={'center'}
+          textAlign="center"
         >
           <Text fontSize="15px" color="cyan.400">
             If you think I am a good fit for this pet please contact me!

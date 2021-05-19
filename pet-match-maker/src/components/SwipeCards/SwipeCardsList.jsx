@@ -1,4 +1,4 @@
-import { Box, Stack } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 
 import SwipeCard from '../SwipeCards/SwipeCard';
