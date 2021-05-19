@@ -9,7 +9,6 @@ import { getPetList } from '../services/user';
 export default function UserHome() {
   const { user } = useContext(UserContext);
   const [petList, setPetList] = useState([]);
-  console.log(petList);
 
   useEffect(() => {
     if (user) {
@@ -49,8 +48,10 @@ export default function UserHome() {
           </Text>
         </Heading>
         <Text as="span" color="cyan.400">
-          Right swipe and 💙 to like a pet; Left swipe or ❌ to dislike it and
-          ➕to see more info about a specific pet.
+          💙 to like a pet or ❌ to dislike it.
+        </Text>
+        <Text as="span" color="cyan.400">
+          ➕ to see more info about a specific pet.
         </Text>
       </Stack>
       <Box pos="relative" d="flex" alignItems="center" ml={4} pt={6}>

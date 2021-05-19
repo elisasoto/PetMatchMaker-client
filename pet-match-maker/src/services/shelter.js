@@ -3,7 +3,9 @@ import { BASE_URL } from '../constants/';
 
 export const getShelterProfile = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/shelters/profile`);
+    const response = await axios.get(`${BASE_URL}/shelters/profile`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {
@@ -14,7 +16,9 @@ export const getShelterProfile = async () => {
 
 export const putShelterProfile = async () => {
   try {
-    const response = await axios.put(`${BASE_URL}/shelters/edit}`);
+    const response = await axios.put(`${BASE_URL}/shelters/edit}`, {
+      withCredentials: true
+    });
 
     return response.data.data;
   } catch (error) {

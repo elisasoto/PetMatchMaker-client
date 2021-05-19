@@ -30,17 +30,21 @@ export async function postLoginAdopter(email, password) {
 }
 
 export async function postLoginShelter(email, password) {
-  const res = await axios.post(
-    `${API_URL}/auth/login/shelter`,
-    {
-      email,
-      password
-    },
+  try {
+    const res = await axios.post(
+      `${API_URL}/auth/login/shelter`,
+      {
+        email,
+        password
+      },
 
-    { withCredentials: true }
-  );
+      { withCredentials: true }
+    );
 
-  return res.data.data;
+    return res.data.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function postAdopterRegister(body) {

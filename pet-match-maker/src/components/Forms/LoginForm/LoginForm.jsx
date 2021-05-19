@@ -21,6 +21,7 @@ import { errorMessage } from '../../../constants/formErrors';
 
 export default function LoginForm() {
   const { adopterLogin, shelterLogin } = useContext(UserContext);
+
   const [show, setShow] = React.useState(false);
   const [isUser, setIsUser] = React.useState(1);
   const handleClick = () => setShow(!show);
@@ -34,12 +35,16 @@ export default function LoginForm() {
   } = useForm();
 
   const handleFormSubmit = async (formValues) => {
-    if (isUser) {
-      await adopterLogin(formValues);
-      await history.push('/user/home');
-    } else {
-      await shelterLogin(formValues);
-      await history.push('/shelter/home');
+    try {
+      if (isUser) {
+        await adopterLogin(formValues);
+        await history.push('/user/home');
+      } else {
+        await shelterLogin(formValues);
+        await history.push('/shelter/home');
+      }
+    } catch (error) {
+      console.log('i am the erro', error);
     }
   };
 

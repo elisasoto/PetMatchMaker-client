@@ -25,7 +25,7 @@ import LogoImg from '../../assets/petmatchmaker.png';
 import './styles.scss';
 
 export default function UserNavBar() {
-  const { logout } = useContext(UserContext);
+  const { logout, user } = useContext(UserContext);
   // const [profile, setProfile] = useState(null);
 
   const history = useHistory();
@@ -62,7 +62,7 @@ export default function UserNavBar() {
                     variant="link"
                     cursor="pointer"
                   >
-                    <Avatar size="sm" name="" />
+                    <Avatar size="sm" name="" /> {/*src={`${user.img}`}*/}
                   </MenuButton>
                   <MenuList>
                     <Link to="/user/profile">

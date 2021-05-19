@@ -18,7 +18,7 @@ export default function PetCard({ img, name, status, age, likes, breed, _id }) {
   const available = status === 'Available' ? 'green' : 'red';
   return (
     <Box
-      w="fit-content"
+      w="300px"
       borderWidth="1px"
       borderRadius="lg"
       overflow="hidden"
@@ -78,7 +78,7 @@ export default function PetCard({ img, name, status, age, likes, breed, _id }) {
           </Box>
         </Box>
       </Box>
-      <Flex direction="column">
+      <Flex direction="column" justifyContent="right" pl={4}>
         <Box p="2">
           <Link to={`/user/likes/${_id}`}>
             <IconButton
