@@ -20,14 +20,14 @@ export default function AdopterCard({
       pt={1}
       pb={1}
       d="flex"
-      alignItems={'center'}
+      alignItems="center"
     >
       <Avatar
         size={'md'}
         src={`${img}`}
         alt={`${name}`}
         mb={2}
-        pos={'relative'}
+        pos="relative"
         _after={{
           content: '""'
         }}

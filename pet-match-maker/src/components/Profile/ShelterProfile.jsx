@@ -29,15 +29,15 @@ export default function ShelterProfile() {
   return (
     <Center py={6}>
       <Box
-        maxW={'330px'}
-        w={'full'}
+        maxW="330px"
+        w="full"
         bg={useColorModeValue('white', 'gray.800')}
-        boxShadow={'2xl'}
-        rounded={'md'}
-        overflow={'hidden'}
+        boxShadow="5px 10px 15px lightgray"
+        rounded="md"
+        overflow="hidden"
       >
         <Link href="/shelter/home">
-          <Box p="2" textAlign={'right'}>
+          <Box p="2" textAlign="right">
             <IconButton
               aria-label="Call Segun"
               size="sm"
@@ -48,10 +48,10 @@ export default function ShelterProfile() {
           </Box>
         </Link>
         <Stack
-          textAlign={'center'}
+          textAlign="center"
           p={6}
           color={useColorModeValue('gray.800', 'white')}
-          align={'center'}
+          align="center"
         >
           <Text
             fontSize={'sm'}
@@ -59,13 +59,13 @@ export default function ShelterProfile() {
             bg={useColorModeValue('cyan.50', 'cyan.900')}
             p={2}
             px={3}
-            color={'grey.500'}
-            rounded={'full'}
+            color="grey.500"
+            rounded="full"
           >
-            Shelter Name
+            Your Shelter
           </Text>
-          <Stack direction={'row'} align={'center'} justify={'center'}>
-            <Text fontSize={'6xl'} fontWeight={800}>
+          <Stack direction="row" align="center" justify="center">
+            <Text fontSize="60px" fontWeight={800}>
               {capitalize(mocketShelter.name)}
             </Text>
           </Stack>
@@ -99,11 +99,11 @@ export default function ShelterProfile() {
           <Link href="/shelter/edit">
             <Button
               mt={10}
-              w={'full'}
-              bg={'cyan.400'}
-              color={'white'}
-              rounded={'xl'}
-              boxShadow={'0 5px 20px 0px rgb(10 116 111 / 43%)'}
+              w="full"
+              bg="cyan.400"
+              color="white"
+              rounded="10px"
+              boxShadow="5px 10px 15px lightgray"
               _hover={{
                 bg: 'cyan.500'
               }}
