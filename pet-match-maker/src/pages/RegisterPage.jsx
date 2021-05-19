@@ -11,14 +11,14 @@ import Footer from '../components/Footer/Footer';
 export default function RegisterPage() {
   const [isUser, setIsUser] = useState(1);
   return (
-    <Container maxW={'7xl'}>
-      <Box flex={1} align={'center'}>
+    <Container maxW="100%">
+      <Box flex={1} align="center">
         <Link to="/">
           <Logo picture={LogoImg} alt={LogoImg} />
         </Link>
       </Box>
       <Stack
-        align={'center'}
+        align="center"
         spacing={{ base: 2, md: 5 }}
         py={{ base: 2, md: 15 }}
       >
@@ -29,8 +29,8 @@ export default function RegisterPage() {
             fontSize={{ base: '2xl', sm: '6xl', lg: '10xl' }}
           >
             <Text
-              as={'span'}
-              position={'relative'}
+              as="span"
+              position="relative"
               _after={{
                 content: "''",
                 width: 'full',
@@ -45,7 +45,7 @@ export default function RegisterPage() {
               Welcome!
             </Text>
             <br />
-            <Text as={'span'} color={'cyan.400'}>
+            <Text as="span" color="cyan.400">
               Sign-Up today!
             </Text>
           </Heading>
@@ -53,7 +53,7 @@ export default function RegisterPage() {
             <Stack spacing={2}>
               <Text>
                 Start session as
-                <Text color={'cyan.400'} fontWeight={600}>
+                <Text color="cyan.400" fontWeight={600}>
                   {isUser ? 'Adopter' : 'Shelter'}
                 </Text>
               </Text>
@@ -71,7 +71,7 @@ export default function RegisterPage() {
         <Text color={'grey.400'}>
           Already a Member?
           <Link to="/login">
-            <Text color={'cyan.400'}>Login here!</Text>
+            <Text color="cyan.400">Login here!</Text>
           </Link>
         </Text>
       </Stack>

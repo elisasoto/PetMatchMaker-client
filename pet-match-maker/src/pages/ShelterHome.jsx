@@ -30,8 +30,8 @@ export default function ShelterHome() {
           fontSize={{ base: '2xl', sm: '6xl', lg: '10xl' }}
         >
           <Text
-            as={'span'}
-            position={'relative'}
+            as="span"
+            position="relative"
             _after={{
               content: "''",
               width: 'full',
@@ -46,7 +46,7 @@ export default function ShelterHome() {
             Your list of
           </Text>
           <br />
-          <Text as={'span'} color={'cyan.400'}>
+          <Text as="span" color="cyan.400">
             added Pets
           </Text>
         </Heading>
@@ -68,7 +68,7 @@ export default function ShelterHome() {
           p={2}
           m={2}
         >
-          <Text as={'span'} color={'cyan.400'}>
+          <Text as="span" color="cyan.400">
             Your added pets will display here
           </Text>
         </Heading>

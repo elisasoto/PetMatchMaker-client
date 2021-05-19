@@ -20,12 +20,12 @@ import Footer from '../components/Footer/Footer';
 
 export default function Init() {
   return (
-    <Container maxW={'7x1'}>
-      <Box flex={1} align={'center'}>
+    <Container maxW="100%">
+      <Box flex={1} align="center">
         <Logo picture={LogoImg} alt={LogoImg} />
       </Box>
       <Stack
-        align={'center'}
+        align="center"
         spacing={{ base: 2, md: 5 }}
         py={{ base: 2, md: 15 }}
         mb={12}
@@ -38,8 +38,8 @@ export default function Init() {
             fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}
           >
             <Text
-              as={'span'}
-              position={'relative'}
+              as="span"
+              position="relative"
               _after={{
                 content: "''",
                 width: 'full',
@@ -54,18 +54,18 @@ export default function Init() {
               Find true friendship,
             </Text>
             <br />
-            <Text as={'span'} color={'cyan.400'}>
+            <Text as="span" color="cyan.400">
               in a rescued pet
             </Text>
           </Heading>
-          <Text color={'gray.500'}>
+          <Text color="gray.500">
             Over 183,000 dogs and 123,000 cats where rescued by shelters in
             Spain during 2019.
           </Text>
-          <Text color={'cyan.500'} fontSize={'25px'}>
+          <Text color="cyan.500" fontSize="25px">
             Only 4 in every 10 get adopted
           </Text>
-          <Text color={'gray.500'}>
+          <Text color="gray.500">
             Petmatchmaker is a country level initiavie to ease the contact
             between lovely pets and responsible adopters to increase the
             adoption rate in Spain.
@@ -76,19 +76,19 @@ export default function Init() {
           >
             <Link to="/login">
               <Button
-                rounded={'full'}
-                size={'lg'}
-                fontWeight={'normal'}
+                rounded="full"
+                size="lg"
+                fontWeight="normal"
                 px={6}
-                colorScheme={'cyan'}
-                bg={'cyan.400'}
+                colorScheme="cyan"
+                bg="cyan.400"
                 _hover={{ bg: 'cyan.500' }}
               >
                 Login
               </Button>
             </Link>
             <Link to="/signup">
-              <Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
+              <Button rounded="full" size="lg" fontWeight="normal" px={6}>
                 SignUp
               </Button>
             </Link>
@@ -96,46 +96,46 @@ export default function Init() {
         </Stack>
         <Flex
           flex={1}
-          justify={'center'}
-          align={'center'}
-          position={'relative'}
-          w={'full'}
+          justify="center"
+          align="center"
+          position="relative"
+          w="full"
         >
           <Blob
-            w={'150%'}
-            h={'150%'}
-            position={'absolute'}
-            top={'-20%'}
+            w="150%"
+            h="150%"
+            position="absolute"
+            top="-20%"
             left={0}
             zIndex={-1}
             color={useColorModeValue('cyan.50', 'cyan.400')}
           />
           <Box
-            position={'relative'}
-            height={'300px'}
-            rounded={'2xl'}
-            boxShadow={'2xl'}
-            width={'full'}
-            overflow={'hidden'}
+            position="relative"
+            height="250px"
+            rounded="2rem"
+            boxShadow="2rem"
+            width="full"
+            overflow="hidden"
           >
             <IconButton
-              aria-label={'Play Button'}
-              variant={'ghost'}
+              aria-label="Play Button"
+              variant="ghost"
               _hover={{ bg: 'transparent' }}
               icon={<PlayIcon w={12} h={12} />}
-              size={'lg'}
-              color={'white'}
-              position={'absolute'}
-              left={'50%'}
-              top={'50%'}
-              transform={'translateX(-50%) translateY(-50%)'}
+              size="lg"
+              color="white"
+              position="absolute"
+              left="50%"
+              top="50%"
+              transform="translateX(-50%) translateY(-50%)"
             />
             <Image
-              alt={'Hero Image'}
-              fit={'cover'}
-              align={'center'}
-              w={'100%'}
-              h={'100%'}
+              alt="Hero Image"
+              fit="cover"
+              align="center"
+              w="100%"
+              h="100%"
               src={
                 'https://www.treehugger.com/thmb/MTNxBuuzg9HWBdt8J3YNfqq0UzE=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__mnn__images__2017__10__OlenaYakobchukshutter-62047f09b8af412181fe16124d619c0e.jpg'
               }
@@ -158,7 +158,7 @@ const PlayIcon = createIcon({
 export const Blob = (props) => {
   return (
     <Icon
-      width={'100%'}
+      width="100%"
       viewBox="0 0 578 440"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

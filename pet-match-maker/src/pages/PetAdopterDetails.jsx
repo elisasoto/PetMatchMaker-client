@@ -1,7 +1,7 @@
 import { Box, IconButton, Link } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 import ShelterNavBar from '../components/Navbar/ShelterNavBar';
-import UserProfile from '../components/Profile/UserProfile';
+import ShelterProfile from '../components/Profile/ShelterProfile';
 
 export default function PotentialAdopter() {
   //id de usuario con params, set adopter y pasar la info a UserProfile con props
@@ -10,7 +10,7 @@ export default function PotentialAdopter() {
       <ShelterNavBar />
       <Box p={2} m={2}>
         <Link href="/pet/likes">
-          <Box p="2" textAlign={'right'}>
+          <Box p="2" textAlign="right">
             <IconButton
               aria-label="Call Segun"
               size="sm"
@@ -20,7 +20,7 @@ export default function PotentialAdopter() {
             Close
           </Box>
         </Link>
-        <UserProfile />
+        <ShelterProfile />
       </Box>
     </>
   );

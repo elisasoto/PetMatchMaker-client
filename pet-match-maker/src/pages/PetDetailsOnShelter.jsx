@@ -11,7 +11,7 @@ import ShelterNavBar from '../components/Navbar/ShelterNavBar';
 import PetProfile from '../components/Profile/PetDetailsShelter';
 
 export default function UserLikes() {
-  const [pet, setPet] = useState(mockedPet); // falla porque en el primer render no hay nada. @TODO: REVISAR FUNCION y hacer asincrona + un loading
+  const [pet, setPet] = useState(mockedPet);
 
   // const [loading, setLoading] = useState(true);
 

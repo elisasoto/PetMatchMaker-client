@@ -13,14 +13,14 @@ export default function UserCard({ name, surname, img, age, city, country }) {
       pt={1}
       pb={1}
       d="flex"
-      alignItems={'center'}
+      alignItems="center"
     >
       <Avatar
-        size={'md'}
+        size="md"
         src={`${img}`}
         alt={`${name}`}
         mb={2}
-        pos={'relative'}
+        pos="relative"
         _after={{
           content: '""'
         }}

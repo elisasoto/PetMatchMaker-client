@@ -34,31 +34,29 @@ export default function PetProfileShelter({ pet }) {
     <Center>
       <Box
         bg={useColorModeValue('white', 'gray.900')}
-        rounded={'lg'}
-        textAlign={'center'}
+        rounded="lg"
+        textAlign="center"
       >
-        <Link href="/shelter/home">
-          <Box p="2" textAlign={'right'}>
-            <IconButton
-              aria-label="Call Segun"
-              size="sm"
-              colorScheme="whiteAlpha"
-              icon={<SmallCloseIcon color="black" />}
-            />
-            Close
-          </Box>
-        </Link>
+        <Box p="2" textAlign="right">
+          <IconButton
+            aria-label="Call Segun"
+            size="sm"
+            colorScheme="whiteAlpha"
+            icon={<SmallCloseIcon color="black" />}
+          />
+          Close
+        </Box>
         <Avatar
-          size={'xl'}
+          size="1rem"
           src={`${pet.img}`}
           alt={`${pet.name}`}
           mb={2}
-          pos={'relative'}
+          pos="relative"
           _after={{
             content: '""'
           }}
         />
-        <Stack align={'center'} justify={'center'} direction={'row'}>
+        <Stack align="center" justify="center" direction="row">
           <Badge
             px={2}
             py={1}
@@ -68,16 +66,16 @@ export default function PetProfileShelter({ pet }) {
             {`${pet.status}`}
           </Badge>
         </Stack>
-        <Heading fontSize={'2xl'} fontFamily={'body'}>
+        <Heading fontSize="2rem" fontFamily="body">
           {capitalize(pet.name)}
         </Heading>
-        <Text fontWeight={600} color={'gray.500'} mb={2}>
+        <Text fontWeight={600} color="gray.500" mb={2}>
           {`${pet.breed}`}
         </Text>
         <Text
-          textAlign={'center'}
-          fontSize={'18px'}
-          fontFamily={'body'}
+          textAlign="center"
+          fontSize="18px"
+          fontFamily="body"
           color={useColorModeValue('gray.700', 'gray.400')}
           px={1}
         >
@@ -89,7 +87,7 @@ export default function PetProfileShelter({ pet }) {
           px={3}
           py={2}
           mb={4}
-          textAlign={'left'}
+          textAlign="left"
         >
           <List spacing={2}>
             <ListItem>
@@ -128,19 +126,19 @@ export default function PetProfileShelter({ pet }) {
         >
           <Link href="/pet/edit">
             <Button
-              rounded={'full'}
-              size={'lg'}
-              fontWeight={'normal'}
+              rounded="full"
+              size="lg"
+              fontWeight="normal"
               px={6}
-              colorScheme={'cyan'}
-              bg={'cyan.400'}
+              colorScheme="cyan"
+              bg="cyan.400"
               _hover={{ bg: 'cyan.500' }}
             >
               Edit Info
             </Button>
           </Link>
           <Link href="/pet/likes">
-            <Button rounded={'full'} size={'lg'} fontWeight={'normal'} px={6}>
+            <Button rounded="full" size="lg" fontWeight="normal" px={6}>
               See Potential Adopters Info
             </Button>
           </Link>
