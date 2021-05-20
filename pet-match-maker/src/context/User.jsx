@@ -17,11 +17,7 @@ export function useUser() {
 
   useEffect(() => {
     getShortProfile()
-      .then((id) => {
-        if (id) {
-          setUser({ id });
-        }
-      })
+      .then((shortUser) => setUser(shortUser))
       .finally(() => {
         setLoading(false);
       });

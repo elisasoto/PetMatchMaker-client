@@ -26,7 +26,7 @@ import './styles.scss';
 
 export default function UserNavBar() {
   const { logout, user } = useContext(UserContext);
-  // const [profile, setProfile] = useState(null);
+  console.log(user);
 
   const history = useHistory();
   const handleClickLogout = async () => {
@@ -62,7 +62,7 @@ export default function UserNavBar() {
                     variant="link"
                     cursor="pointer"
                   >
-                    <Avatar size="sm" name="" /> {/*src={`${user.img}`}*/}
+                    <Avatar size="sm" name="" src={user?.img} />
                   </MenuButton>
                   <MenuList>
                     <Link to="/user/profile">
