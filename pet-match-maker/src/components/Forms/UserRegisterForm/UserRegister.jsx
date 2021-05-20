@@ -3,18 +3,18 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {
-  FormErrorMessage,
-  Stack,
   Box,
-  Input,
   Button,
-  InputGroup,
-  InputRightElement,
-  InputLeftElement,
-  InputLeftAddon,
-  FormLabel,
+  FormControl,
+  FormErrorMessage,
   FormHelperText,
-  FormControl
+  FormLabel,
+  Input,
+  InputGroup,
+  InputLeftAddon,
+  InputLeftElement,
+  InputRightElement,
+  Stack
 } from '@chakra-ui/react';
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -293,10 +293,17 @@ export default function UserRegister() {
             <p>{errorMessage.required}</p>
           ) : null}
         </FormErrorMessage>
+        <Button
+          mt={4}
+          w="100%"
+          colorScheme="cyan"
+          type="submit"
+          rounded="full"
+          boxShadow="5px 10px 15px lightgray"
+        >
+          Signup
+        </Button>
       </Stack>
-      <Button mt={4} colorScheme="cyan" type="submit">
-        SignUp
-      </Button>
     </form>
   );
 }

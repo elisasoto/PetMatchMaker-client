@@ -51,7 +51,7 @@ export default function LoginForm() {
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Stack spacing={2}>
-        <Text>
+        <Text as="span">
           Start session as
           <Text color={'cyan.400'} fontWeight={600}>
             {isUser ? 'Adopter' : 'Shelter'}
@@ -133,7 +133,14 @@ export default function LoginForm() {
         </FormControl>
       </Stack>
 
-      <Button mt={4} colorScheme="cyan" type="submit">
+      <Button
+        mt={4}
+        colorScheme="cyan"
+        type="submit"
+        w="100%"
+        rounded="full"
+        boxShadow="5px 10px 15px lightgray"
+      >
         Login
       </Button>
     </form>

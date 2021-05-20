@@ -52,15 +52,17 @@ export default function SmallWithSocial() {
         justify={{ base: 'center', md: 'space-between' }}
         align={{ base: 'center', md: 'center' }}
       >
-        <Text>© 2021 PetMatchMaker. All rights reserved</Text>
+        <Text>
+          © 2021 PetMatchMaker by Elisa Soto @TheBridge. All rights reserved
+        </Text>
         <Stack direction="row" spacing={6}>
-          <SocialButton label="Twitter" href={'#'}>
+          <SocialButton label="Instagram" href="#">
             <FontAwesomeIcon icon={faInstagram} />
           </SocialButton>
-          <SocialButton label="Youtube" href={'#'}>
+          <SocialButton label="Youtube" href="#">
             <FontAwesomeIcon icon={faTwitter} />
           </SocialButton>
-          <SocialButton label="Instagram" href={'#'}>
+          <SocialButton label="Instagram" href="#">
             <FontAwesomeIcon icon={faFacebook} />
           </SocialButton>
         </Stack>

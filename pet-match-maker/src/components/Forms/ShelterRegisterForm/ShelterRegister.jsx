@@ -260,7 +260,15 @@ export default function ShelterRegister() {
         </FormControl>
       </Stack>
 
-      <Button mt={4} colorScheme="cyan" type="submit">
+      <Button
+        m
+        mt={4}
+        w="100%"
+        colorScheme="cyan"
+        type="submit"
+        rounded="full"
+        boxShadow="5px 10px 15px lightgray"
+      >
         SignUp
       </Button>
     </form>
