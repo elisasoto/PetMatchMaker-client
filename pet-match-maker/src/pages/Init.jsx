@@ -16,7 +16,6 @@ import {
 
 import Logo from '../components/Navbar/Logo';
 import LogoImg from '../assets/petmatchmaker.png';
-import Footer from '../components/Footer/Footer';
 
 export default function Init() {
   return (
@@ -70,14 +69,13 @@ export default function Init() {
             between lovely pets and responsible adopters to increase the
             adoption rate in Spain.
           </Text>
-          <Stack
-            spacing={{ base: 4, sm: 6 }}
-            direction={{ base: 'row', sm: 'row' }}
-          >
+          <Stack spacing={{ base: 2, sm: 2 }}>
             <Link to="/login">
               <Button
                 rounded="full"
                 size="lg"
+                boxShadow="5px 10px 15px lightgray"
+                w="100%"
                 fontWeight="normal"
                 px={6}
                 colorScheme="cyan"
@@ -88,8 +86,18 @@ export default function Init() {
               </Button>
             </Link>
             <Link to="/signup">
-              <Button rounded="full" size="lg" fontWeight="normal" px={6}>
-                SignUp
+              <Button
+                rounded="full"
+                size="lg"
+                boxShadow="5px 10px 15px lightgray"
+                w="100%"
+                fontWeight="normal"
+                px={6}
+                colorScheme="cyan"
+                bg="cyan.400"
+                _hover={{ bg: 'cyan.500' }}
+              >
+                Signup
               </Button>
             </Link>
           </Stack>
@@ -100,6 +108,7 @@ export default function Init() {
           align="center"
           position="relative"
           w="full"
+          pt="4"
         >
           <Blob
             w="150%"
@@ -143,7 +152,6 @@ export default function Init() {
           </Box>
         </Flex>
       </Stack>
-      <Footer />
     </Container>
   );
 }

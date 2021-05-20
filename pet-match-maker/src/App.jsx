@@ -20,6 +20,7 @@ import ShelterPetEdit from './pages/PetEditInfo';
 import PotentialAdopterDetails from './pages/PetAdopterDetails';
 import PetLikesPage from './pages/PetLikesPage';
 import WithAuthentication from './hocs/WithAuthentication';
+import Footer from './components/Footer/Footer';
 
 function App() {
   const userContextData = useUser();
@@ -34,16 +35,16 @@ function App() {
             <Route exact path="/">
               <Init />
             </Route>
-            <Route exact path="/user/home">
-              <WithAuthentication>
-                <UserHome />
-              </WithAuthentication>
-            </Route>
             <Route exact path="/login">
               <Login />
             </Route>
             <Route exact path="/signup">
               <SignUp />
+            </Route>
+            <Route exact path="/user/home">
+              <WithAuthentication>
+                <UserHome />
+              </WithAuthentication>
             </Route>
             <Route exact path="/user/profile">
               <WithAuthentication>
@@ -118,6 +119,7 @@ function App() {
             </Route>
           </Switch>
         </Container>
+        <Footer />
       </UserContext.Provider>
     </ChakraProvider>
   );
