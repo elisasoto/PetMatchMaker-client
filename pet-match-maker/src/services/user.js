@@ -55,9 +55,13 @@ export const getPetDetails = async (id) => {
 
 export const putUserLikes = async (id) => {
   try {
-    const response = await axios.put(`${BASE_URL}/users/likes/${id}`, {
-      withCredentials: true
-    });
+    const response = await axios.put(
+      `${BASE_URL}/users/likes/${id}`,
+      {},
+      {
+        withCredentials: true
+      }
+    );
 
     return response.data.data;
   } catch (error) {
@@ -68,9 +72,13 @@ export const putUserLikes = async (id) => {
 
 export const putUserDislikes = async (id) => {
   try {
-    const response = await axios.put(`${BASE_URL}/users/deslikes/${id}`, {
-      withCredentials: true
-    });
+    const response = await axios.put(
+      `${BASE_URL}/users/deslikes/${id}`,
+      {},
+      {
+        withCredentials: true
+      }
+    );
 
     return response.data.data;
   } catch (error) {

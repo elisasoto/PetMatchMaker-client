@@ -41,7 +41,7 @@ export default function UserMoreInfo({ profile }) {
   const [show, setShow] = useState(false);
 
   const history = useHistory();
-
+  const { img, likes, ...restProfile } = profile;
   const {
     handleSubmit,
     register,
@@ -49,15 +49,15 @@ export default function UserMoreInfo({ profile }) {
     formState: { errors },
     watch
   } = useForm({
-    defaultValues: profile
+    defaultValues: restProfile
   });
 
   const handleClick = () => setShow(!show);
 
   const handleFormSubmit = async (formValues) => {
     console.log(formValues);
-    const { img, ...restvalues } = formValues;
-    const formData = getFormData('img', img, restvalues);
+    const { picture, ...restvalues } = formValues;
+    const formData = getFormData('img', picture, restvalues);
     await putUserProfile(formData);
     await history.push('/user/profile');
   };
@@ -96,13 +96,13 @@ export default function UserMoreInfo({ profile }) {
                 src={`${profile.img}`}
               />
               <input
-                type="hidden" // https://spectrum.chat/react-hook-form/help/invalidstateerror-failed-to-set-the-value-property-on-htmlinputelement-this-input-element-accepts-a-filename-which-may-only-be-programmatically-set-to-the-empty-string~0960a16b-db07-4b53-a6b7-580d3de67403
-                id="img"
-                name="img"
+                type="file" // https://spectrum.chat/react-hook-form/help/invalidstateerror-failed-to-set-the-value-property-on-htmlinputelement-this-input-element-accepts-a-filename-which-may-only-be-programmatically-set-to-the-empty-string~0960a16b-db07-4b53-a6b7-580d3de67403
+                id="picture"
+                name="picture"
                 accept="image/png,image/gif,image/jpeg"
-                {...register('img')}
+                {...register('picture')}
               />
-              <label htmlFor="img" className="btn-3">
+              <label htmlFor="picture" className="btn-3">
                 <FontAwesomeIcon icon={faUpload} />
               </label>
             </WrapItem>

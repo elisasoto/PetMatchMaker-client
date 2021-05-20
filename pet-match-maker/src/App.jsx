@@ -28,22 +28,22 @@ function App() {
     <ChakraProvider>
       <CSSReset />
       <UserContext.Provider value={userContextData}>
-        <UserNavBar />
-        <Route exact path="/">
-          <Init />
-        </Route>
-        <Route exact path="/login">
-          <Login />
-        </Route>
-        <Route exact path="/signup">
-          <SignUp />
-        </Route>
+        {userContextData.user ? <UserNavBar /> : null}
         <Container>
           <Switch>
+            <Route exact path="/">
+              <Init />
+            </Route>
             <Route exact path="/user/home">
               <WithAuthentication>
                 <UserHome />
               </WithAuthentication>
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <SignUp />
             </Route>
             <Route exact path="/user/profile">
               <WithAuthentication>
