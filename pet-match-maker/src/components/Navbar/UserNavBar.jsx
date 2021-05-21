@@ -72,7 +72,7 @@ export default function UserNavBar() {
           <Box p="6" onClick={() => handleRedirect('/user/home')}>
             <Logo picture={LogoImg} alt={LogoImg} />
           </Box>
-          <Box p="2">
+          <Box p="2" align="center">
             <IconButton
               aria-label="Call Segun"
               size="md"
@@ -80,7 +80,6 @@ export default function UserNavBar() {
               isRound="true"
               onClick={() => handleRedirect('/user/likes')}
             />
-            <Text fontSize="12px">MyLikes</Text>
           </Box>
         </Flex>
       </Box>

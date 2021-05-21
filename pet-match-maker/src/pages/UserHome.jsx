@@ -1,13 +1,15 @@
 import { useContext } from 'react';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Box, Text, Heading, Stack } from '@chakra-ui/react';
 
 import SwipeCardsList from '../components/SwipeCards/SwipeCardsList';
 import { UserContext } from '../context/User';
-import { getPetList } from '../services/user';
+import { getPetList, putUserDislikes, putUserLikes } from '../services/user';
 
 export default function UserHome() {
   const { user } = useContext(UserContext);
+  const history = useHistory();
   const [petList, setPetList] = useState([]);
 
   useEffect(() => {
@@ -17,6 +19,34 @@ export default function UserHome() {
       });
     }
   }, []);
+
+  const handleMoreInfo = async (id) => {
+    await history.push(`/details/${id}`);
+  };
+
+  const handleClickLikes = async (id) => {
+    await putUserLikes(id).then(() => {
+      const newPetList = petList.filter((pet) => pet._id !== id);
+      setPetList(newPetList);
+    });
+    if (petList.length === 1) {
+      await getPetList().then((res) => {
+        setPetList(res);
+      });
+    }
+  };
+
+  const handleClickDislike = async (id) => {
+    await putUserDislikes(id).then(() => {
+      const newPetList = petList.filter((pet) => pet._id !== id);
+      setPetList(newPetList);
+    });
+    if (petList.length === 1) {
+      await getPetList().then((res) => {
+        setPetList(res);
+      });
+    }
+  };
 
   return (
     <>
@@ -55,7 +85,12 @@ export default function UserHome() {
         </Text>
       </Stack>
       <Box pos="relative" d="flex" alignItems="center" ml={4} pt={6}>
-        <SwipeCardsList petList={petList} />
+        <SwipeCardsList
+          petList={petList}
+          handleClickLikes={handleClickLikes}
+          handleClickDislike={handleClickDislike}
+          handleMoreInfo={handleMoreInfo}
+        />
       </Box>
     </>
   );

@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Box, Link, IconButton, Stack, Heading, Text } from '@chakra-ui/react';
+import { Box, IconButton, Stack, Heading, Text } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 
 import { UserContext } from '../context/User';
@@ -10,7 +10,6 @@ import LikesList from '../components/PetsCards/PetsList';
 export default function UserLikes() {
   const { user } = useContext(UserContext);
   const history = useHistory();
-
   const [petList, setPetList] = useState([]);
 
   useEffect(() => {
@@ -63,17 +62,15 @@ export default function UserLikes() {
         </Text>
       </Stack>
       <Box p={2} m={2}>
-        <Link href="/user/home">
-          <Box p="2" textAlign={'right'}>
-            <IconButton
-              aria-label="Call Segun"
-              size="sm"
-              colorScheme="whiteAlpha"
-              icon={<SmallCloseIcon color="black" />}
-            />
-            Close
-          </Box>
-        </Link>
+        <Box p="2" textAlign={'right'} onClick={() => history.goBack()}>
+          <IconButton
+            aria-label="Call Segun"
+            size="sm"
+            colorScheme="whiteAlpha"
+            icon={<SmallCloseIcon color="black" />}
+          />
+          Close
+        </Box>
         <LikesList
           petList={petList}
           handleClickRemove={handleClickRemove}
