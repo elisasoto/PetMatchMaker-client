@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import {
   Avatar,
   Box,
@@ -11,10 +10,17 @@ import {
 } from '@chakra-ui/react';
 import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 
-export default function PetCard({ img, name, status, age, likes, breed, _id }) {
-  const handleRemove = () => {
-    alert('I will be a function');
-  };
+export default function PetCard({
+  img,
+  name,
+  status,
+  age,
+  likes,
+  breed,
+  _id,
+  handleClickRemove,
+  handleMoreInfo
+}) {
   const available = status === 'Available' ? 'green' : 'red';
   return (
     <Box
@@ -80,14 +86,13 @@ export default function PetCard({ img, name, status, age, likes, breed, _id }) {
       </Box>
       <Flex direction="column" justifyContent="right" pl={4}>
         <Box p="2">
-          <Link to={`/user/likes/${_id}`}>
-            <IconButton
-              aria-label="Call Segun"
-              size="sm"
-              icon={<AddIcon color="gray.500" />}
-              isRound="true"
-            />
-          </Link>
+          <IconButton
+            aria-label="Call Segun"
+            size="sm"
+            icon={<AddIcon color="gray.500" />}
+            isRound="true"
+            onClick={() => handleMoreInfo(_id)}
+          />
         </Box>
         <Spacer />
         <Box p="2">
@@ -96,7 +101,7 @@ export default function PetCard({ img, name, status, age, likes, breed, _id }) {
             size="sm"
             icon={<CloseIcon color="red.500" />}
             isRound="true"
-            onClick={handleRemove}
+            onClick={() => handleClickRemove(_id)}
           />
         </Box>
       </Flex>

@@ -1,6 +1,5 @@
-import { useContext, useEffect } from 'react';
-import { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Button,
   Flex,
@@ -19,28 +18,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 import { UserContext } from '../../context/User';
-import { getShortProfile } from '../../services/auth';
 import Logo from './Logo';
 import LogoImg from '../../assets/petmatchmaker.png';
 import './styles.scss';
 
 export default function UserNavBar() {
   const { logout, user } = useContext(UserContext);
-  console.log(user);
 
   const history = useHistory();
+
   const handleClickLogout = async () => {
     await logout();
-    await history.push('/');
+    await handleRedirect('/');
   };
 
-  // useEffect(() => {
-  //   if (user) {
-  //     getShortProfile().then((res) => {
-  //       setProfile(res);
-  //     });
-  //   }
-  // }, []);
+  const handleRedirect = (path) => {
+    history.push(path);
+  };
 
   return (
     <>
@@ -65,9 +59,9 @@ export default function UserNavBar() {
                     <Avatar size="sm" name="" src={user?.img} />
                   </MenuButton>
                   <MenuList>
-                    <Link to="/user/profile">
-                      <MenuItem>Profile</MenuItem>
-                    </Link>
+                    <MenuItem onClick={() => handleRedirect('/user/profile')}>
+                      Profile
+                    </MenuItem>
                     <MenuDivider />
                     <MenuItem onClick={handleClickLogout}>Logout</MenuItem>
                   </MenuList>
@@ -75,20 +69,17 @@ export default function UserNavBar() {
               )}
             </Menu>
           </Flex>
-          <Link to="/user/home">
-            <Box p="6">
-              <Logo picture={LogoImg} alt={LogoImg} />
-            </Box>
-          </Link>
+          <Box p="6" onClick={() => handleRedirect('/user/home')}>
+            <Logo picture={LogoImg} alt={LogoImg} />
+          </Box>
           <Box p="2">
-            <Link to="/user/likes">
-              <IconButton
-                aria-label="Call Segun"
-                size="md"
-                icon={<FontAwesomeIcon icon={faHeart} color="#0bc5ea" />}
-                isRound="true"
-              />
-            </Link>
+            <IconButton
+              aria-label="Call Segun"
+              size="md"
+              icon={<FontAwesomeIcon icon={faHeart} color="#0bc5ea" />}
+              isRound="true"
+              onClick={() => handleRedirect('/user/likes')}
+            />
             <Text fontSize="12px">MyLikes</Text>
           </Box>
         </Flex>

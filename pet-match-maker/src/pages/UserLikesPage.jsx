@@ -1,14 +1,16 @@
-import { useContext } from 'react';
-import { useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Box, Link, IconButton, Stack, Heading, Text } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 
 import { UserContext } from '../context/User';
-import { getUsersLikes } from '../services/user';
+import { getUsersLikes, putUserDislikes } from '../services/user';
 import LikesList from '../components/PetsCards/PetsList';
 
 export default function UserLikes() {
   const { user } = useContext(UserContext);
+  const history = useHistory();
+
   const [petList, setPetList] = useState([]);
 
   useEffect(() => {
@@ -18,6 +20,17 @@ export default function UserLikes() {
       });
     }
   }, []);
+
+  const handleClickRemove = async (id) => {
+    await putUserDislikes(id).then(() => {
+      const newPetList = petList.filter((pet) => pet._id !== id);
+      setPetList(newPetList);
+    });
+  };
+
+  const handleMoreInfo = async (id) => {
+    await history.push(`/user/likes/${id}`);
+  };
 
   return (
     <>
@@ -61,7 +74,11 @@ export default function UserLikes() {
             Close
           </Box>
         </Link>
-        <LikesList petList={petList} />
+        <LikesList
+          petList={petList}
+          handleClickRemove={handleClickRemove}
+          handleMoreInfo={handleMoreInfo}
+        />
       </Box>
     </>
   );

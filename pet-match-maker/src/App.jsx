@@ -119,7 +119,6 @@ function App() {
             </Route>
           </Switch>
         </Container>
-        <Footer />
       </UserContext.Provider>
     </ChakraProvider>
   );

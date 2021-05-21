@@ -22,7 +22,7 @@ import { sizer } from '../../constants/sizer';
 import { UserContext } from '../../context/User';
 import { putUserLikes, putUserDislikes } from '../../services/user';
 
-export default function Cards({ name, _id, age, weight, img, breed }) {
+export default function Cards({ name, index, _id, age, weight, img, breed }) {
   const [showCard, setShowCard] = useState(true);
 
   const { user } = useContext(UserContext);
@@ -43,7 +43,7 @@ export default function Cards({ name, _id, age, weight, img, breed }) {
   return (
     <Center
       py={12}
-      className={`swipe swipe--${showCard ? 'visible' : 'invisible'}`}
+      className={`swipe swipe--${showCard ? 'visible' : 'invisible'} ${index}`}
     >
       {showCard ? (
         <Box
