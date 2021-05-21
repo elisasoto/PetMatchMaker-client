@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom';
+
 import { transformDate } from '../../constants/transformDate';
 import { capitalize } from '../../constants/capitalize';
 import './Profile.scss';
@@ -27,6 +29,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function PetProfile({ pet }) {
+  const history = useHistory();
   const available = pet.status === 'Available' ? 'green' : 'red';
 
   return (
@@ -36,17 +39,15 @@ export default function PetProfile({ pet }) {
         rounded="lg"
         textAlign="center"
       >
-        <Link href="/user/likes">
-          <Box p="2" textAlign="right">
-            <IconButton
-              aria-label="Call Segun"
-              size="sm"
-              colorScheme="whiteAlpha"
-              icon={<SmallCloseIcon color="black" />}
-            />
-            Close
-          </Box>
-        </Link>
+        <Box p="2" textAlign="right" onClick={() => history.goBack()}>
+          <IconButton
+            aria-label="Call Segun"
+            size="sm"
+            colorScheme="whiteAlpha"
+            icon={<SmallCloseIcon color="black" />}
+          />
+          Close
+        </Box>
         <Avatar
           size="xl"
           src={`${pet.img}`}
