@@ -20,12 +20,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeEurope } from '@fortawesome/free-solid-svg-icons';
 
-import { mocketShelter } from '../../constants/mockers';
 import { capitalize } from '../../constants/capitalize';
 
 import './Profile.scss';
 
-export default function ShelterProfile() {
+export default function ShelterProfile({ profile }) {
   return (
     <Center py={6}>
       <Box
@@ -36,17 +35,6 @@ export default function ShelterProfile() {
         rounded="md"
         overflow="hidden"
       >
-        <Link href="/shelter/home">
-          <Box p="2" textAlign="right">
-            <IconButton
-              aria-label="Call Segun"
-              size="sm"
-              colorScheme="whiteAlpha"
-              icon={<SmallCloseIcon color="black" />}
-            />
-            Close
-          </Box>
-        </Link>
         <Stack
           textAlign="center"
           p={6}
@@ -66,7 +54,7 @@ export default function ShelterProfile() {
           </Text>
           <Stack direction="row" align="center" justify="center">
             <Text fontSize="60px" fontWeight={800}>
-              {capitalize(mocketShelter.name)}
+              {capitalize(profile.name)}
             </Text>
           </Stack>
         </Stack>
@@ -75,11 +63,11 @@ export default function ShelterProfile() {
           <List spacing={3}>
             <ListItem>
               <ListIcon as={EmailIcon} color="cyan.400" />
-              {mocketShelter.email}
+              {profile.email}
             </ListItem>
             <ListItem>
               <ListIcon as={PhoneIcon} color="cyan.400" />
-              {mocketShelter.phone}
+              {profile.phone}
             </ListItem>
             <ListItem>
               <FontAwesomeIcon
@@ -87,13 +75,13 @@ export default function ShelterProfile() {
                 color="#ACDEB2"
                 className="icon"
               />
-              {`From ${capitalize(mocketShelter.city)}, ${capitalize(
-                mocketShelter.country
+              {`From ${capitalize(profile.city)}, ${capitalize(
+                profile.country
               )} `}
             </ListItem>
             <ListItem>
               <ListIcon as={InfoIcon} color="cyan.400" />
-              {mocketShelter.about}
+              {profile.about}
             </ListItem>
           </List>
           <Link href="/shelter/edit">

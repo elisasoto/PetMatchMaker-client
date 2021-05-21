@@ -5,6 +5,7 @@ import { Box, Text, Heading, Stack } from '@chakra-ui/react';
 
 import SwipeCardsList from '../components/SwipeCards/SwipeCardsList';
 import { UserContext } from '../context/User';
+import { capitalize } from '../constants/capitalize';
 import { getPetList, putUserDislikes, putUserLikes } from '../services/user';
 
 export default function UserHome() {
@@ -70,18 +71,18 @@ export default function UserHome() {
               zIndex: -1
             }}
           >
-            Swipe!
+            {`Hi ${capitalize(user.name)}`}
           </Text>
           <br />
           <Text as="span" color="cyan.400">
-            to pick your Friend!
+            To pick a friend:
           </Text>
         </Heading>
         <Text as="span" color="cyan.400">
-          💙 to like a pet or ❌ to dislike it.
+          Click on 💙 to like or ❌ to dislike it.
         </Text>
         <Text as="span" color="cyan.400">
-          ➕ to see more info about a specific pet.
+          Click on ➕ to see more info about a specific pet.
         </Text>
       </Stack>
       <Box pos="relative" d="flex" alignItems="center" ml={4} pt={6}>

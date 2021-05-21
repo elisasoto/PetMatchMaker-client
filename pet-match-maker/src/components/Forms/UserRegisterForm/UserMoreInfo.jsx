@@ -5,7 +5,6 @@ import { useForm, Controller } from 'react-hook-form';
 import {
   Avatar,
   Box,
-  Link,
   IconButton,
   Button,
   FormControl,
@@ -20,6 +19,7 @@ import {
   RadioGroup,
   Select,
   Stack,
+  Text,
   Textarea,
   WrapItem
 } from '@chakra-ui/react';
@@ -71,17 +71,15 @@ export default function UserMoreInfo({ profile }) {
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Box d="flex-wrap" p={2} borderRadius="5px">
-        <Link href="/user/home">
-          <Box p="2" textAlign={'right'}>
-            <IconButton
-              aria-label="Call Segun"
-              size="sm"
-              colorScheme="whiteAlpha"
-              icon={<SmallCloseIcon color="black" />}
-            />
-            Close
-          </Box>
-        </Link>
+        <Box p="2" textAlign={'right'} onClick={() => history.goBack()}>
+          <IconButton
+            aria-label="Call Segun"
+            size="sm"
+            colorScheme="whiteAlpha"
+            icon={<SmallCloseIcon color="black" />}
+          />
+          Close
+        </Box>
         <FormLabel>Profile Details</FormLabel>
         <Stack>
           <Box
@@ -96,8 +94,7 @@ export default function UserMoreInfo({ profile }) {
                 src={`${profile.img}`}
               />
               <input
-                type="file" // https://spectrum.chat/react-hook-form/help/invalidstateerror-failed-to-set-the-value-property-on-htmlinputelement-this-input-element-accepts-a-filename-which-may-only-be-programmatically-set-to-the-empty-string~0960a16b-db07-4b53-a6b7-580d3de67403
-                id="picture"
+                type="file"
                 name="picture"
                 accept="image/png,image/gif,image/jpeg"
                 {...register('picture')}
@@ -477,7 +474,7 @@ export default function UserMoreInfo({ profile }) {
               rules={{ ...register('size', { required: true }) }}
               render={({ field: { onChange } }) => (
                 <RadioGroup defaultValue="ANY" onChange={onChange}>
-                  <Stack spacing={5} direction="row">
+                  <Stack spacing={5} direction="column" overflow="hidden">
                     <Radio colorScheme="blue" value="ANY">
                       Any
                     </Radio>
@@ -486,24 +483,30 @@ export default function UserMoreInfo({ profile }) {
                         icon={faDog}
                         className="icon icon--small"
                       />
+                      <Text fontSize="10px">Thinking of a Chihuahua size</Text>
                     </Radio>
                     <Radio size="md" colorScheme="blue" value="MEDIUM">
                       <FontAwesomeIcon
                         icon={faDog}
                         className="icon icon--medium"
                       />
+                      <Text fontSize="10px">Thinking of a Schnauzer size</Text>
                     </Radio>
                     <Radio colorScheme="blue" value="BIG">
                       <FontAwesomeIcon
                         icon={faDog}
                         className="icon icon--big"
                       />
+                      <Text fontSize="10px">
+                        Thinking of a German Sheperd size
+                      </Text>
                     </Radio>
                     <Radio colorScheme="blue" value="XXL">
                       <FontAwesomeIcon
                         icon={faDog}
                         className="icon icon--large"
                       />
+                      <Text fontSize="10px">Thinking of a Mastin size</Text>
                     </Radio>
                   </Stack>
                 </RadioGroup>
@@ -526,7 +529,7 @@ export default function UserMoreInfo({ profile }) {
           />
         </Stack>
       </Box>
-      <Button mt={4} colorScheme="cyan" type="submit">
+      <Button mt={4} colorScheme="cyan" type="submit" w="100%">
         Save
       </Button>
     </form>

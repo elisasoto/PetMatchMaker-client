@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import {
   getShortProfile,
   postLoginAdopter,
-  postLoginShelter,
   postAdopterRegister,
+  postLoginShelter,
   postShelterRegister,
   getLogout
 } from '../services/auth';
@@ -23,17 +23,6 @@ export function useUser() {
       });
   }, []);
 
-  async function adopterLogin({ email, password }) {
-    postLoginAdopter(email, password).then((userData) => {
-      setUser({ ...(user || {}), ...userData });
-    });
-  }
-
-  async function adopterRegister(body) {
-    const userData = await postAdopterRegister(body);
-    setUser(userData);
-  }
-
   async function shelterLogin({ email, password }) {
     postLoginShelter(email, password).then((userData) => {
       setUser({ ...(user || {}), ...userData });
@@ -45,6 +34,17 @@ export function useUser() {
     setUser(userData);
   }
 
+  async function adopterLogin({ email, password }) {
+    postLoginAdopter(email, password).then((userData) => {
+      setUser({ ...(user || {}), ...userData });
+    });
+  }
+
+  async function adopterRegister(body) {
+    const userData = await postAdopterRegister(body);
+    setUser(userData);
+  }
+
   async function logout() {
     getLogout().then(() => setUser(null));
   }
@@ -53,8 +53,8 @@ export function useUser() {
     user,
     adopterLogin,
     adopterRegister,
-    shelterLogin,
     shelterRegister,
+    shelterLogin,
     logout,
     loading
   };

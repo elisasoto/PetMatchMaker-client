@@ -20,9 +20,8 @@ import ShelterPetEdit from './pages/PetEditInfo';
 import PotentialAdopterDetails from './pages/PetAdopterDetails';
 import PetLikesPage from './pages/PetLikesPage';
 import WithAuthentication from './hocs/WithAuthentication';
-import Footer from './components/Footer/Footer';
 
-function App() {
+export default function App() {
   const userContextData = useUser();
 
   return (
@@ -123,5 +122,3 @@ function App() {
     </ChakraProvider>
   );
 }
-
-export default App;

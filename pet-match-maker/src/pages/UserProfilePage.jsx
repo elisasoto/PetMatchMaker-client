@@ -1,6 +1,7 @@
 import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Box, Button, IconButton, Link } from '@chakra-ui/react';
+import { Box, Button, IconButton } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 
 import { UserContext } from '../context/User';
@@ -9,6 +10,7 @@ import UserProfile from '../components/Profile/UserProfile';
 
 export default function UserProfilePage() {
   const { user } = useContext(UserContext);
+  const history = useHistory();
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
@@ -19,26 +21,31 @@ export default function UserProfilePage() {
     }
   }, []);
 
+  const handleRedirect = (path) => {
+    history.push(path);
+  };
+
   return (
     <>
       <Box p={2} m={2}>
-        <Link href="/user/home">
-          <Box p="2" textAlign="right">
-            <IconButton
-              aria-label="Call Segun"
-              size="sm"
-              colorScheme="whiteAlpha"
-              icon={<SmallCloseIcon color="black" />}
-            />
-            Close
-          </Box>
-        </Link>
+        <Box p="2" textAlign="right" onClick={() => history.goBack()}>
+          <IconButton
+            aria-label="Call Segun"
+            size="sm"
+            colorScheme="whiteAlpha"
+            icon={<SmallCloseIcon color="black" />}
+          />
+          Close
+        </Box>
         {profile ? <UserProfile profile={profile} /> : null}
-        <Link href="/user/edit">
-          <Button size="sm" colorScheme="cyan" type="submit">
-            Add / Edit Info
-          </Button>
-        </Link>
+        <Button
+          size="sm"
+          colorScheme="cyan"
+          type="submit"
+          onClick={() => handleRedirect('/user/edit')}
+        >
+          Add / Edit Info
+        </Button>
       </Box>
     </>
   );
