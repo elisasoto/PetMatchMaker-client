@@ -1,10 +1,17 @@
+import { useContext } from 'react';
 import { useState, useEffect } from 'react';
 import { mockedPetList } from '../constants/mockers';
 import { Box, Link, Button, Heading, Text } from '@chakra-ui/react';
+
+import { UserContext } from '../context/User';
+import { capitalize } from '../constants/capitalize';
+import { getPetListFromShelter } from '../services/pets';
 import ShelterNavBar from '../components/Navbar/ShelterNavBar';
 import PetsList from '../components/PetsCards/PetsList';
 
 export default function ShelterHome() {
+  const { user } = useContext(UserContext);
+  console.log(user);
   const [petList, setPetList] = useState([]);
 
   const handleClickRemove = (id) => {
@@ -12,8 +19,13 @@ export default function ShelterHome() {
   };
 
   useEffect(() => {
-    setPetList(mockedPetList);
-  }, [petList]);
+    if (user) {
+      getPetListFromShelter().then((res) => {
+        setPetList(res.pets);
+      });
+    }
+  }, []);
+
   return (
     <>
       <ShelterNavBar />
@@ -43,11 +55,11 @@ export default function ShelterHome() {
               zIndex: -1
             }}
           >
-            Your list of
+            {`Hello ${capitalize(user.name)}`}
           </Text>
           <br />
           <Text as="span" color="cyan.400">
-            added Pets
+            This is your list of Pets
           </Text>
         </Heading>
         <Link href="/pet/register">

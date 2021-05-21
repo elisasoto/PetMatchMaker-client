@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import {
   Button,
   Flex,
-  Text,
   IconButton,
   Box,
   Menu,

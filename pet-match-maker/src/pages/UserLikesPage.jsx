@@ -18,7 +18,7 @@ export default function UserLikes() {
         setPetList(res.likes);
       });
     }
-  }, []);
+  }, [user, petList]);
 
   const handleClickRemove = async (id) => {
     await putUserDislikes(id).then(() => {
@@ -71,11 +71,17 @@ export default function UserLikes() {
           />
           Close
         </Box>
-        <LikesList
-          petList={petList}
-          handleClickRemove={handleClickRemove}
-          handleMoreInfo={handleMoreInfo}
-        />
+        {petList.length !== 0 ? (
+          <LikesList
+            petList={petList}
+            handleClickRemove={handleClickRemove}
+            handleMoreInfo={handleMoreInfo}
+          />
+        ) : (
+          <Text as="span" color="gray.400">
+            You haven´t liked any pets yet
+          </Text>
+        )}
       </Box>
     </>
   );
