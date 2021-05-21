@@ -16,7 +16,7 @@ export const getUserProfile = async () => {
 
 export const getPetList = async () => {
   try {
-    const response = await axios.get(`${BASE_URL}/users/pets?page=`, {
+    const response = await axios.get(`${BASE_URL}/users/pets`, {
       withCredentials: true
     });
 
