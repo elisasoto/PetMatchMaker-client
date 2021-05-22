@@ -1,3 +1,4 @@
+import { Link, useHistory } from 'react-router-dom';
 import { transformDate } from '../../constants/transformDate';
 import { capitalize } from '../../constants/capitalize';
 import './Profile.scss';
@@ -10,12 +11,10 @@ import {
   Center,
   Heading,
   IconButton,
-  Link,
   List,
   ListItem,
   Stack,
   Text,
-  Wrap,
   useColorModeValue
 } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
@@ -29,7 +28,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export default function PetProfileShelter({ pet }) {
+  const history = useHistory();
   const available = pet.status === 'Available' ? 'green' : 'red';
+
+  const handleRedirect = async (path) => {
+    await history.push(path);
+  };
 
   return (
     <Center>
@@ -128,24 +132,28 @@ export default function PetProfileShelter({ pet }) {
           spacing={{ base: 2, sm: 6 }}
           direction={{ base: 'row', sm: 'row' }}
         >
-          <Link href="/pet/edit">
-            <Button
-              rounded="full"
-              size="lg"
-              fontWeight="normal"
-              px={6}
-              colorScheme="cyan"
-              bg="cyan.400"
-              _hover={{ bg: 'cyan.500' }}
-            >
-              Edit Info
-            </Button>
-          </Link>
-          <Link href="/pet/likes">
-            <Button rounded="full" size="lg" fontWeight="normal" px={6}>
-              See Potential Adopters Info
-            </Button>
-          </Link>
+          <Button
+            rounded="full"
+            size="lg"
+            fontWeight="normal"
+            px={6}
+            colorScheme="cyan"
+            bg="cyan.400"
+            onClick={() => handleRedirect(`/pet/edit/${pet._id}`)}
+            _hover={{ bg: 'cyan.500' }}
+          >
+            Edit Info
+          </Button>
+
+          <Button
+            rounded="full"
+            size="lg"
+            fontWeight="normal"
+            px={6}
+            onClick={() => handleRedirect(`/pet/likes/${pet._id}`)}
+          >
+            See Potential Adopters Info
+          </Button>
         </Stack>
       </Box>
     </Center>

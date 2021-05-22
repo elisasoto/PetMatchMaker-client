@@ -7,13 +7,11 @@ import { Box } from '@chakra-ui/react';
 import PetProfile from '../components/Profile/PetProfile';
 
 export default function UserLikes() {
-  const [pet, setPet] = useState(null);
-
   const { petId } = useParams();
+  const [pet, setPet] = useState(null);
 
   useEffect(() => {
     getPetDetails(petId).then((res) => {
-      console.log(res);
       setPet(res);
     });
   }, []);

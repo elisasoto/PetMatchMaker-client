@@ -17,7 +17,7 @@ import ShelterProfile from './pages/ShelterProfile';
 import ShelterEditProfile from './pages/ShelterEditProfile';
 import PetRegister from './pages/PetRegister';
 import ShelterPetDetails from './pages/PetDetailsOnShelter';
-import ShelterPetEdit from './pages/PetEditInfo';
+import ShelterPetEdit from './pages/PetEditInfoPage';
 import PotentialAdopterDetails from './pages/PetAdopterDetails';
 import PetLikesPage from './pages/PetLikesPage';
 import WithAuthentication from './hocs/WithAuthentication';
@@ -97,7 +97,7 @@ export default function App() {
                 <ShelterPetDetails />
               </WithAuthentication>
             </Route>
-            <Route exact path="/pet/edit">
+            <Route exact path="/pet/edit/:petId">
               <WithAuthentication roleToCheck="shelter">
                 <ShelterPetEdit />
               </WithAuthentication>
@@ -107,7 +107,7 @@ export default function App() {
                 <PotentialAdopterDetails />
               </WithAuthentication>
             </Route>
-            <Route exact path="/pet/likes">
+            <Route exact path="/pet/likes/:petId">
               <WithAuthentication roleToCheck="shelter">
                 <PetLikesPage />
               </WithAuthentication>
