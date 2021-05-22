@@ -30,28 +30,26 @@ export default function ShelterNavBar() {
   return (
     <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4} pos="relative">
       <Flex h={16} alignItems="center" justifyContent="space-between">
-        <Flex alignItems="center">
-          <Menu>
-            {({ isOpen }) => (
-              <>
-                <MenuButton as={Button} colorScheme="cyan" size="sm">
-                  Profile
-                </MenuButton>
-                <MenuList>
-                  <MenuGroup title="Your Account">
-                    <Link to="/shelter/profile">
-                      <MenuItem>Profile</MenuItem>
-                    </Link>
-                  </MenuGroup>
-                  <MenuDivider />
-                  <MenuGroup title="Close Session">
-                    <MenuItem onClick={handleClickLogout}>Logout</MenuItem>
-                  </MenuGroup>
-                </MenuList>
-              </>
-            )}
-          </Menu>
-        </Flex>
+        <Menu>
+          {({ isOpen }) => (
+            <>
+              <MenuButton as={Button} colorScheme="cyan" size="sm">
+                Profile
+              </MenuButton>
+              <MenuList>
+                <MenuGroup title="Your Account">
+                  <Link to="/shelter/profile">
+                    <MenuItem>Profile</MenuItem>
+                  </Link>
+                </MenuGroup>
+                <MenuDivider />
+                <MenuGroup title="Close Session">
+                  <MenuItem onClick={handleClickLogout}>Logout</MenuItem>
+                </MenuGroup>
+              </MenuList>
+            </>
+          )}
+        </Menu>
         <Link to="/shelter/home">
           <Box p="6">
             <Logo picture={LogoImg} alt={LogoImg} />

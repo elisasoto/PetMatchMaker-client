@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
@@ -31,29 +30,27 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 import { errorMessage } from '../../../constants/formErrors';
-import { UserContext } from '../../../context/User';
 import { getFormData } from '../../../utils/formData';
 import { putPetEdit } from '../../../services/pets';
-import { mockedPet } from '../../../constants/mockers';
 
 import '../UserRegisterForm/userForm.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 
-export default function PetEditInfo() {
-  const { user } = useContext(UserContext);
+export default function PetEditInfo({ pet }) {
+  const { _id } = pet;
   const {
     handleSubmit,
     control,
     watch,
     register,
     formState: { errors }
-  } = useForm({ defaultValues: mockedPet ? mockedPet : {} });
+  } = useForm({ defaultValues: pet });
 
-  const handleFormSubmit = (formValues) => {
-    const { img, ...restvalues } = formValues;
-    const formData = getFormData('img', img, restvalues);
-    putPetEdit(formData);
-    // no deja modificar datos si no pones una imagen.
+  const handleFormSubmit = async (formValues, _id) => {
+    console.log(formValues, _id);
+    const { picture, ...restvalues } = formValues;
+    const formData = getFormData('img', picture, restvalues);
+    await putPetEdit(formData, _id);
   };
 
   const [about] = watch(['about']);
@@ -67,8 +64,8 @@ export default function PetEditInfo() {
           fontSize={{ base: '2xl', sm: '6xl', lg: '10xl' }}
         >
           <Text
-            as={'span'}
-            position={'relative'}
+            as="span"
+            position="relative"
             _after={{
               content: "''",
               width: 'full',
@@ -83,12 +80,12 @@ export default function PetEditInfo() {
             Edit Pet Info
           </Text>
 
-          <Text as={'span'} color={'cyan.400'}>
+          <Text as="span" color="cyan.400">
             in the fields below
           </Text>
         </Heading>
         <Link to="/pet/details">
-          <Box p="2" textAlign={'right'}>
+          <Box p="2" textAlign="right">
             <IconButton
               aria-label="Call Segun"
               size="sm"
@@ -100,17 +97,13 @@ export default function PetEditInfo() {
         </Link>
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <WrapItem p={2}>
-            <Avatar
-              size="md"
-              name="Prosper Otemuyiwa"
-              src={`${mockedPet.img}`}
-            />
+            <Avatar size="md" name="Prosper Otemuyiwa" src={`${pet.img}`} />
             <input
               type="file"
               id="img"
-              name="img"
+              name="picture"
               accept="image/png,image/gif,image/jpeg"
-              {...register('img')}
+              {...register('picture')}
             />
             <label htmlFor="img" className="btn-3">
               <FontAwesomeIcon icon={faUpload} />
@@ -269,7 +262,6 @@ export default function PetEditInfo() {
               <strong>{`${(about || '').length} / 240 left`}</strong>{' '}
             </p>
           </Box>
-
           <FormErrorMessage>
             {errors.about && errors.about.type === 'maxLength' ? (
               <p>{errorMessage.pharagraphMaxLength}</p>
