@@ -13,6 +13,7 @@ export default function UserLikes() {
 
   useEffect(() => {
     getPetDetails(petId).then((res) => {
+      console.log(res);
       setPet(res);
     });
   }, []);

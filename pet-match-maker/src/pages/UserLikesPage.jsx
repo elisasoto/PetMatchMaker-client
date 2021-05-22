@@ -58,7 +58,7 @@ export default function UserLikes() {
             Your Likes!
           </Text>
         </Heading>
-        <Text as="span" color="cyan.400">
+        <Text as="span" color="grey.400">
           Click on ➕ to know the details of the pet or ❌ if you've changed
           your mind.
         </Text>

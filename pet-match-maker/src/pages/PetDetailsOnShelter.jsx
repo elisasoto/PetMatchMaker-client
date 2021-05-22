@@ -1,29 +1,25 @@
 import { useState, useEffect } from 'react';
-// import { useParams } from 'react-router';
-// import axios from 'axios';
-
-// import { BASE_URL } from '../../constants';
-// import { getPet } from '../../services/pets';
-import { mockedPet } from '../constants/mockers';
+import { useParams } from 'react-router';
 import { Box } from '@chakra-ui/react';
 
+import { getSinglePet } from '../services/pets';
 import PetProfile from '../components/Profile/PetDetailsShelter';
 
 export default function UserLikes() {
-  const [pet, setPet] = useState(mockedPet);
+  const [pet, setPet] = useState(null);
 
-  // const [loading, setLoading] = useState(true);
-
-  // const { petId } = useParams();
+  const { petId } = useParams();
 
   useEffect(() => {
-    setPet(mockedPet);
+    getSinglePet(petId).then((res) => {
+      setPet(res);
+    });
   }, []);
 
   return (
     <>
       <Box p={2} m={2}>
-        <PetProfile pet={pet} />
+        {pet ? <PetProfile pet={pet} /> : null}
       </Box>
     </>
   );
