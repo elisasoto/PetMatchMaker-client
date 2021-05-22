@@ -11,6 +11,7 @@ import UserProfile from './pages/UserProfilePage';
 import UserEditProfile from './pages/UserEditProfile';
 import UserLikes from './pages/UserLikesPage';
 import UserDetailedPet from './pages/UserPetLikedDetails';
+import ShelterNavBar from './components/Navbar/ShelterNavBar';
 import ShelterHome from './pages/ShelterHome';
 import ShelterProfile from './pages/ShelterProfile';
 import ShelterEditProfile from './pages/ShelterEditProfile';
@@ -23,12 +24,14 @@ import WithAuthentication from './hocs/WithAuthentication';
 
 export default function App() {
   const userContextData = useUser();
+  console.log('MY USER', userContextData.user);
 
   return (
     <ChakraProvider>
       <CSSReset />
       <UserContext.Provider value={userContextData}>
-        {userContextData.user ? <UserNavBar /> : null}
+        {userContextData.user?.role === 'user' ? <UserNavBar /> : null}
+        {userContextData.user?.role === 'shelter' ? <ShelterNavBar /> : null}
         <Container>
           <Switch>
             <Route exact path="/">
@@ -70,49 +73,43 @@ export default function App() {
                 <UserDetailedPet />
               </WithAuthentication>
             </Route>
-          </Switch>
-        </Container>
-      </UserContext.Provider>
-      <UserContext.Provider value={userContextData}>
-        <Container>
-          <Switch>
             <Route exact path="/shelter/home">
-              <WithAuthentication>
+              <WithAuthentication roleToCheck="shelter">
                 <ShelterHome />
               </WithAuthentication>
             </Route>
             <Route exact path="/shelter/profile">
-              <WithAuthentication>
+              <WithAuthentication roleToCheck="shelter">
                 <ShelterProfile />
               </WithAuthentication>
             </Route>
             <Route exact path="/shelter/edit">
-              <WithAuthentication>
+              <WithAuthentication roleToCheck="shelter">
                 <ShelterEditProfile />
               </WithAuthentication>
             </Route>
             <Route exact path="/pet/register">
-              <WithAuthentication>
+              <WithAuthentication roleToCheck="shelter">
                 <PetRegister />
               </WithAuthentication>
             </Route>
             <Route exact path="/pet/details">
-              <WithAuthentication>
+              <WithAuthentication roleToCheck="shelter">
                 <ShelterPetDetails />
               </WithAuthentication>
             </Route>
             <Route exact path="/pet/edit">
-              <WithAuthentication>
+              <WithAuthentication roleToCheck="shelter">
                 <ShelterPetEdit />
               </WithAuthentication>
             </Route>
             <Route exact path="/adopter/details">
-              <WithAuthentication>
+              <WithAuthentication roleToCheck="shelter">
                 <PotentialAdopterDetails />
               </WithAuthentication>
             </Route>
             <Route exact path="/pet/likes">
-              <WithAuthentication>
+              <WithAuthentication roleToCheck="shelter">
                 <PetLikesPage />
               </WithAuthentication>
             </Route>

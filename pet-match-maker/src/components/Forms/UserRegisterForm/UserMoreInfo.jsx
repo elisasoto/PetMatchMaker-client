@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   Avatar,
@@ -29,7 +31,6 @@ import {
   faClock,
   faDog,
   faInfoCircle,
-  faUpload,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import { errorMessage } from '../../../constants/formErrors';
@@ -40,7 +41,9 @@ import './moreInfo.scss';
 export default function UserMoreInfo({ profile }) {
   const [show, setShow] = useState(false);
 
+  const notify = () => toast('User Saved!');
   const history = useHistory();
+
   const { img, likes, ...restProfile } = profile;
   const {
     handleSubmit,
@@ -55,11 +58,9 @@ export default function UserMoreInfo({ profile }) {
   const handleClick = () => setShow(!show);
 
   const handleFormSubmit = async (formValues) => {
-    console.log(formValues);
     const { picture, ...restvalues } = formValues;
     const formData = getFormData('img', picture, restvalues);
     await putUserProfile(formData);
-    await history.push('/user/profile');
   };
 
   const [about, motivations, ammenities] = watch([
@@ -93,20 +94,19 @@ export default function UserMoreInfo({ profile }) {
                 name={`${profile.name}`}
                 src={`${profile.img}`}
               />
-              <input
-                type="file"
-                name="picture"
-                accept="image/png,image/gif,image/jpeg"
-                {...register('picture')}
-              />
-              <label htmlFor="picture" className="btn-3">
-                <FontAwesomeIcon icon={faUpload} />
-              </label>
             </WrapItem>
+
             <Button p={4} mt={4} width="70px" colorScheme="cyan" type="submit">
               Save
             </Button>
           </Box>
+          <input
+            className="more-info"
+            type="file"
+            name="picture"
+            accept="image/png,image/gif,image/jpeg"
+            {...register('picture')}
+          />
           <FormControl isInvalid={!!errors.name}>
             <InputGroup size="sm">
               <Input

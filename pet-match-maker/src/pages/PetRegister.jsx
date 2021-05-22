@@ -1,14 +1,18 @@
+import { useContext } from 'react';
 import { Box } from '@chakra-ui/react';
-import ShelterNavBar from '../components/Navbar/ShelterNavBar';
+
+import { UserContext } from '../context/User';
 import PetRegistration from '../components/Forms/ShelterRegisterForm/PetRegister';
 
 export default function PetRegister() {
+  const { user } = useContext(UserContext);
   return (
     <>
-      <ShelterNavBar />
-      <Box p={2} m={2}>
-        <PetRegistration />
-      </Box>
+      {user ? (
+        <Box p={2} m={2}>
+          <PetRegistration />
+        </Box>
+      ) : null}
     </>
   );
 }

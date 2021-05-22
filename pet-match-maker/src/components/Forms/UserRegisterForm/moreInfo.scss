@@ -1,21 +1,7 @@
-[type='file'] + label {
-  border-radius: 5px;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 15px;
-  margin-bottom: 1rem;
-  outline: none;
-  padding: 1rem;
-  position: relative;
-  transition: all 0.3s;
-  vertical-align: middle;
-
-  &.btn-3 {
-    overflow: hidden;
-    &:hover {
-      color: darken(#0bc5ea, 30%);
-    }
-  }
+.more-info {
+  overflow: visible;
+  height: 100%;
+  width: 100%;
 }
 
 .icon {

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 import {
@@ -16,7 +16,6 @@ import {
   InputGroup,
   InputLeftElement,
   InputRightAddon,
-  Link,
   Stack,
   Text,
   Textarea
@@ -88,7 +87,7 @@ export default function PetEditInfo() {
             in the fields below
           </Text>
         </Heading>
-        <Link href="/pet/details">
+        <Link to="/pet/details">
           <Box p="2" textAlign={'right'}>
             <IconButton
               aria-label="Call Segun"
