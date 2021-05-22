@@ -1,5 +1,5 @@
-import { useContext } from 'react';
 import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import {
   FormErrorMessage,
@@ -9,7 +9,6 @@ import {
   Button,
   InputGroup,
   Box,
-  Link,
   IconButton,
   InputRightElement,
   InputLeftElement,
@@ -24,14 +23,11 @@ import {
   faHouseUser
 } from '@fortawesome/free-solid-svg-icons';
 
-import { UserContext } from '../../../context/User';
+import { putShelterProfile } from '../../../services/shelter';
 import { errorMessage } from '../../../constants/formErrors';
-import { mocketShelter } from '../../../constants/mockers';
 
-export default function ShelterRegister() {
-  const {
-    /**funcion para modificar datos */
-  } = useContext(UserContext);
+export default function ShelterMoreInfo({ profile }) {
+  const history = useHistory();
   const [show, setShow] = useState(false);
 
   const handleClick = () => setShow(!show);
@@ -41,10 +37,11 @@ export default function ShelterRegister() {
     register,
     watch,
     formState: { errors }
-  } = useForm({ defaultValues: mocketShelter ? mocketShelter : {} });
+  } = useForm({ defaultValues: profile });
 
-  const handleFormSubmit = (formValues) => {
-    console.log(formValues); // funcion para modificar datos
+  const handleFormSubmit = async (formValues) => {
+    await putShelterProfile(formValues);
+    await history.push('/shelter/profile');
   };
 
   const [about] = watch(['about']);
@@ -52,7 +49,7 @@ export default function ShelterRegister() {
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Stack spacing={2}>
-        <Link href="/shelter/home">
+        <Link to="/shelter/profile">
           <Box p="2" textAlign={'right'}>
             <IconButton
               aria-label="Call Segun"

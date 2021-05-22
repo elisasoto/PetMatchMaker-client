@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import {
   Avatar,
@@ -41,7 +39,6 @@ import './moreInfo.scss';
 export default function UserMoreInfo({ profile }) {
   const [show, setShow] = useState(false);
 
-  const notify = () => toast('User Saved!');
   const history = useHistory();
 
   const { img, likes, ...restProfile } = profile;
