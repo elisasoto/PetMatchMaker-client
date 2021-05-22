@@ -3,7 +3,6 @@ import { mockedUsersList } from '../constants/mockers';
 import { Box, Link, IconButton } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 
-import ShelterNavBar from '../components/Navbar/ShelterNavBar';
 import LikesList from '../components/AdoptersCards/AdopterList';
 
 export default function PetsLlikes() {
@@ -19,7 +18,6 @@ export default function PetsLlikes() {
 
   return (
     <>
-      <ShelterNavBar />
       <Box p={2} m={2}>
         <Link href="/pet/details">
           <Box p="2" textAlign={'right'}>

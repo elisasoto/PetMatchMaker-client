@@ -24,7 +24,6 @@ import WithAuthentication from './hocs/WithAuthentication';
 
 export default function App() {
   const userContextData = useUser();
-  console.log('MY USER', userContextData.user);
 
   return (
     <ChakraProvider>

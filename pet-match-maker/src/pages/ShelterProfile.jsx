@@ -6,7 +6,6 @@ import { SmallCloseIcon } from '@chakra-ui/icons';
 
 import { UserContext } from '../context/User';
 import { getShelterProfile } from '../services/shelter';
-import ShelterNavBar from '../components/Navbar/ShelterNavBar';
 import ShelterProfile from '../components/Profile/ShelterProfile';
 
 export default function ShelterProfilePage() {
@@ -28,7 +27,6 @@ export default function ShelterProfilePage() {
 
   return (
     <>
-      <ShelterNavBar />
       <Box p={2} m={2}>
         <Box
           p="2"
