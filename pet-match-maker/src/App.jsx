@@ -92,7 +92,7 @@ export default function App() {
                 <PetRegister />
               </WithAuthentication>
             </Route>
-            <Route exact path="/pet/details">
+            <Route exact path="/pet/profile/:petId">
               <WithAuthentication roleToCheck="shelter">
                 <ShelterPetDetails />
               </WithAuthentication>
