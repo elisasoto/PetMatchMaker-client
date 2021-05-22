@@ -10,7 +10,6 @@ import PetsList from '../components/PetsCards/PetsList';
 
 export default function ShelterHome() {
   const { user } = useContext(UserContext);
-  console.log(user);
   const [petList, setPetList] = useState([]);
 
   useEffect(() => {

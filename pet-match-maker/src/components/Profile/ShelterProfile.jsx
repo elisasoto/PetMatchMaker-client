@@ -1,8 +1,8 @@
+import { Link } from 'react-router-dom';
 import {
   Box,
   Button,
   Center,
-  Link,
   List,
   ListIcon,
   ListItem,
@@ -78,7 +78,7 @@ export default function ShelterProfile({ profile }) {
               {profile.about}
             </ListItem>
           </List>
-          <Link href="/shelter/edit">
+          <Link to="/shelter/edit">
             <Button
               mt={10}
               w="full"

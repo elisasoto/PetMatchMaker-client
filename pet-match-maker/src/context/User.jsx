@@ -17,10 +17,7 @@ export function useUser() {
 
   useEffect(() => {
     getShortProfile()
-      .then((shortUser) => {
-        setUser(shortUser);
-        console.log('SHORT PROFILE', shortUser);
-      })
+      .then((shortUser) => setUser(shortUser))
       .finally(() => {
         setLoading(false);
       });
@@ -28,7 +25,6 @@ export function useUser() {
 
   async function shelterLogin({ email, password }) {
     postLoginShelter(email, password).then((userData) => {
-      console.log('SHELTER LOGIN', userData);
       setUser({ ...(user || {}), ...userData });
     });
   }

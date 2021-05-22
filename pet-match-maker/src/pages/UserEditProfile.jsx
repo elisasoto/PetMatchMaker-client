@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Box } from '@chakra-ui/react';
 
 import { UserContext } from '../context/User';
@@ -17,6 +16,7 @@ export default function UserProfilePage() {
       });
     }
   }, []);
+
   return (
     <>
       <Box p={2} m={2}>

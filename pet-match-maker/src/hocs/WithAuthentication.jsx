@@ -19,8 +19,6 @@ function WithAuthentication({ children, roleToCheck = 'user' }) {
     );
   }
 
-  console.log('WITH AUTH', user, roleToCheck);
-
   return (
     <>{user && user?.role === roleToCheck ? <>{children}</> : <LoginPage />}</>
   );

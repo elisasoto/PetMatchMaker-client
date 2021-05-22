@@ -14,9 +14,9 @@ export const getShelterProfile = async () => {
   }
 };
 
-export const putShelterProfile = async () => {
+export const putShelterProfile = async (formValues) => {
   try {
-    const response = await axios.put(`${BASE_URL}/shelters/edit}`, {
+    const response = await axios.put(`${BASE_URL}/shelters/edit`, formValues, {
       withCredentials: true
     });
 
