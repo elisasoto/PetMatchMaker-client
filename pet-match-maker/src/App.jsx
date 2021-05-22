@@ -102,7 +102,7 @@ export default function App() {
                 <ShelterPetEdit />
               </WithAuthentication>
             </Route>
-            <Route exact path="/adopter/details">
+            <Route exact path="/adopter/details/:userId">
               <WithAuthentication roleToCheck="shelter">
                 <PotentialAdopterDetails />
               </WithAuthentication>

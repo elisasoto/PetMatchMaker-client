@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex, Text, IconButton } from '@chakra-ui/react';
+import { Avatar, Box, Text, IconButton } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import { capitalize } from '../../constants/capitalize';
 
@@ -8,26 +8,29 @@ export default function AdopterCard({
   age,
   surname,
   country,
-  city
+  city,
+  handleMoreInfo,
+  _id
 }) {
   return (
     <Box
-      w="fit-content"
-      borderWidth="1px"
+      alignItems="center"
       borderRadius="lg"
+      borderWidth="1px"
+      d="flex"
+      justifyContent="space-between"
       overflow="hidden"
       p={4}
-      pt={1}
       pb={1}
-      d="flex"
-      alignItems="center"
+      pt={1}
+      w="100%"
     >
       <Avatar
-        size={'md'}
-        src={`${img}`}
         alt={`${name}`}
         mb={2}
         pos="relative"
+        size="md"
+        src={`${img}`}
         _after={{
           content: '""'
         }}
@@ -35,22 +38,22 @@ export default function AdopterCard({
       <Box p="2">
         <Box alignItems="center">
           <Text
+            as="h4"
+            fontWeight="bold"
+            isTruncated
+            lineHeight="tight"
             mt="1"
             px={2}
             py={1}
-            fontWeight="bold"
-            as="h4"
-            lineHeight="tight"
-            isTruncated
             textTransform="uppercase"
           >
             {`${name} ${surname}`}
           </Text>
           <Box
             color="gray.500"
+            fontSize="xs"
             fontWeight="semibold"
             letterSpacing="wide"
-            fontSize="xs"
             ml="2"
           >
             {`${age} Years`}&bull;
@@ -58,19 +61,13 @@ export default function AdopterCard({
           </Box>
         </Box>
       </Box>
-      <Flex direction="column">
-        <Box p="2">
-          <IconButton
-            aria-label="Call Segun"
-            size="sm"
-            icon={<AddIcon color="gray.500" />}
-            isRound="true"
-            onClick={() =>
-              alert('click!')
-            } /**{ @TODO: se hace llamada a profile del pet }*/
-          />
-        </Box>
-      </Flex>
+      <IconButton
+        aria-label="Call Segun"
+        icon={<AddIcon color="gray.500" />}
+        isRound="true"
+        onClick={() => handleMoreInfo(_id)}
+        size="sm"
+      />
     </Box>
   );
 }
