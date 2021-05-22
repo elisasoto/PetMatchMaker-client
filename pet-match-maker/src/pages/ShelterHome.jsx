@@ -6,7 +6,6 @@ import { Box, Button, Heading, Text } from '@chakra-ui/react';
 import { UserContext } from '../context/User';
 import { capitalize } from '../constants/capitalize';
 import { getPetListFromShelter } from '../services/pets';
-import ShelterNavBar from '../components/Navbar/ShelterNavBar';
 import PetsList from '../components/PetsCards/PetsList';
 
 export default function ShelterHome() {
@@ -35,7 +34,6 @@ export default function ShelterHome() {
 
   return (
     <>
-      <ShelterNavBar />
       <Box
         p={2}
         m={2}
@@ -69,8 +67,10 @@ export default function ShelterHome() {
             This is your list of Pets
           </Text>
         </Heading>
+      </Box>
+      <Box>
         <Link to="/pet/register">
-          <Button size="sm" colorScheme="cyan" type="submit">
+          <Button size="sm" colorScheme="cyan" type="submit" w="100%">
             Add a Pet
           </Button>
         </Link>
@@ -83,13 +83,16 @@ export default function ShelterHome() {
         <Heading
           lineHeight={1.1}
           fontWeight={600}
+          align="center"
+          mt={16}
           fontSize={{ base: '2xl', sm: '6xl', lg: '10xl' }}
-          p={2}
-          m={2}
         >
-          <Text as="span" color="cyan.400">
-            Your added pets will display here
+          <Text as="span" color="grey.400">
+            You haven't registered any pets yet, click on
+            <Text color="cyan.400">Add a Pet</Text> to start registering your
+            available pets.
           </Text>
+          <Text mt={6}>Greetings form PetMatchMaker! 🐶😹🙉🐺🐷🐭🐗🦄🐸</Text>
         </Heading>
       )}
     </>
