@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 import {
@@ -47,11 +47,14 @@ export default function PetRegister() {
     formState: { errors }
   } = useForm({});
 
-  const handleFormSubmit = (formValues) => {
+  const history = useHistory();
+
+  const handleFormSubmit = async (formValues) => {
     if (user) {
       const { img, ...restvalues } = formValues;
       const formData = getFormData('img', img, restvalues);
-      putPetRegister(formData);
+      await putPetRegister(formData);
+      await history.push('/shelter/home');
     }
   };
 
@@ -87,7 +90,7 @@ export default function PetRegister() {
           </Text>
         </Heading>
         <Link to="/shelter/home">
-          <Box p="2" textAlign={'right'}>
+          <Box p="2" textAlign="right">
             <IconButton
               aria-label="Call Segun"
               size="sm"
