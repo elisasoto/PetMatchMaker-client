@@ -48,7 +48,7 @@ export const getPetListFromShelter = async () => {
 
 export const getSinglePet = async (id) => {
   try {
-    const response = await axios.get(`${BASE_URL}/pets${id}`, {
+    const response = await axios.get(`${BASE_URL}/pets/${id}`, {
       withCredentials: true
     });
 

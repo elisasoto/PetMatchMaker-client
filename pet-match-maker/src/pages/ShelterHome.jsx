@@ -69,10 +69,14 @@ export default function ShelterHome() {
       </Box>
       <Box>
         <Link to="/pet/register">
-          <Button size="sm" colorScheme="cyan" type="submit" w="100%">
+          <Button size="sm" colorScheme="cyan" type="submit" w="100%" mb={6}>
             Add a Pet
           </Button>
         </Link>
+        <Text as="span" color="grey.400" mt={6}>
+          Click on ➕ to check the details of the pet or ❌ to delete the pet
+          from your shelter.
+        </Text>
       </Box>
       {petList.length !== 0 ? (
         <Box mt={2} p={4}>

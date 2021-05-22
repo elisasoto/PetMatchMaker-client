@@ -15,6 +15,7 @@ import {
   ListItem,
   Stack,
   Text,
+  Wrap,
   useColorModeValue
 } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
@@ -46,16 +47,19 @@ export default function PetProfileShelter({ pet }) {
           />
           Close
         </Box>
-        <Avatar
-          size="1rem"
-          src={`${pet.img}`}
-          alt={`${pet.name}`}
-          mb={2}
-          pos="relative"
-          _after={{
-            content: '""'
-          }}
-        />
+        <Box mb={4} justifyContent="center">
+          <Avatar
+            size="2xl"
+            name={`${pet.name}`}
+            src={`${pet.img}`}
+            alt={`${pet.name}`}
+            mb={2}
+            pos="relative"
+            _after={{
+              content: '""'
+            }}
+          />
+        </Box>
         <Stack align="center" justify="center" direction="row">
           <Badge
             px={2}
