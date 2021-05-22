@@ -1,15 +1,15 @@
-import { useContext } from 'react';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { Box, Button, Heading, Text } from '@chakra-ui/react';
 
 import { UserContext } from '../context/User';
 import { capitalize } from '../constants/capitalize';
-import { getPetListFromShelter } from '../services/pets';
+import { getPetListFromShelter, putDeleteSinglePet } from '../services/pets';
 import PetsList from '../components/PetsCards/PetsList';
 
 export default function ShelterHome() {
   const { user } = useContext(UserContext);
+  const history = useHistory();
   const [petList, setPetList] = useState([]);
 
   useEffect(() => {
@@ -20,16 +20,16 @@ export default function ShelterHome() {
     }
   }, []);
 
-  // const handleClickRemove = async (id) => {
-  //     await putUserDislikes(id).then(() => {
-  //       const newPetList = petList.filter((pet) => pet._id !== id);
-  //       setPetList(newPetList);
-  //     });
-  //   };
+  const handleClickRemove = async (id) => {
+    await putDeleteSinglePet(id).then(() => {
+      const newPetList = petList.filter((pet) => pet._id !== id);
+      setPetList(newPetList);
+    });
+  };
 
-  //   const handleMoreInfo = async (id) => {
-  //     await history.push(``);
-  //   };
+  const handleMoreInfo = async (id) => {
+    await history.push(`/pet/profile/${id}`);
+  };
 
   return (
     <>
@@ -76,7 +76,11 @@ export default function ShelterHome() {
       </Box>
       {petList.length !== 0 ? (
         <Box mt={2} p={4}>
-          <PetsList petList={petList} />
+          <PetsList
+            petList={petList}
+            handleMoreInfo={handleMoreInfo}
+            handleClickRemove={handleClickRemove}
+          />
         </Box>
       ) : (
         <Heading
