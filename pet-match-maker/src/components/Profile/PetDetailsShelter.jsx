@@ -1,4 +1,4 @@
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { transformDate } from '../../constants/transformDate';
 import { capitalize } from '../../constants/capitalize';
 import './Profile.scss';
