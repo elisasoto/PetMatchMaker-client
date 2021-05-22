@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useState, useEffect } from 'react';
-import { mockedPetList } from '../constants/mockers';
-import { Box, Link, Button, Heading, Text } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
+import { Box, Button, Heading, Text } from '@chakra-ui/react';
 
 import { UserContext } from '../context/User';
 import { capitalize } from '../constants/capitalize';
@@ -14,10 +14,6 @@ export default function ShelterHome() {
   console.log(user);
   const [petList, setPetList] = useState([]);
 
-  const handleClickRemove = (id) => {
-    setPetList(petList.filter((pet) => id !== pet._id));
-  };
-
   useEffect(() => {
     if (user) {
       getPetListFromShelter().then((res) => {
@@ -25,6 +21,17 @@ export default function ShelterHome() {
       });
     }
   }, []);
+
+  // const handleClickRemove = async (id) => {
+  //     await putUserDislikes(id).then(() => {
+  //       const newPetList = petList.filter((pet) => pet._id !== id);
+  //       setPetList(newPetList);
+  //     });
+  //   };
+
+  //   const handleMoreInfo = async (id) => {
+  //     await history.push(``);
+  //   };
 
   return (
     <>
@@ -62,7 +69,7 @@ export default function ShelterHome() {
             This is your list of Pets
           </Text>
         </Heading>
-        <Link href="/pet/register">
+        <Link to="/pet/register">
           <Button size="sm" colorScheme="cyan" type="submit">
             Add a Pet
           </Button>

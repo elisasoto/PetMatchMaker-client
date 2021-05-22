@@ -4,7 +4,7 @@ import Loader from 'react-loader-spinner';
 import { UserContext } from '../context/User';
 import LoginPage from '../pages/LoginPage';
 
-function WithAuthentication({ children }) {
+function WithAuthentication({ children, roleToCheck = 'user' }) {
   const { user, loading } = useContext(UserContext);
 
   if (loading) {
@@ -19,7 +19,11 @@ function WithAuthentication({ children }) {
     );
   }
 
-  return <>{user ? <>{children}</> : <LoginPage />}</>;
+  console.log('WITH AUTH', user, roleToCheck);
+
+  return (
+    <>{user && user?.role === roleToCheck ? <>{children}</> : <LoginPage />}</>
+  );
 }
 
 export default WithAuthentication;

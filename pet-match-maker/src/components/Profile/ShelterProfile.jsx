@@ -2,7 +2,6 @@ import {
   Box,
   Button,
   Center,
-  IconButton,
   Link,
   List,
   ListIcon,
@@ -11,12 +10,7 @@ import {
   Text,
   useColorModeValue
 } from '@chakra-ui/react';
-import {
-  EmailIcon,
-  InfoIcon,
-  PhoneIcon,
-  SmallCloseIcon
-} from '@chakra-ui/icons';
+import { EmailIcon, InfoIcon, PhoneIcon } from '@chakra-ui/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeEurope } from '@fortawesome/free-solid-svg-icons';
 
