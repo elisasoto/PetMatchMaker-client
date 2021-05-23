@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-
-import { getPetDetails } from '../services/user';
 import { Box } from '@chakra-ui/react';
 
+import { getPetDetails } from '../services/user';
 import PetProfile from '../components/Profile/PetProfile';
 
 export default function UserLikes() {

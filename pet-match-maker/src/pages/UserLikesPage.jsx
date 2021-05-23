@@ -74,11 +74,16 @@ export default function UserLikes() {
           Close
         </Box>
         {petList.length !== 0 ? (
-          <LikesList
-            petList={petList}
-            handleClickRemove={handleClickRemove}
-            handleMoreInfo={handleMoreInfo}
-          />
+          <Box>
+            <Text as="span" color="grey.400" mb={6}>
+              {`You've liked ${petList.length} pets, contact them asap to find your perfect buddy!`}
+            </Text>
+            <LikesList
+              petList={petList}
+              handleClickRemove={handleClickRemove}
+              handleMoreInfo={handleMoreInfo}
+            />
+          </Box>
         ) : (
           <Text as="span" color="gray.400">
             You haven´t liked any pets yet
