@@ -43,7 +43,11 @@ export default function PetProfileShelter({ pet }) {
         rounded="lg"
         textAlign="center"
       >
-        <Box p="2" textAlign="right">
+        <Box
+          p="2"
+          textAlign="right"
+          onClick={() => handleRedirect('/shelter/home')}
+        >
           <IconButton
             aria-label="Call Segun"
             size="sm"
