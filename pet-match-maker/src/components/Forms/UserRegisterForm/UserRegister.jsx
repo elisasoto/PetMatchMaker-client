@@ -116,6 +116,7 @@ export default function UserRegister() {
               id="age"
               placeholder="34"
               {...register('age', {
+                required: true,
                 maxLength: 9,
                 pattern: {
                   value: /[0-9]+/
@@ -124,6 +125,9 @@ export default function UserRegister() {
             />
           </InputGroup>
           <FormErrorMessage>
+            {errors.age && errors.age.type === 'required' ? (
+              <p>{errorMessage.required}</p>
+            ) : null}
             {errors.age && errors.age.type === 'pattern' ? (
               <p>{errorMessage.integerPattern}</p>
             ) : null}

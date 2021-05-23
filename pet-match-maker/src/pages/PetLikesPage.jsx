@@ -16,7 +16,9 @@ export default function PetsLlikes() {
 
   useEffect(() => {
     getPetLikes(petId).then((res) => {
-      setUserList(res.likes);
+      if (res) {
+        setUserList(res.likes);
+      }
     });
   }, []);
 
@@ -38,11 +40,11 @@ export default function PetsLlikes() {
             Close
           </Box>
         </Link>
-        {userList.length !== 0 ? (
+        {userList.length ? (
           <AdopterList userList={userList} handleMoreInfo={handleMoreInfo} />
         ) : (
           <Text as="span" color="gray.400">
-            You haven´t liked any pets yet
+            This pet hasn´t received any likes yet
           </Text>
         )}
       </Box>

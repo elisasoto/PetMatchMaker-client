@@ -80,6 +80,7 @@ export default function ShelterHome() {
       </Box>
       {petList.length !== 0 ? (
         <Box mt={2} p={4}>
+          <Text color="cyan.400">{`You have registered ${petList.length} pets in your Shelter`}</Text>
           <PetsList
             petList={petList}
             handleMoreInfo={handleMoreInfo}

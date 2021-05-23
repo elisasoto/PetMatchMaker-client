@@ -30,6 +30,7 @@ import {
 export default function PetProfileShelter({ pet }) {
   const history = useHistory();
   const available = pet.status === 'Available' ? 'green' : 'red';
+  const disableButton = pet.likes.length ? false : true;
 
   const handleRedirect = async (path) => {
     await history.push(path);
@@ -88,7 +89,7 @@ export default function PetProfileShelter({ pet }) {
           px={1}
         >
           <FontAwesomeIcon icon={faThumbsUp} color="#ACDEB2" className="icon" />
-          {`${pet.likes.length} people are sinterested in me!`}
+          {`${pet.likes.length} people are interested in me!`}
         </Text>
         <Box
           bg={useColorModeValue('gray.50', 'gray.900')}
@@ -150,6 +151,7 @@ export default function PetProfileShelter({ pet }) {
             size="lg"
             fontWeight="normal"
             px={6}
+            isDisabled={disableButton}
             onClick={() => handleRedirect(`/pet/likes/${pet._id}`)}
           >
             See Potential Adopters Info
