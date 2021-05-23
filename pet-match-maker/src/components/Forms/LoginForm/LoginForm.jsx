@@ -24,7 +24,8 @@ export default function LoginForm() {
 
   const [show, setShow] = React.useState(false);
   const [isUser, setIsUser] = React.useState(1);
-  const handleClick = () => setShow(!show);
+
+  const handleClickShowPassword = () => setShow(!show);
 
   const history = useHistory();
 
@@ -44,7 +45,7 @@ export default function LoginForm() {
         await history.push('/shelter/home');
       }
     } catch (error) {
-      console.log('i am the erro', error);
+      console.log(error);
     }
   };
 
@@ -114,7 +115,7 @@ export default function LoginForm() {
               children={<LockIcon color="gray.300" />}
             />
             <InputRightElement width="4.5rem">
-              <Button h="1.75rem" size="sm" onClick={handleClick}>
+              <Button h="1.75rem" size="sm" onClick={handleClickShowPassword}>
                 {show ? 'Hide' : 'Show'}
               </Button>
             </InputRightElement>

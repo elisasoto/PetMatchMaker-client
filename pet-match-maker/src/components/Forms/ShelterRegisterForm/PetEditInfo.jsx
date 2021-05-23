@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useForm, Controller } from 'react-hook-form';
 import ReactDatePicker from 'react-datepicker';
 import {
@@ -38,6 +38,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 export default function PetEditInfo({ pet }) {
   const { _id } = pet;
+  const history = useHistory();
   const {
     handleSubmit,
     control,
@@ -79,22 +80,19 @@ export default function PetEditInfo({ pet }) {
           >
             Edit Pet Info
           </Text>
-
           <Text as="span" color="cyan.400">
             in the fields below
           </Text>
         </Heading>
-        <Link to="/pet/details">
-          <Box p="2" textAlign="right">
-            <IconButton
-              aria-label="Call Segun"
-              size="sm"
-              colorScheme="whiteAlpha"
-              icon={<SmallCloseIcon color="black" />}
-            />
-            Close
-          </Box>
-        </Link>
+        <Box p="2" textAlign="right" onClick={() => history.goBack()}>
+          <IconButton
+            aria-label="Call Segun"
+            size="sm"
+            colorScheme="whiteAlpha"
+            icon={<SmallCloseIcon color="black" />}
+          />
+          Close
+        </Box>
         <Box display="flex" alignItems="center" justifyContent="space-between">
           <WrapItem p={2}>
             <Avatar size="md" name="Prosper Otemuyiwa" src={`${pet.img}`} />

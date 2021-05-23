@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { Box, IconButton } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
 
@@ -8,6 +9,7 @@ import UserProfile from '../components/Profile/UserProfile';
 
 export default function PotentialAdopter() {
   const { userId } = useParams();
+  const history = useHistory();
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
