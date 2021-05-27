@@ -39,7 +39,7 @@ export default function PetProfile({ pet }) {
         rounded="lg"
         textAlign="center"
       >
-        <Box p="2" textAlign="right" onClick={() => history.goBack}>
+        <Box p="2" textAlign="right" onClick={() => history.goBack()}>
           <IconButton
             aria-label="Call Segun"
             size="sm"

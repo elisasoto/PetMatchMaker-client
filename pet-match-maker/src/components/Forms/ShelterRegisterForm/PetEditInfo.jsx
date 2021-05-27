@@ -48,7 +48,6 @@ export default function PetEditInfo({ pet }) {
   } = useForm({ defaultValues: pet });
 
   const handleFormSubmit = async (formValues) => {
-    console.log(formValues, _id);
     const { picture, ...restvalues } = formValues;
     const formData = getFormData('img', picture, restvalues);
     await putPetEdit(formData);

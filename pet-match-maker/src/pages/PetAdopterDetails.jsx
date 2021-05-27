@@ -9,13 +9,11 @@ import UserProfile from '../components/Profile/UserProfile';
 
 export default function PotentialAdopter() {
   const { userId } = useParams();
-  console.log(userId);
   const history = useHistory();
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
     getUserFromPetLikes(userId).then((res) => {
-      console.log(res);
       setProfile(res);
     });
   }, []);

@@ -54,6 +54,10 @@ export default function UserMoreInfo({ profile }) {
 
   const handleClick = () => setShow(!show);
 
+  const handleRedirect = (path) => {
+    history.push(path);
+  };
+
   const handleFormSubmit = async (formValues) => {
     const { picture, ...restvalues } = formValues;
     const formData = getFormData('img', picture, restvalues);
@@ -69,7 +73,11 @@ export default function UserMoreInfo({ profile }) {
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Box d="flex-wrap" p={2} borderRadius="5px">
-        <Box p="2" textAlign={'right'} onClick={() => history.goBack}>
+        <Box
+          p="2"
+          textAlign={'right'}
+          onClick={() => handleRedirect('/user/profile')}
+        >
           <IconButton
             aria-label="Call Segun"
             size="sm"

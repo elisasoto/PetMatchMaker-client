@@ -17,9 +17,10 @@ export const putPetRegister = async (formData) => {
   }
 };
 
-export const putPetEdit = async (formData, id) => {
+export const putPetEdit = async (formData) => {
+  const id = formData.get('_id');
   try {
-    const register = await axios.post(`${BASE_URL}/pets/edit/${id}`, formData, {
+    const register = await axios.put(`${BASE_URL}/pets/edit/${id}`, formData, {
       headers: {
         'content-type': 'multipart/form-data'
       },
