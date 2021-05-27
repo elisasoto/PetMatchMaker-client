@@ -1,10 +1,9 @@
 import axios from 'axios';
-
-const API_URL = 'http://localhost:4000/api';
+import { BASE_URL } from '../constants';
 
 export const getShortProfile = async () => {
   try {
-    const response = await axios.get(`${API_URL}/auth/short-profile`, {
+    const response = await axios.get(`${BASE_URL}/auth/short-profile`, {
       withCredentials: true
     });
 
@@ -17,7 +16,7 @@ export const getShortProfile = async () => {
 
 export async function postLoginAdopter(email, password) {
   const res = await axios.post(
-    `${API_URL}/auth/login/user`,
+    `${BASE_URL}/auth/login/user`,
     {
       email,
       password
@@ -32,7 +31,7 @@ export async function postLoginAdopter(email, password) {
 export async function postLoginShelter(email, password) {
   try {
     const res = await axios.post(
-      `${API_URL}/auth/login/shelter`,
+      `${BASE_URL}/auth/login/shelter`,
       {
         email,
         password
@@ -48,7 +47,7 @@ export async function postLoginShelter(email, password) {
 }
 
 export async function postAdopterRegister(body) {
-  const res = await axios.post(`${API_URL}/auth/register/user`, body, {
+  const res = await axios.post(`${BASE_URL}/auth/register/user`, body, {
     withCredentials: true
   });
 
@@ -56,7 +55,7 @@ export async function postAdopterRegister(body) {
 }
 
 export async function postShelterRegister(body) {
-  const res = await axios.post(`${API_URL}/auth/register/shelter`, body, {
+  const res = await axios.post(`${BASE_URL}/auth/register/shelter`, body, {
     withCredentials: true
   });
 
@@ -64,7 +63,7 @@ export async function postShelterRegister(body) {
 }
 
 export async function getLogout() {
-  return axios.get(`${API_URL}/auth/logout`, {
+  return axios.get(`${BASE_URL}/auth/logout`, {
     withCredentials: true
   });
 }
