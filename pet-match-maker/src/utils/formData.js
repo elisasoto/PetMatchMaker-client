@@ -12,3 +12,4 @@ export const getFormData = (fileName, fileField, restFields) => {
 
   return formData;
 };
+

@@ -47,11 +47,11 @@ export default function PetEditInfo({ pet }) {
     formState: { errors }
   } = useForm({ defaultValues: pet });
 
-  const handleFormSubmit = async (formValues, _id) => {
+  const handleFormSubmit = async (formValues) => {
     console.log(formValues, _id);
     const { picture, ...restvalues } = formValues;
     const formData = getFormData('img', picture, restvalues);
-    await putPetEdit(formData, _id);
+    await putPetEdit(formData);
   };
 
   const [about] = watch(['about']);
@@ -84,7 +84,7 @@ export default function PetEditInfo({ pet }) {
             in the fields below
           </Text>
         </Heading>
-        <Box p="2" textAlign="right" onClick={() => history.goBack()}>
+        <Box p="2" textAlign="right" onClick={() => history.goBack}>
           <IconButton
             aria-label="Call Segun"
             size="sm"

@@ -69,7 +69,7 @@ export default function UserMoreInfo({ profile }) {
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
       <Box d="flex-wrap" p={2} borderRadius="5px">
-        <Box p="2" textAlign={'right'} onClick={() => history.goBack()}>
+        <Box p="2" textAlign={'right'} onClick={() => history.goBack}>
           <IconButton
             aria-label="Call Segun"
             size="sm"

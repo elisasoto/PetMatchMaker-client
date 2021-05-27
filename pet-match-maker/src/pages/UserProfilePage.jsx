@@ -28,7 +28,7 @@ export default function UserProfilePage() {
   return (
     <>
       <Box p={2} m={2}>
-        <Box p="2" textAlign="right" onClick={() => history.goBack()}>
+        <Box p="2" textAlign="right" onClick={() => history.goBack}>
           <IconButton
             aria-label="Call Segun"
             size="sm"
