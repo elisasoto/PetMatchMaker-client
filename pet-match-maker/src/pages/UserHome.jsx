@@ -86,12 +86,14 @@ export default function UserHome() {
         </Text>
       </Stack>
       <Box pos="relative" d="flex" alignItems="center" ml={4} pt={6}>
-        <SwipeCardsList
-          petList={petList}
-          handleClickLikes={handleClickLikes}
-          handleClickDislike={handleClickDislike}
-          handleMoreInfo={handleMoreInfo}
-        />
+        {petList ? (
+          <SwipeCardsList
+            petList={petList}
+            handleClickLikes={handleClickLikes}
+            handleClickDislike={handleClickDislike}
+            handleMoreInfo={handleMoreInfo}
+          />
+        ) : null}
       </Box>
     </>
   );
