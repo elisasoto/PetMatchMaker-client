@@ -37,7 +37,6 @@ import '../UserRegisterForm/userForm.scss';
 import 'react-datepicker/dist/react-datepicker.css';
 
 export default function PetEditInfo({ pet }) {
-  const { _id } = pet;
   const history = useHistory();
   const {
     handleSubmit,

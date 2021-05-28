@@ -45,7 +45,7 @@ export default function LoginForm() {
         await history.push('/shelter/home');
       }
     } catch (error) {
-      console.log(error);
+      console.log('error at login page', error.message);
     }
   };
 

@@ -15,17 +15,21 @@ export const getShortProfile = async () => {
 };
 
 export async function postLoginAdopter(email, password) {
-  const res = await axios.post(
-    `${BASE_URL}/auth/login/user`,
-    {
-      email,
-      password
-    },
+  try {
+    const res = await axios.post(
+      `${BASE_URL}/auth/login/user`,
+      {
+        email,
+        password
+      },
 
-    { withCredentials: true }
-  );
+      { withCredentials: true }
+    );
 
-  return res.data.data;
+    return res.data.data;
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 
 export async function postLoginShelter(email, password) {
