@@ -62,6 +62,7 @@ export default function UserMoreInfo({ profile }) {
     const { picture, ...restvalues } = formValues;
     const formData = getFormData('img', picture, restvalues);
     await putUserProfile(formData);
+    await handleRedirect('/user/profile');
   };
 
   const [about, motivations, ammenities] = watch([
