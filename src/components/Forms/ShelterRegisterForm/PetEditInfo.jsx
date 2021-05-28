@@ -16,6 +16,7 @@ import {
   InputLeftElement,
   InputRightAddon,
   Stack,
+  Select,
   Text,
   Textarea
 } from '@chakra-ui/react';
@@ -50,6 +51,7 @@ export default function PetEditInfo({ pet }) {
     const { picture, ...restvalues } = formValues;
     const formData = getFormData('img', picture, restvalues);
     await putPetEdit(formData);
+    await history.push('/shelter/home');
   };
 
   const [about] = watch(['about']);
@@ -266,6 +268,19 @@ export default function PetEditInfo({ pet }) {
               <p>{errorMessage.pharagraphMinLength}</p>
             ) : null}
           </FormErrorMessage>
+          <Controller
+            name="status"
+            id="status"
+            defaultValue={'Available'}
+            control={control}
+            rules={{ ...register('status') }}
+            render={({ field: { onChange } }) => (
+              <Select placeholder="Change Adoption Status" onChange={onChange}>
+                <option value="Available">Available</option>
+                <option value="Adopted">Adopted</option>
+              </Select>
+            )}
+          />
         </FormControl>
       </Stack>
       <Button mt={4} colorScheme="cyan" type="submit">
